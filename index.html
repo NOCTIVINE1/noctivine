@@ -1,1 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Professional SEO & Social Meta Tags -->
+  <meta name="description" content="Noctivine — emotional storyteller, introspective writer, and author of 'The Person You Became to Survive'. A safe night for deep feelers, overthinkers, and quiet fighters.">
+  <meta name="keywords" content="Noctivine, emotional storytelling, healing, mental health, overthinking, deep feeler, highly sensitive person, author, The Person You Became to Survive, healing blog">
+  <meta name="author" content="Noctivine">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Noctivine — Words You’ve Been Trying to Feel">
+  <meta property="og:description" content="A quiet, safe night for deep feelers. Emotional storytelling, healing insights, and the book 'The Person You Became to Survive'.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/image422.jpg">
+  <meta property="og:url" content="https://yourdomain.com">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Noctivine — Emotional Storytelling & Healing">
+  <meta name="twitter:description" content="For the deep feelers, the overthinkers, the ones who carry silent storms.">
+  <meta name="twitter:image" content="/image422.jpg">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Noctivine — Home</title>
+  <meta name="description" content="Noctivine — emotional storyteller and author of 'The Person You Became to Survive'. A quiet, safe night for deep feelers." />
+  <style>
+    /* Noctivine — Dark night aesthetic CSS */
+    :root{
+      --bg:#071226; /* deep midnight */
+      --panel:#0b1b35; /* slightly lighter */
+      --muted:#9fb0c9; /* soft blue-gray */
+      --accent:#6aa6ff; /* gentle bright blue */
+      --glow:rgba(106,166,255,0.12);
+      --glass: rgba(255,255,255,0.03);
+      --radius:16px;
+      --max-w:1100px;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --serif: "Georgia", "Times New Roman", Times, serif;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(12,28,50,0.45), transparent 10%),
+                  linear-gradient(180deg, rgba(3,10,20,0.8), rgba(3,7,14,1)),
+                  var(--bg);
+      color:var(--muted);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-w);
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:20px;
+      box-shadow:0 10px 40px rgba(2,8,20,0.6);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    header.hero{
+      padding:56px 48px;
+      display:flex;
+      gap:40px;
+      align-items:center;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    }
+
+    .hero-left{flex:1;min-width:260px}
+    .hero-right{width:360px;min-width:220px}
+
+    h1.tagline{
+      margin:0 0 18px 0;
+      font-family:var(--serif);
+      font-size:34px;
+      color:#eaf4ff;
+      letter-spacing: -0.6px;
+      line-height:1.08;
+      text-shadow:0 6px 30px rgba(10,36,60,0.45);
+    }
+
+    p.lead{
+      margin:0 0 22px 0;
+      color:var(--muted);
+      font-size:16px;
+      max-width:66ch;
+    }
+
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      -webkit-appearance:none;
+      appearance:none;
+      border:0;
+      padding:12px 18px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+      transition:transform .14s ease, box-shadow .14s ease;
+    }
+
+    .btn:active{transform:translateY(1px)}
+
+    .btn-primary{
+      background:linear-gradient(180deg,var(--accent), #4e8ef0);
+      color:#021023;
+      box-shadow:0 6px 28px var(--glow), inset 0 -2px 8px rgba(255,255,255,0.03);
+    }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .meta{margin-top:18px;color:rgba(160,190,220,0.8);font-size:13px}
+
+    /* About preview */
+    .about{
+      padding:28px 48px;
+      border-top:1px solid rgba(255,255,255,0.02);
+      display:flex;
+      gap:28px;
+      align-items:flex-start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01));
+    }
+
+    .about .intro{flex:1}
+    .pill-list{font-weight:700;color:#dfefff;margin:12px 0}
+    .about p{margin:6px 0 0 0;color:var(--muted)}
+
+    /* Book section */
+    .book{
+      padding:36px 48px;
+      display:flex;
+      gap:28px;
+      align-items:stretch;
+      border-top:1px solid rgba(255,255,255,0.02);
+      background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01));
+    }
+
+    .book .copy{flex:1}
+    .book h2{margin:0 0 12px 0;color:#eaf4ff;font-family:var(--serif);font-size:20px}
+    .book p{margin:0 0 14px 0;color:var(--muted)}
+
+    .book .book-frame{
+      width:260px;min-width:200px;background:var(--panel);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:flex-start;border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .book .book-frame img{width:100%;border-radius:8px;display:block}
+
+    /* Blog preview */
+    .blog{
+      padding:28px 48px;border-top:1px solid rgba(255,255,255,0.02);
+      display:grid;gap:18px;background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.02));
+    }
+
+    .post{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);}
+    .post h3{margin:0 0 8px 0;color:#eaf4ff}
+    .post p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Why I write & Join section */
+    .why{
+      padding:28px 48px;border-top:1px solid rgba(255,255,255,0.02);display:flex;gap:20px;align-items:flex-start;
+    }
+
+    .join{
+      padding:24px;border-radius:14px;background:linear-gradient(180deg, rgba(106,166,255,0.04), rgba(255,255,255,0.01));border:1px solid rgba(106,166,255,0.06);min-width:260px;
+    }
+
+    .join h4{margin:0 0 8px 0;color:#eaf4ff}
+    .join p{margin:0 0 12px 0;color:var(--muted)}
+
+    footer{padding:18px 48px;background:linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.01));border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between}
+    footer .foot-text{color:rgba(190,210,235,0.85);font-size:13px}
+
+    /* small screens */
+    @media (max-width:880px){
+      header.hero{padding:32px 20px;flex-direction:column;align-items:flex-start}
+      .hero-right{width:100%}
+      .book{flex-direction:column}
+      .about, .why{flex-direction:column}
+      footer{flex-direction:column;gap:10px;align-items:flex-start}
+      .container{border-radius:14px}
+    }
+
+    /* subtle animated star */
+    .nocti-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);}
+    .glow-dot{width:10px;height:10px;border-radius:10px;background:var(--accent);box-shadow:0 6px 18px rgba(106,166,255,0.18)}
+
+    a.link{color:var(--accent);text-decoration:none;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+
+    <header class="hero">
+      <div class="hero-left">
+        <div class="nocti-badge" aria-hidden="true"><span class="glow-dot"></span><small style="color:var(--muted);">Noctivine</small></div>
+        <h1 class="tagline">I write the words you’ve been trying to feel.</h1>
+        <p class="lead">I’m Noctivine — an emotional storyteller, late-night voice, and author of <em>The Person You Became to Survive</em>. I write for the deep feelers and quiet fighters — the ones whose hearts are loud in a silent room.</p>
+
+        <div class="cta-row">
+          <a href="book.html" class="btn btn-primary" role="button" aria-label="Start reading the book">Start Reading</a>
+          <a href="family.html" class="btn btn-ghost" role="button" aria-label="Join the community">Join the Family</a>
+        </div>
+
+        <div class="meta">A quiet, safe night where someone finally understands. — Noctivine</div>
+      </div>
+
+      <aside class="hero-right" aria-hidden="false">
+        <div style="background:linear-gradient(180deg, rgba(10,24,44,0.4), rgba(6,14,26,0.45));border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.02);">
+          <h4 style="margin:0 0 10px 0;color:#eaf4ff;font-family:var(--serif);font-size:16px;">A short note</h4>
+          <p style="margin:0;color:var(--muted);font-size:14px;">If you’ve ever felt misunderstood, out of place, or “too much,” you’re home here. I share real talk, simple psychology, and raw emotions — late-night letters for the soul.</p>
+
+          <div style="margin-top:14px;display:flex;gap:8px;align-items:center;">
+            <a class="btn btn-primary" href="#join" style="padding:10px 12px;font-size:13px;">Join the Family</a>
+            <a class="btn btn-ghost" href="https://youtube.com/@noctivine0?si=94GgJpq42RjvaDAC" target="_blank" rel="noopener" style="font-size:13px;">Subscribe — YouTube</a>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section class="about" aria-labelledby="about-title">
+      <div class="intro">
+        <h3 id="about-title" style="margin:0 0 8px 0;color:#eaf4ff;font-family:var(--serif);">About — Noctivine</h3>
+        <div class="pill-list">for the overthinkers • deep feelers • silent fighters</div>
+        <p>I create for the ones who feel too much in a world that rewards feeling nothing. I speak softly about the loud things: loneliness, emotional disconnection, attachment, and the reasons we break — and how we learn to heal.</p>
+        <p style="margin-top:10px;color:var(--muted);font-size:14px;">If you’ve ever felt misunderstood or out of place — you’re home now. Here you’ll find real talk, simple psychology, and a safe space for your unfiltered self.</p>
+      </div>
+
+      <div style="min-width:220px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+        <small style="color:var(--muted);">Connect</small>
+        <a class="link" href="https://youtube.com/@noctivine0?si=94GgJpq42RjvaDAC" target="_blank" rel="noopener">YouTube — Subscribe</a>
+      </div>
+    </section>
+
+    <section class="book" aria-labelledby="book-title">
+      <div class="copy">
+        <h2 id="book-title">The Person You Became to Survive</h2>
+        <p style="margin-bottom:8px;color:var(--muted);font-weight:600;">Understanding Your Past to Reclaim Your Present</p>
+        <p>There’s a version of you that was created for survival — the people-pleaser who learned to earn love, the overthinker who predicted danger, the perfectionist who tied worth to achievement. These adaptations kept you safe once, but now they feel like cages.</p>
+        <p>In this book I offer a compassionate, honest conversation — a companion for your late-night unravelling. Through storytelling and psychological insight you’ll learn to decode your patterns, transform anxiety, set boundaries, and reconnect with the person you were before survival shaped you.</p>
+        <p style="margin-top:12px;color:var(--muted);font-size:14px;">If you’re ready to thank your survival self for its service and begin the journey home to you — this is the first step.</p>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <a class="btn btn-primary" href="book.html" role="button">Learn More</a>
+          <a class="btn btn-ghost" href="#" role="button">Read an excerpt</a>
+        </div>
+      </div>
+
+      <div class="book-frame" aria-hidden="false">
+        <!-- Replace the src path with your actual image path -->
+        <img src="image422.jpg" alt="Book cover — The Person You Became to Survive" />
+        <small style="color:var(--muted);">A late-night conversation in book form</small>
+      </div>
+    </section>
+
+    <section class="blog" aria-labelledby="blog-title">
+      <h3 id="blog-title" style="margin:6px 0 0 0;color:#eaf4ff;font-family:var(--serif);">Healing Blog — Recent</h3>
+
+      <article class="post" aria-labelledby="post-1">
+        <h3 id="post-1">The Beautiful Curse (Why You Feel Everything Too Deeply)</h3>
+        <p>Have you ever replayed a conversation in your head for hours, wondering what they meant? Or sat in a room full of people and still felt alone? This piece explores why your sensitivity is a burden and a gift — and how to begin working with it.</p>
+      </article>
+
+      <article class="post" aria-labelledby="post-2">
+        <h3 id="post-2">When Your Mind Is a Storm You Can't Turn Off</h3>
+        <p>There’s a 2 a.m. version of you who is louder than your daytime self. These words are for that version — gentle ways to listen to the storm and step into calmer weather.</p>
+      </article>
+
+      <article class="post" aria-labelledby="post-3">
+        <h3 id="post-3">The Art of Being the Strong One (And the Weight No One Sees)</h3>
+        <p>Being the person people rely on has its quiet costs. This piece honors the strong ones, and gives small, practical steps to be held instead of holding everyone else.</p>
+      </article>
+
+    </section>
+
+    <section class="why" aria-labelledby="why-title">
+      <div style="flex:1">
+        <h3 id="why-title" style="color:#eaf4ff;font-family:var(--serif);margin:0 0 10px 0;">Why I Write</h3>
+        <p>I’m not a psychologist. I write from lived experience, observation, and empathy. My intention is simple: to help you understand the versions of yourself you built to survive — so you can meet the person who was waiting underneath.</p>
+      </div>
+
+      <aside class="join" id="join">
+        <h4>Join the Family</h4>
+        <p>Late-night letters. Emotional stories. Gentle psychology. A small, warm corner where your depth isn’t a burden.</p>
+        <a href="family.html" class="btn btn-primary" style="width:100%;display:inline-block;text-align:center;">Join the Family</a>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="foot-text">soft souls. quiet nights. raw truths. you’re not alone here.</div>
+      <div style="color:var(--muted);font-size:13px;">© Noctivine — <span style="opacity:0.9">The Person You Became to Survive</span></div>
+    </footer>
+
+  </div>
+</body>
+</html>
 
