@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noctivine — Books</title>
-  <meta name="description" content="Noctivine Book Library — read online or download books." />
 
   <style>
     :root{
@@ -50,17 +49,6 @@
       background:rgba(255,255,255,0.05);
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
     }
-
-    .nav-links{
-      display:flex;gap:18px;
-      padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-    }
-    .nav-links a{font-size:14px;color:var(--muted);font-weight:800}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a.active{color:var(--text)}
-
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
       gap:10px;
@@ -78,17 +66,6 @@
       background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
       border-color:rgba(0,255,213,0.34);
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
-    }
-
-    .hamburger{
-      display:none;width:44px;height:44px;border-radius:16px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.03);
-      cursor:pointer;
-    }
-    .hamburger span{
-      display:block;width:18px;height:2px;margin:4px auto;
-      background:rgba(234,240,255,0.85);border-radius:8px;
     }
 
     /* HEADER */
@@ -207,6 +184,9 @@
     .actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
     .actions .btn{flex:1;min-width:150px}
 
+    /* hidden raw data */
+    #bookDatabase{display:none;}
+
     footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
     .foot{
       display:flex;justify-content:space-between;flex-wrap:wrap;
@@ -218,21 +198,6 @@
 
     @media(max-width:980px){.grid{grid-template-columns:1fr 1fr;}}
     @media(max-width:860px){
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:68px;
-        right:4vw;
-        width:min(360px, 92vw);
-        flex-direction:column;
-        gap:10px;
-        padding:14px;
-        border-radius:18px;
-        background: rgba(12,16,25,0.92);
-        border:1px solid rgba(255,255,255,0.10);
-      }
-      .nav-links.open{display:flex}
-      .hamburger{display:inline-block}
       .grid{grid-template-columns:1fr;}
       .viewer-box iframe{height:60vh;}
     }
@@ -241,7 +206,6 @@
 
 <body>
 
-  <!-- NAV -->
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
@@ -250,16 +214,9 @@
           <span>Noctivine</span>
         </a>
 
-        <nav class="nav-links" id="navLinks">
-          <a href="index.html">Home</a>
-          <a class="active" href="books.html">Books</a>
-        </nav>
-
         <div style="display:flex;gap:10px;align-items:center">
           <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
-          <button class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-          </button>
+          <a class="btn" href="index.html">Home</a>
         </div>
       </div>
     </div>
@@ -273,7 +230,6 @@
 
       <div class="tools">
         <input class="input" id="searchBox" placeholder="Search books..." />
-        <a class="btn" href="index.html#books">Back</a>
       </div>
     </section>
 
@@ -296,8 +252,43 @@
       </div>
     </section>
 
-    <!-- ✅ Book Grid -->
+    <!-- ✅ Book Cards -->
     <section class="grid" id="bookGrid"></section>
+
+    <!-- ✅ RAW BOOK DATABASE (EDIT HERE ONLY) -->
+    <div id="bookDatabase">
+      <div class="book-row"
+        data-id="lonely-generation"
+        data-name="Lonely Generation"
+        data-cover="assets/covers/image2.jpg"
+        data-pdf="assets/books/lonely-generation.pdf"
+        data-download="https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3">
+This is not a story about something extraordinary happening. No dramatic turning point.
+No single moment where everything changes. No version of love that fixes a life
+overnight. This is a story about what it feels like to exist quietly in a crowded world.
+About waking up every day surrounded by people and still feeling slightly out of place.
+About scrolling through a phone full of names and realizing none of them really know
+you. About laughing at the right moments, saying the safe things, and carrying thoughts
+you never quite say out loud. It’s about being seventeen and expected to know where
+you’re going, when most days you’re still figuring out where you stand. The boy writing
+these pages is not broken. He goes to school. He studies. He jokes. He functions. But
+somewhere between expectations, noise, and constant connection, he begins to notice
+something missing. Not happiness. Not success. Just *presence*. The feeling of being
+seen without having to perform. This book doesn’t move fast. It doesn’t chase drama. It
+doesn’t try to impress you. It pays attention instead. To small pauses in conversation. To
+silence that isn’t awkward. To the difference between being noticed and being needed.
+To the quiet line between attachment and self-respect. Love enters this story slowly, the
+way it does in real life when it’s healthy. Not as obsession. Not as rescue. But as
+steadiness. As something that exists alongside fear, pressure, and uncertainty, not
+above them. If you’re looking for a perfect romance, this book will disappoint you. If
+you’re looking for answers, it probably won’t give you many. But if you’ve ever felt lonely
+without being alone, tired without being exhausted, or unsure without knowing why—
+then these pages might feel familiar. This is not a book about finding everything. It’s
+about stopping the habit of abandoning yourself. And learning, slowly and imperfectly,
+how to keep going without pretending you’re fine when you’re not. That’s where this
+story begins.
+      </div>
+    </div>
 
     <footer>
       <div class="foot">
@@ -311,32 +302,40 @@
 
   </div>
 
-  <!-- ✅ Load database -->
-  <script src="js/books-data.js"></script>
-
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // mobile nav
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
     const grid = document.getElementById("bookGrid");
     const searchBox = document.getElementById("searchBox");
 
     function shortText(text, max=260){
       if (!text) return "";
+      text = text.trim();
       if (text.length <= max) return text;
       return text.slice(0, max) + "...";
     }
+
+    // ✅ Read raw rows from HTML database (no js file)
+    function getBooksFromHTML(){
+      const rows = document.querySelectorAll("#bookDatabase .book-row");
+      return Array.from(rows).map(row => ({
+        id: row.dataset.id,
+        name: row.dataset.name,
+        cover: row.dataset.cover,
+        pdf: row.dataset.pdf,
+        download: row.dataset.download,
+        description: row.textContent.trim()
+      }));
+    }
+
+    const BOOKS = getBooksFromHTML();
 
     function renderBooks(list){
       grid.innerHTML = list.map(book => `
         <div class="card" id="${book.id}">
           <div class="cover">
             <img src="${book.cover}" alt="${book.name}" onerror="this.remove()">
-            <span class="badge">${book.type === "free" ? "FREE" : "₹" + book.price}</span>
+            <span class="badge">FREE</span>
           </div>
 
           <div class="body">
@@ -359,7 +358,7 @@
         </div>
       `).join("");
 
-      // show more / less
+      // show more/less
       document.querySelectorAll(".toggle").forEach((btn, index) => {
         btn.addEventListener("click", () => {
           const desc = document.querySelectorAll(".desc")[index];
@@ -379,11 +378,10 @@
       });
     }
 
-    // ✅ Reader iframe logic (LOCAL PDF)
     function openReader(bookId){
       const book = BOOKS.find(b => b.id === bookId);
       if(!book || !book.pdf){
-        alert("PDF not found for this book. Upload the PDF into assets/books/");
+        alert("PDF not found. Upload it into assets/books/");
         return;
       }
 
@@ -402,13 +400,7 @@
     }
 
     // init
-    if (typeof BOOKS === "undefined") {
-      grid.innerHTML = `<div style="padding:14px;color:rgba(255,120,120,0.9);font-weight:900;">
-        ❌ BOOKS not found. Check <b>js/books-data.js</b>
-      </div>`;
-    } else {
-      renderBooks(BOOKS);
-    }
+    renderBooks(BOOKS);
 
     // search
     searchBox.addEventListener("input", () => {
@@ -420,4 +412,3 @@
 
 </body>
 </html>
-
