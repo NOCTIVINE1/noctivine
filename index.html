@@ -3,51 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Noctivine — Books, Articles & Psychology Truth</title>
   <meta name="description" content="Noctivine — books & articles about psychology, truth about life, stories, and real experiences." />
 
   <style>
     :root{
       --bg:#070A0F;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.04);
-      --line: rgba(255,255,255,0.10);
       --text:#EAF0FF;
-      --muted: rgba(234,240,255,0.70);
-      --muted2: rgba(234,240,255,0.55);
+      --muted:rgba(234,240,255,0.70);
+      --muted2:rgba(234,240,255,0.55);
+      --line:rgba(255,255,255,0.10);
+      --card:rgba(255,255,255,0.05);
       --accent:#00FFD5;
       --accent2:#7C4DFF;
-      --shadow: 0 20px 50px rgba(0,0,0,0.55);
-      --radius: 22px;
+      --radius:22px;
+      --shadow:0 20px 60px rgba(0,0,0,0.55);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.12), transparent 55%),
-                  radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.14), transparent 60%),
-                  radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.06), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.12), transparent 55%),
+        radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.14), transparent 60%),
+        radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.06), transparent 55%),
+        var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none}
-    .container{
-      width:min(1150px, 92vw);
-      margin:0 auto;
+    .container{width:min(1150px, 92vw);margin:0 auto;}
+
+    /* ✅ LOADER */
+    .loader-wrap{
+      position:fixed; inset:0;
+      background:
+        radial-gradient(600px 300px at 20% 20%, rgba(0,255,213,0.18), transparent 60%),
+        radial-gradient(600px 300px at 80% 40%, rgba(124,77,255,0.16), transparent 60%),
+        rgba(7,10,15,0.96);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      transition:opacity 0.35s ease, transform 0.35s ease;
+    }
+    .loader-wrap.hide{
+      opacity:0;
+      pointer-events:none;
+      transform:scale(1.02);
+    }
+    .loader{
+      width:min(520px, 92vw);
+      padding:18px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.65);
+      text-align:center;
+    }
+    .loader-logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:0.6px;
+      font-size:18px;
+      margin-bottom:10px;
+    }
+    .orb{
+      width:44px;height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:
+        radial-gradient(14px 14px at 30% 30%, rgba(0,255,213,0.55), transparent 62%),
+        radial-gradient(18px 18px at 70% 60%, rgba(124,77,255,0.55), transparent 62%),
+        rgba(255,255,255,0.06);
+      box-shadow: 0 0 30px rgba(0,255,213,0.18);
+      animation: floaty 1.6s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-5px)}
+    }
+    .bar{
+      height:10px;
+      width:100%;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      overflow:hidden;
+      margin-top:14px;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:45%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(0,255,213,0.9), rgba(124,77,255,0.9));
+      animation: loading 1.25s ease-in-out infinite;
+    }
+    @keyframes loading{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(260%)}
+    }
+    .load-text{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
     }
 
     /* NAV */
     .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(16px);
-      background: rgba(7,10,15,0.55);
+      background:rgba(7,10,15,0.55);
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
     .nav-inner{
@@ -56,251 +131,171 @@
       justify-content:space-between;
       padding:14px 0;
       gap:14px;
+      position:relative;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:0.4px;
+      display:flex;align-items:center;gap:12px;
+      font-weight:900; letter-spacing:0.4px;
     }
-    .brand-badge{
-      width:36px;height:36px;
+    .badge-n{
+      width:36px;height:36px;border-radius:12px;
       display:grid;place-items:center;
-      border-radius:12px;
-      background:
-        radial-gradient(12px 12px at 30% 30%, rgba(0,255,213,0.55), transparent 60%),
-        radial-gradient(16px 16px at 70% 60%, rgba(124,77,255,0.55), transparent 62%),
-        rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
     }
-
     .nav-links{
       display:flex;
-      align-items:center;
       gap:18px;
       padding:10px 14px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.03);
     }
     .nav-links a{
       font-size:14px;
       color:var(--muted);
+      font-weight:800;
       transition:0.2s;
-      position:relative;
     }
     .nav-links a:hover{color:var(--text)}
     .nav-links a.active{
       color:var(--text);
+      position:relative;
     }
     .nav-links a.active::after{
       content:"";
       position:absolute;
-      left:0;right:0;
+      left:0; right:0;
       bottom:-8px;
       height:2px;
       border-radius:10px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity:0.9;
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
+    .nav-actions{display:flex;gap:10px;align-items:center;}
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
       padding:12px 14px;
-      border-radius:14px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.04);
       color:var(--text);
       cursor:pointer;
-      transition: transform 0.15s ease, background 0.2s ease, border 0.2s ease;
-      font-weight:700;
+      font-weight:900;
       font-size:14px;
-      user-select:none;
+      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
     }
-    .btn:hover{transform: translateY(-1px); border-color:rgba(255,255,255,0.18)}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
     .btn-primary{
-      background: linear-gradient(90deg, rgba(0,255,213,0.20), rgba(124,77,255,0.18));
-      border-color: rgba(0,255,213,0.35);
-      box-shadow: 0 18px 60px rgba(0,255,213,0.10);
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
+      border-color:rgba(0,255,213,0.34);
+      box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
-    .btn-primary:hover{
-      background: linear-gradient(90deg, rgba(0,255,213,0.26), rgba(124,77,255,0.22));
-    }
-    .btn-ghost{
-      background: rgba(255,255,255,0.03);
-    }
+    .btn-ghost{background:rgba(255,255,255,0.03)}
 
     .hamburger{
-      width:44px;height:44px;
-      border-radius:14px;
       display:none;
+      width:44px;height:44px;border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.03);
       cursor:pointer;
     }
     .hamburger span{
       display:block;
       width:18px;height:2px;
       margin:4px auto;
-      background: rgba(234,240,255,0.85);
+      background:rgba(234,240,255,0.85);
       border-radius:8px;
     }
 
     /* HERO */
     .hero{
-      padding: 52px 0 22px;
+      padding: 50px 0 20px;
       display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:22px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:18px;
       align-items:stretch;
     }
-
-    .hero-card{
-      border:1px solid rgba(255,255,255,0.08);
+    .panel{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 22px;
-      position:relative;
+      padding:18px;
       overflow:hidden;
+      position:relative;
     }
-    .hero-card::before{
+    .panel::before{
       content:"";
       position:absolute;
       inset:-1px;
-      background: radial-gradient(500px 250px at 15% 10%, rgba(0,255,213,0.14), transparent 60%),
-                  radial-gradient(450px 240px at 85% 10%, rgba(124,77,255,0.18), transparent 62%);
+      background:
+        radial-gradient(520px 260px at 20% 10%, rgba(0,255,213,0.12), transparent 60%),
+        radial-gradient(450px 240px at 80% 10%, rgba(124,77,255,0.15), transparent 62%);
       pointer-events:none;
-      opacity:1;
     }
-    .hero-card > *{position:relative}
+    .panel > *{position:relative}
 
-    .kicker{
+    .chip{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.03);
       color:var(--muted);
       font-size:13px;
-      font-weight:700;
+      font-weight:900;
       width:max-content;
     }
-    .kicker-dot{
-      width:8px;height:8px;
-      border-radius:50%;
+    .dot{
+      width:8px;height:8px;border-radius:50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 20px rgba(0,255,213,0.35);
+      box-shadow: 0 0 18px rgba(0,255,213,0.30);
     }
 
-    .hero h1{
-      margin:14px 0 10px;
-      font-size: clamp(28px, 3.2vw, 44px);
+    h1{
+      margin:12px 0 10px;
+      font-size:clamp(28px, 3.1vw, 44px);
       line-height:1.1;
-      letter-spacing:-0.6px;
+      letter-spacing:-0.7px;
     }
-    .hero p{
+    .sub{
       margin:0;
       color:var(--muted);
-      line-height:1.6;
       font-size:15px;
+      line-height:1.6;
     }
 
     .hero-actions{
-      margin-top:16px;
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      margin-top:14px;
     }
 
     .mini-grid{
-      margin-top:16px;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:10px;
+      margin-top:16px;
     }
     .mini{
-      padding:12px 12px;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-    .mini b{
-      display:block;
-      font-size:14px;
-      letter-spacing:0.2px;
-    }
-    .mini span{
-      display:block;
-      margin-top:4px;
-      font-size:12px;
-      color:var(--muted2);
-    }
-
-    .side-stack{
-      display:grid;
-      grid-template-rows:auto auto;
-      gap:14px;
-    }
-
-    .glass{
-      border:1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px;
-    }
-
-    .block-title{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:10px;
-    }
-    .block-title h3{
-      margin:0;
-      font-size:16px;
-      letter-spacing:-0.2px;
-    }
-    .muted{color:var(--muted)}
-
-    .update{
-      display:flex;
-      gap:12px;
+      border:1px solid rgba(255,255,255,0.09);
+      background:rgba(255,255,255,0.03);
       padding:12px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.03);
-      margin-top:10px;
     }
-    .pill{
-      width:34px;height:34px;
-      display:grid;place-items:center;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(0,255,213,0.15), rgba(124,77,255,0.10));
-    }
-    .update h4{margin:0;font-size:14px}
-    .update p{margin:4px 0 0; font-size:13px; color:var(--muted2)}
+    .mini b{display:block;font-size:14px}
+    .mini span{display:block;margin-top:4px;color:var(--muted2);font-size:12px}
 
-    /* SECTION */
-    .section{
-      padding: 26px 0 10px;
-    }
+    /* BOOK SLIDER */
+    .section{padding:22px 0 10px;}
     .section-head{
       display:flex;
       align-items:end;
@@ -308,177 +303,101 @@
       gap:12px;
       margin-bottom:12px;
     }
-    .section-head h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-0.2px;
-    }
-    .link{
-      color: var(--muted);
-      font-weight:700;
-      font-size:14px;
-      transition:0.2s;
-    }
+    .section-head h2{margin:0;font-size:18px;letter-spacing:-0.2px}
+    .link{color:var(--muted);font-weight:900;font-size:14px}
     .link:hover{color:var(--text)}
 
-    /* BOOKS */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .card{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    .slider-wrap{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
       overflow:hidden;
-      transition: transform 0.18s ease, border 0.2s ease;
       position:relative;
     }
-    .card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(0,255,213,0.25);
+    .slider{
+      display:flex;
+      overflow:auto;
+      scroll-snap-type:x mandatory;
+      gap:14px;
+      padding:14px;
+      scrollbar-width:none;
     }
-    .card-cover{
-      height:160px;
+    .slider::-webkit-scrollbar{display:none;}
+    .slide{
+      min-width: min(360px, 85vw);
+      scroll-snap-align: start;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      overflow:hidden;
+      transition: transform 0.18s ease, border 0.2s ease;
+    }
+    .slide:hover{transform:translateY(-3px);border-color:rgba(0,255,213,0.25)}
+    .cover{
+      height:170px;
       background:
         radial-gradient(140px 140px at 20% 20%, rgba(0,255,213,0.25), transparent 60%),
         radial-gradient(160px 160px at 80% 40%, rgba(124,77,255,0.25), transparent 60%),
         rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
+      position:relative;
       display:flex;
       align-items:flex-end;
-      padding:14px;
+      padding:12px;
     }
-    .badge{
+    .cover img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0.92;
+    }
+    .price{
+      position:relative;
+      z-index:2;
       padding:7px 10px;
-      font-weight:900;
-      font-size:12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.25);
-    }
-    .badge.free{
-      border-color: rgba(0,255,213,0.35);
-      color: rgba(0,255,213,0.95);
-    }
-    .badge.paid{
-      border-color: rgba(124,77,255,0.35);
-      color: rgba(200,180,255,0.95);
-    }
-    .card-body{
-      padding:14px;
-    }
-    .card-body h3{
-      margin:0 0 6px;
-      font-size:16px;
-      letter-spacing:-0.2px;
-    }
-    .card-body p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .tags{
-      margin-top:10px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    .tag{
+      background:rgba(0,0,0,0.25);
+      font-weight:900;
       font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      color:var(--muted);
-      font-weight:700;
     }
-    .card-actions{
+    .price.free{color:rgba(0,255,213,0.95);border-color:rgba(0,255,213,0.35)}
+    .price.paid{color:rgba(200,180,255,0.95);border-color:rgba(124,77,255,0.35)}
+
+    .slide-body{padding:14px;}
+    .slide-body h3{margin:0 0 6px;font-size:16px;letter-spacing:-0.2px}
+    .slide-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+
+    .actions{
       margin-top:12px;
       display:flex;
       gap:10px;
     }
-    .card-actions .btn{flex:1}
+    .actions .btn{flex:1}
 
-    /* ARTICLES */
-    .article-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .article{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.32);
-      padding:14px;
-      transition: transform 0.18s ease, border 0.2s ease;
-    }
-    .article:hover{
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,0.16);
-    }
-    .meta{
-      color:var(--muted2);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:0.2px;
-    }
-    .article h3{
-      margin:8px 0 6px;
-      font-size:16px;
-      letter-spacing:-0.2px;
-    }
-    .article p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .article a{
-      display:inline-block;
-      margin-top:10px;
-      color: rgba(0,255,213,0.95);
-      font-weight:800;
-      font-size:13px;
-    }
-
-    /* SUBSCRIBE */
-    .subscribe{
+    .slider-controls{
+      position:absolute;
+      inset:auto 12px 12px auto;
       display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
+      gap:8px;
+      z-index:5;
     }
-    .subscribe h2{margin:0; font-size:18px}
-    .subscribe p{margin:6px 0 0; color:var(--muted); font-size:13px}
-
-    .sub-form{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .input{
-      height:46px;
-      min-width:260px;
-      padding:0 14px;
-      border-radius:14px;
+    .icon-btn{
+      width:42px;height:42px;border-radius:14px;
       border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
+      background:rgba(0,0,0,0.22);
       color:var(--text);
-      outline:none;
+      cursor:pointer;
+      font-weight:900;
+      transition:0.2s;
     }
-    .input::placeholder{color:rgba(234,240,255,0.45)}
+    .icon-btn:hover{
+      border-color:rgba(0,255,213,0.28);
+      transform:translateY(-1px);
+    }
 
     /* FOOTER */
     footer{
@@ -497,22 +416,21 @@
     }
     .foot a{
       color: var(--muted2);
-      font-weight:700;
+      font-weight:800;
       margin-left:12px;
     }
     .foot a:hover{color:var(--text)}
 
-    /* HIDDEN ADMIN FAB */
+    /* Tiny Admin Button */
     .admin-fab{
       position:fixed;
       bottom:16px;
       right:16px;
-      width:36px;
-      height:36px;
+      width:36px;height:36px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(234,240,255,0.6);
+      background:rgba(255,255,255,0.04);
+      color:rgba(234,240,255,0.55);
       font-size:14px;
       cursor:pointer;
       opacity:0.35;
@@ -521,73 +439,16 @@
     }
     .admin-fab:hover{
       opacity:1;
-      color: var(--text);
-      border-color: rgba(0,255,213,0.30);
-      transform: translateY(-2px);
-    }
-
-    /* MODAL */
-    .modal-overlay{
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,0.65);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:100;
-    }
-    .modal-overlay.show{display:flex}
-    .modal{
-      width:min(460px, 96vw);
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(12,16,25,0.88);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.6);
-      padding:16px;
-    }
-    .modal-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:6px;
-    }
-    .modal-head h3{margin:0}
-    .close{
-      width:42px;height:42px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
+      transform:translateY(-2px);
+      border-color:rgba(0,255,213,0.30);
       color:var(--text);
-      cursor:pointer;
-    }
-    label{
-      display:block;
-      margin:10px 0 6px;
-      color:var(--muted2);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:0.2px;
-    }
-    .error{
-      margin-top:10px;
-      color: rgba(255,120,120,0.9);
-      font-weight:800;
-      font-size:13px;
-      min-height:18px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 980px){
-      .hero{
-        grid-template-columns: 1fr;
-      }
-      .mini-grid{grid-template-columns: 1fr 1fr 1fr;}
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
     }
-
-    @media (max-width: 860px){
+    @media (max-width:860px){
       .nav-links{
         display:none;
         position:absolute;
@@ -604,23 +465,32 @@
       }
       .nav-links.open{display:flex}
       .hamburger{display:inline-block}
-      .cards{grid-template-columns: 1fr}
-      .article-grid{grid-template-columns: 1fr}
-      .mini-grid{grid-template-columns: 1fr}
-      .input{min-width: 100%}
-      .sub-form{width:100%}
-      .sub-form .btn{width:100%}
+      .mini-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
 
+  <!-- ✅ LOADER -->
+  <div class="loader-wrap" id="loader">
+    <div class="loader">
+      <div class="loader-logo">
+        <div class="orb"></div>
+        <span>Noctivine</span>
+      </div>
+      <div class="bar"><span></span></div>
+      <div class="load-text">
+        Loading books & stories...
+      </div>
+    </div>
+  </div>
+
   <!-- NAV -->
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="brand">
-          <div class="brand-badge">N</div>
+        <a class="brand" href="index.html">
+          <div class="badge-n">N</div>
           <span>Noctivine</span>
         </a>
 
@@ -633,8 +503,8 @@
         </nav>
 
         <div class="nav-actions">
-          <a class="btn btn-primary" href="#subscribe">Subscribe</a>
-          <button class="hamburger" id="hamburger">
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <button class="hamburger" id="hamburger" aria-label="Open Menu">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -642,196 +512,56 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <div class="container">
-    <section class="hero">
-      <div class="hero-card">
-        <div class="kicker">
-          <span class="kicker-dot"></span>
-          Books • Articles • Psychology • Truth
-        </div>
 
+    <!-- HERO -->
+    <section class="hero">
+      <div class="panel">
+        <div class="chip"><span class="dot"></span> Books • Articles • Psychology • Truth</div>
         <h1>Noctivine — Books, Articles & Psychology Truth</h1>
-        <p>
+        <p class="sub">
           I write real-life stories, psychology-based insights, and brutally honest thoughts about life.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://youtube.com" target="_blank" rel="noopener">Visit My YouTube Channel</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Visit My YouTube Channel</a>
           <a class="btn btn-ghost" href="books.html">Explore Books</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
 
         <div class="mini-grid">
-          <div class="mini">
-            <b>📚 Books</b>
-            <span>Stories + real life</span>
-          </div>
-          <div class="mini">
-            <b>🧠 Psychology</b>
-            <span>Human behaviour</span>
-          </div>
-          <div class="mini">
-            <b>✍️ Articles</b>
-            <span>Truth, mindset, life</span>
-          </div>
+          <div class="mini"><b>📚 Books</b><span>Real stories</span></div>
+          <div class="mini"><b>🧠 Psychology</b><span>Human mind</span></div>
+          <div class="mini"><b>✍️ Articles</b><span>Truth & life</span></div>
         </div>
       </div>
 
-      <div class="side-stack">
-        <div class="glass">
-          <div class="block-title">
-            <h3>My vibe</h3>
-            <span class="muted">No fake motivation.</span>
-          </div>
-
-          <div class="update">
-            <div class="pill">⚡</div>
-            <div>
-              <h4>Fast, clean writing</h4>
-              <p>Minimal design. Maximum impact.</p>
-            </div>
-          </div>
-
-          <div class="update">
-            <div class="pill">🔥</div>
-            <div>
-              <h4>Stories that feel real</h4>
-              <p>School life, loneliness, pressure, growth.</p>
-            </div>
-          </div>
-
-          <div class="update">
-            <div class="pill">🛡️</div>
-            <div>
-              <h4>Reader-first experience</h4>
-              <p>Mobile friendly. Smooth + simple.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass">
-          <div class="block-title">
-            <h3>Quick links</h3>
-            <span class="muted">Start here</span>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btn-ghost" style="flex:1" href="books.html">📚 Books</a>
-            <a class="btn btn-ghost" style="flex:1" href="articles.html">📰 Articles</a>
-          </div>
+      <div class="panel">
+        <div class="chip"><span class="dot"></span> Your library is growing</div>
+        <p class="sub" style="margin-top:10px">
+          This website updates as I publish new books. Simple, clean, and built for readers who like real writing.
+        </p>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="books.html">📚 Open Book Library</a>
+          <a class="btn btn-ghost" href="#books">🔥 Latest Drop</a>
         </div>
       </div>
     </section>
 
-    <!-- FEATURED BOOKS -->
-    <section class="section">
+    <!-- ✅ BOOK SLIDESHOW -->
+    <section class="section" id="books">
       <div class="section-head">
-        <h2>Featured Books</h2>
+        <h2>My Books (Slide Show)</h2>
         <a class="link" href="books.html">View all →</a>
       </div>
 
-      <div class="cards">
-        <div class="card">
-          <div class="card-cover">
-            <span class="badge free">FREE</span>
-          </div>
-          <div class="card-body">
-            <h3>The Lonely Generation</h3>
-            <p>A coming-of-age journey through friendships, pressure, loneliness… and real connection.</p>
-            <div class="tags">
-              <span class="tag">Story</span>
-              <span class="tag">Life</span>
-              <span class="tag">Psychology</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-ghost" href="book.html?id=lonely-generation">Read Preview</a>
-              <a class="btn btn-primary" href="book.html?id=lonely-generation">Download</a>
-            </div>
-          </div>
+      <div class="slider-wrap">
+        <div class="slider" id="bookSlider"></div>
+
+        <div class="slider-controls">
+          <button class="icon-btn" id="prevBtn">‹</button>
+          <button class="icon-btn" id="nextBtn">›</button>
         </div>
-
-        <div class="card">
-          <div class="card-cover">
-            <span class="badge paid">₹99</span>
-          </div>
-          <div class="card-body">
-            <h3>Truth About Life</h3>
-            <p>Discipline, pain, self-respect, loneliness — the kind of truth people avoid.</p>
-            <div class="tags">
-              <span class="tag">Truth</span>
-              <span class="tag">Mindset</span>
-              <span class="tag">Life</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-ghost" href="book.html?id=truth-about-life">Read Preview</a>
-              <a class="btn btn-primary" href="book.html?id=truth-about-life">Buy</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-cover">
-            <span class="badge free">FREE</span>
-          </div>
-          <div class="card-body">
-            <h3>Mind Notes</h3>
-            <p>Short psychology models to understand yourself and people without fake positivity.</p>
-            <div class="tags">
-              <span class="tag">Psychology</span>
-              <span class="tag">Notes</span>
-              <span class="tag">Self</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn btn-ghost" href="book.html?id=mind-notes">Read Preview</a>
-              <a class="btn btn-primary" href="book.html?id=mind-notes">Download</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ARTICLES -->
-    <section class="section">
-      <div class="section-head">
-        <h2>Latest Articles</h2>
-        <a class="link" href="articles.html">View all →</a>
-      </div>
-
-      <div class="article-grid">
-        <div class="article">
-          <div class="meta">Psychology • 4 min read</div>
-          <h3>Why Motivation Dies So Fast</h3>
-          <p>Motivation is a spark. Systems are the engine.</p>
-          <a href="article.html?id=motivation">Read →</a>
-        </div>
-
-        <div class="article">
-          <div class="meta">Life • 5 min read</div>
-          <h3>Loneliness Isn’t Always a Problem</h3>
-          <p>Sometimes loneliness is a mirror. Sometimes it’s peace.</p>
-          <a href="article.html?id=loneliness">Read →</a>
-        </div>
-
-        <div class="article">
-          <div class="meta">Truth • 3 min read</div>
-          <h3>Stop Trying to Be Liked</h3>
-          <p>Being liked is a drug. Respect is backbone.</p>
-          <a href="article.html?id=liked">Read →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUBSCRIBE -->
-    <section class="section" id="subscribe">
-      <div class="subscribe">
-        <div>
-          <h2>Subscribe for updates</h2>
-          <p>New books + articles, directly. No chasing.</p>
-        </div>
-
-        <form class="sub-form" onsubmit="event.preventDefault(); alert('Subscribed! (Demo)');">
-          <input class="input" type="email" placeholder="Enter your email" required />
-          <button class="btn btn-primary" type="submit">Subscribe</button>
-        </form>
       </div>
     </section>
 
@@ -841,78 +571,85 @@
         <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
         <div>
           <a href="books.html">Books</a>
-          <a href="articles.html">Articles</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </footer>
+
   </div>
 
-  <!-- SMALL ADMIN BUTTON -->
-  <button class="admin-fab" id="adminFab" title="Admin">⚙️</button>
-
-  <!-- ADMIN MODAL -->
-  <div class="modal-overlay" id="adminModal">
-    <div class="modal">
-      <div class="modal-head">
-        <h3>Admin Login</h3>
-        <button class="close" id="closeModal">✕</button>
-      </div>
-
-      <div class="muted" style="font-size:13px;line-height:1.5">
-        Authorized access only.
-      </div>
-
-      <form id="adminForm">
-        <label>Email</label>
-        <input class="input" type="email" id="adminEmail" placeholder="Admin email" required />
-
-        <label>Password</label>
-        <input class="input" type="password" id="adminPass" placeholder="Password" required />
-
-        <div style="margin-top:12px">
-          <button class="btn btn-primary" style="width:100%" type="submit">Login</button>
-        </div>
-
-        <div class="error" id="err"></div>
-      </form>
-
-      <div class="muted" style="margin-top:8px;font-size:12px">
-        Firebase Auth will be connected here (secure).
-      </div>
-    </div>
-  </div>
+  <!-- tiny admin -->
+  <button class="admin-fab" title="Admin">⚙️</button>
 
   <script>
+    // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav
+    // ✅ mobile nav
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("navLinks");
     hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // Admin modal
-    const adminFab = document.getElementById("adminFab");
-    const adminModal = document.getElementById("adminModal");
-    const closeModal = document.getElementById("closeModal");
+    // ✅ book database (same as books.html)
+    const BOOKS = [
+      {
+        id: "lonely-generation",
+        name: "Lonely Generation",
+        cover: "assets/covers/image2.jpg",
+        type: "free",
+        price: 0,
+        link: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3",
+        description: `This is not a story about something extraordinary happening. No dramatic turning point.
+No single moment where everything changes. No version of love that fixes a life overnight.
+This is a story about what it feels like to exist quietly in a crowded world...`
+      }
+    ];
 
-    adminFab.addEventListener("click", () => adminModal.classList.add("show"));
-    closeModal.addEventListener("click", () => adminModal.classList.remove("show"));
-    adminModal.addEventListener("click", (e) => {
-      if (e.target === adminModal) adminModal.classList.remove("show");
+    // ✅ render slider
+    const slider = document.getElementById("bookSlider");
+    slider.innerHTML = BOOKS.map(book => `
+      <div class="slide">
+        <div class="cover">
+          <img src="${book.cover}" alt="${book.name}" onerror="this.remove()" />
+          <span class="price ${book.type === "free" ? "free" : "paid"}">
+            ${book.type === "free" ? "FREE" : "₹" + book.price}
+          </span>
+        </div>
+        <div class="slide-body">
+          <h3>${book.name}</h3>
+          <p>${book.description}</p>
+          <div class="actions">
+            <a class="btn btn-ghost" href="books.html#${book.id}">Open</a>
+            <a class="btn btn-primary" href="${book.link}" target="_blank" rel="noopener">Download</a>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    // ✅ slider buttons
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    nextBtn.addEventListener("click", () => {
+      slider.scrollBy({ left: 380, behavior: "smooth" });
+    });
+    prevBtn.addEventListener("click", () => {
+      slider.scrollBy({ left: -380, behavior: "smooth" });
     });
 
-    // Login placeholder (Firebase will replace this)
-    const form = document.getElementById("adminForm");
-    const err = document.getElementById("err");
+    // ✅ auto-slide
+    let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500);
+    slider.addEventListener("mouseenter", () => clearInterval(auto));
+    slider.addEventListener("mouseleave", () => auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500));
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      err.textContent = "Firebase Auth not connected yet. (This is only UI)";
-      // After Firebase login success:
-      // window.location.href = "/admin/dashboard.html";
+    // ✅ loader hide
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("hide");
+      }, 650);
     });
   </script>
+
 </body>
 </html>
