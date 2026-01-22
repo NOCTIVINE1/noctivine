@@ -5,105 +5,718 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Noctivine — Books, Articles & Psychology Truth</title>
-  <meta name="description" content="Noctivine is a modern library of books and articles about psychology, truth about life, stories, and real experiences." />
+  <meta name="description" content="Noctivine — books & articles about psychology, truth about life, stories, and real experiences." />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root{
+      --bg:#070A0F;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.04);
+      --line: rgba(255,255,255,0.10);
+      --text:#EAF0FF;
+      --muted: rgba(234,240,255,0.70);
+      --muted2: rgba(234,240,255,0.55);
+      --accent:#00FFD5;
+      --accent2:#7C4DFF;
+      --shadow: 0 20px 50px rgba(0,0,0,0.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.12), transparent 55%),
+                  radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.14), transparent 60%),
+                  radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.06), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{
+      width:min(1150px, 92vw);
+      margin:0 auto;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(16px);
+      background: rgba(7,10,15,0.55);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:0.4px;
+    }
+    .brand-badge{
+      width:36px;height:36px;
+      display:grid;place-items:center;
+      border-radius:12px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(0,255,213,0.55), transparent 60%),
+        radial-gradient(16px 16px at 70% 60%, rgba(124,77,255,0.55), transparent 62%),
+        rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+    .nav-links a{
+      font-size:14px;
+      color:var(--muted);
+      transition:0.2s;
+      position:relative;
+    }
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a.active{
+      color:var(--text);
+    }
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;
+      bottom:-8px;
+      height:2px;
+      border-radius:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity:0.9;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color:var(--text);
+      cursor:pointer;
+      transition: transform 0.15s ease, background 0.2s ease, border 0.2s ease;
+      font-weight:700;
+      font-size:14px;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color:rgba(255,255,255,0.18)}
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(0,255,213,0.20), rgba(124,77,255,0.18));
+      border-color: rgba(0,255,213,0.35);
+      box-shadow: 0 18px 60px rgba(0,255,213,0.10);
+    }
+    .btn-primary:hover{
+      background: linear-gradient(90deg, rgba(0,255,213,0.26), rgba(124,77,255,0.22));
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hamburger{
+      width:44px;height:44px;
+      border-radius:14px;
+      display:none;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      cursor:pointer;
+    }
+    .hamburger span{
+      display:block;
+      width:18px;height:2px;
+      margin:4px auto;
+      background: rgba(234,240,255,0.85);
+      border-radius:8px;
+    }
+
+    /* HERO */
+    .hero{
+      padding: 52px 0 22px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-card{
+      border:1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(500px 250px at 15% 10%, rgba(0,255,213,0.14), transparent 60%),
+                  radial-gradient(450px 240px at 85% 10%, rgba(124,77,255,0.18), transparent 62%);
+      pointer-events:none;
+      opacity:1;
+    }
+    .hero-card > *{position:relative}
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+      width:max-content;
+    }
+    .kicker-dot{
+      width:8px;height:8px;
+      border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(0,255,213,0.35);
+    }
+
+    .hero h1{
+      margin:14px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.1;
+      letter-spacing:-0.6px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .mini{
+      padding:12px 12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+    .mini b{
+      display:block;
+      font-size:14px;
+      letter-spacing:0.2px;
+    }
+    .mini span{
+      display:block;
+      margin-top:4px;
+      font-size:12px;
+      color:var(--muted2);
+    }
+
+    .side-stack{
+      display:grid;
+      grid-template-rows:auto auto;
+      gap:14px;
+    }
+
+    .glass{
+      border:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .block-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .block-title h3{
+      margin:0;
+      font-size:16px;
+      letter-spacing:-0.2px;
+    }
+    .muted{color:var(--muted)}
+
+    .update{
+      display:flex;
+      gap:12px;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      margin-top:10px;
+    }
+    .pill{
+      width:34px;height:34px;
+      display:grid;place-items:center;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(0,255,213,0.15), rgba(124,77,255,0.10));
+    }
+    .update h4{margin:0;font-size:14px}
+    .update p{margin:4px 0 0; font-size:13px; color:var(--muted2)}
+
+    /* SECTION */
+    .section{
+      padding: 26px 0 10px;
+    }
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-0.2px;
+    }
+    .link{
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+      transition:0.2s;
+    }
+    .link:hover{color:var(--text)}
+
+    /* BOOKS */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      overflow:hidden;
+      transition: transform 0.18s ease, border 0.2s ease;
+      position:relative;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(0,255,213,0.25);
+    }
+    .card-cover{
+      height:160px;
+      background:
+        radial-gradient(140px 140px at 20% 20%, rgba(0,255,213,0.25), transparent 60%),
+        radial-gradient(160px 160px at 80% 40%, rgba(124,77,255,0.25), transparent 60%),
+        rgba(255,255,255,0.03);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      align-items:flex-end;
+      padding:14px;
+    }
+    .badge{
+      padding:7px 10px;
+      font-weight:900;
+      font-size:12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.25);
+    }
+    .badge.free{
+      border-color: rgba(0,255,213,0.35);
+      color: rgba(0,255,213,0.95);
+    }
+    .badge.paid{
+      border-color: rgba(124,77,255,0.35);
+      color: rgba(200,180,255,0.95);
+    }
+    .card-body{
+      padding:14px;
+    }
+    .card-body h3{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-0.2px;
+    }
+    .card-body p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .tags{
+      margin-top:10px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-weight:700;
+    }
+    .card-actions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+    }
+    .card-actions .btn{flex:1}
+
+    /* ARTICLES */
+    .article-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .article{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.32);
+      padding:14px;
+      transition: transform 0.18s ease, border 0.2s ease;
+    }
+    .article:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .meta{
+      color:var(--muted2);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+    .article h3{
+      margin:8px 0 6px;
+      font-size:16px;
+      letter-spacing:-0.2px;
+    }
+    .article p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .article a{
+      display:inline-block;
+      margin-top:10px;
+      color: rgba(0,255,213,0.95);
+      font-weight:800;
+      font-size:13px;
+    }
+
+    /* SUBSCRIBE */
+    .subscribe{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+    }
+    .subscribe h2{margin:0; font-size:18px}
+    .subscribe p{margin:6px 0 0; color:var(--muted); font-size:13px}
+
+    .sub-form{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .input{
+      height:46px;
+      min-width:260px;
+      padding:0 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color:var(--text);
+      outline:none;
+    }
+    .input::placeholder{color:rgba(234,240,255,0.45)}
+
+    /* FOOTER */
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted2);
+      font-size:13px;
+    }
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding-top:16px;
+    }
+    .foot a{
+      color: var(--muted2);
+      font-weight:700;
+      margin-left:12px;
+    }
+    .foot a:hover{color:var(--text)}
+
+    /* HIDDEN ADMIN FAB */
+    .admin-fab{
+      position:fixed;
+      bottom:16px;
+      right:16px;
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(234,240,255,0.6);
+      font-size:14px;
+      cursor:pointer;
+      opacity:0.35;
+      transition:0.2s;
+      z-index:80;
+    }
+    .admin-fab:hover{
+      opacity:1;
+      color: var(--text);
+      border-color: rgba(0,255,213,0.30);
+      transform: translateY(-2px);
+    }
+
+    /* MODAL */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,0.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .modal-overlay.show{display:flex}
+    .modal{
+      width:min(460px, 96vw);
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(12,16,25,0.88);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+      padding:16px;
+    }
+    .modal-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:6px;
+    }
+    .modal-head h3{margin:0}
+    .close{
+      width:42px;height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color:var(--text);
+      cursor:pointer;
+    }
+    label{
+      display:block;
+      margin:10px 0 6px;
+      color:var(--muted2);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+    .error{
+      margin-top:10px;
+      color: rgba(255,120,120,0.9);
+      font-weight:800;
+      font-size:13px;
+      min-height:18px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero{
+        grid-template-columns: 1fr;
+      }
+      .mini-grid{grid-template-columns: 1fr 1fr 1fr;}
+    }
+
+    @media (max-width: 860px){
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:68px;
+        right:4vw;
+        width:min(360px, 92vw);
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding:14px;
+        border-radius:18px;
+        background: rgba(12,16,25,0.92);
+        border:1px solid rgba(255,255,255,0.10);
+      }
+      .nav-links.open{display:flex}
+      .hamburger{display:inline-block}
+      .cards{grid-template-columns: 1fr}
+      .article-grid{grid-template-columns: 1fr}
+      .mini-grid{grid-template-columns: 1fr}
+      .input{min-width: 100%}
+      .sub-form{width:100%}
+      .sub-form .btn{width:100%}
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <a class="logo" href="index.html">Noctivine</a>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-badge">N</div>
+          <span>Noctivine</span>
+        </a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
-        <a href="books.html">Books</a>
-        <a href="articles.html">Articles</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+        <nav class="nav-links" id="navLinks">
+          <a class="active" href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="articles.html">Articles</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
 
-      <div class="nav-actions">
-        <a class="btn btn-primary" href="#subscribe">Subscribe</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="#subscribe">Subscribe</a>
+          <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- HERO -->
-  <main class="container">
+  <div class="container">
     <section class="hero">
-      <div class="hero-left">
+      <div class="hero-card">
+        <div class="kicker">
+          <span class="kicker-dot"></span>
+          Books • Articles • Psychology • Truth
+        </div>
+
         <h1>Noctivine — Books, Articles & Psychology Truth</h1>
-        <p class="subtitle">
+        <p>
           I write real-life stories, psychology-based insights, and brutally honest thoughts about life.
         </p>
 
-        <div class="intro-card">
-          <h3>About me</h3>
-          <p>
-            I’m a YouTube creator + student. I create content on psychology, truth about life, vlogs, and stories.
-          </p>
-        </div>
-
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://youtube.com" target="_blank" rel="noopener">
-            Visit My YouTube Channel
-          </a>
-          <a class="btn btn-secondary" href="books.html">
-            Explore Books
-          </a>
+          <a class="btn btn-primary" href="https://youtube.com" target="_blank" rel="noopener">Visit My YouTube Channel</a>
+          <a class="btn btn-ghost" href="books.html">Explore Books</a>
         </div>
 
-        <div class="quick-stats">
-          <div class="stat">
-            <span class="stat-num">📚</span>
-            <span class="stat-text">Books</span>
+        <div class="mini-grid">
+          <div class="mini">
+            <b>📚 Books</b>
+            <span>Stories + real life</span>
           </div>
-          <div class="stat">
-            <span class="stat-num">🧠</span>
-            <span class="stat-text">Psychology</span>
+          <div class="mini">
+            <b>🧠 Psychology</b>
+            <span>Human behaviour</span>
           </div>
-          <div class="stat">
-            <span class="stat-num">✍️</span>
-            <span class="stat-text">Articles</span>
+          <div class="mini">
+            <b>✍️ Articles</b>
+            <span>Truth, mindset, life</span>
           </div>
         </div>
       </div>
 
-      <div class="hero-right">
-        <div class="hero-panel">
-          <p class="panel-title">Latest Updates</p>
+      <div class="side-stack">
+        <div class="glass">
+          <div class="block-title">
+            <h3>My vibe</h3>
+            <span class="muted">No fake motivation.</span>
+          </div>
 
-          <div class="panel-item">
-            <span class="dot"></span>
+          <div class="update">
+            <div class="pill">⚡</div>
             <div>
-              <p class="panel-heading">New chapters & updates</p>
-              <p class="panel-sub">Fresh content added regularly.</p>
+              <h4>Fast, clean writing</h4>
+              <p>Minimal design. Maximum impact.</p>
             </div>
           </div>
 
-          <div class="panel-item">
-            <span class="dot"></span>
+          <div class="update">
+            <div class="pill">🔥</div>
             <div>
-              <p class="panel-heading">Real + raw writing</p>
-              <p class="panel-sub">No fake motivation. Only reality.</p>
+              <h4>Stories that feel real</h4>
+              <p>School life, loneliness, pressure, growth.</p>
             </div>
           </div>
 
-          <div class="panel-item">
-            <span class="dot"></span>
+          <div class="update">
+            <div class="pill">🛡️</div>
             <div>
-              <p class="panel-heading">Reader-first design</p>
-              <p class="panel-sub">Clean, fast, and easy to read.</p>
+              <h4>Reader-first experience</h4>
+              <p>Mobile friendly. Smooth + simple.</p>
             </div>
           </div>
+        </div>
 
-          <div class="panel-cta">
-            <a class="btn btn-secondary w-100" href="articles.html">Read Articles</a>
+        <div class="glass">
+          <div class="block-title">
+            <h3>Quick links</h3>
+            <span class="muted">Start here</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn btn-ghost" style="flex:1" href="books.html">📚 Books</a>
+            <a class="btn btn-ghost" style="flex:1" href="articles.html">📰 Articles</a>
           </div>
         </div>
       </div>
@@ -116,159 +729,117 @@
         <a class="link" href="books.html">View all →</a>
       </div>
 
-      <div class="grid-books">
-
-        <!-- Book Card 1 -->
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="assets/covers/cover1.jpg" alt="Book Cover" onerror="this.style.display='none'; this.parentElement.classList.add('cover-fallback')" />
-            <div class="cover-fallback-text">Cover</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-cover">
+            <span class="badge free">FREE</span>
           </div>
-
-          <div class="book-body">
-            <div class="book-top">
-              <h3>The Lonely Generation</h3>
-              <span class="badge badge-free">FREE</span>
-            </div>
-
-            <p class="book-desc">
-              A coming-of-age journey through school pressure, friendships, loneliness… and the slow discovery of real connection.
-            </p>
-
-            <div class="book-tags">
+          <div class="card-body">
+            <h3>The Lonely Generation</h3>
+            <p>A coming-of-age journey through friendships, pressure, loneliness… and real connection.</p>
+            <div class="tags">
               <span class="tag">Story</span>
               <span class="tag">Life</span>
               <span class="tag">Psychology</span>
             </div>
-
-            <div class="book-actions">
-              <a class="btn btn-secondary" href="book.html?id=lonely-generation">Read Preview</a>
+            <div class="card-actions">
+              <a class="btn btn-ghost" href="book.html?id=lonely-generation">Read Preview</a>
               <a class="btn btn-primary" href="book.html?id=lonely-generation">Download</a>
             </div>
           </div>
-        </article>
+        </div>
 
-        <!-- Book Card 2 -->
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="assets/covers/cover2.jpg" alt="Book Cover" onerror="this.style.display='none'; this.parentElement.classList.add('cover-fallback')" />
-            <div class="cover-fallback-text">Cover</div>
+        <div class="card">
+          <div class="card-cover">
+            <span class="badge paid">₹99</span>
           </div>
-
-          <div class="book-body">
-            <div class="book-top">
-              <h3>Truth About Life</h3>
-              <span class="badge badge-paid">₹99</span>
-            </div>
-
-            <p class="book-desc">
-              Straight talk about life: discipline, pain, loneliness, self-respect, and why reality beats comfort.
-            </p>
-
-            <div class="book-tags">
-              <span class="tag">Life</span>
+          <div class="card-body">
+            <h3>Truth About Life</h3>
+            <p>Discipline, pain, self-respect, loneliness — the kind of truth people avoid.</p>
+            <div class="tags">
               <span class="tag">Truth</span>
               <span class="tag">Mindset</span>
+              <span class="tag">Life</span>
             </div>
-
-            <div class="book-actions">
-              <a class="btn btn-secondary" href="book.html?id=truth-about-life">Read Preview</a>
+            <div class="card-actions">
+              <a class="btn btn-ghost" href="book.html?id=truth-about-life">Read Preview</a>
               <a class="btn btn-primary" href="book.html?id=truth-about-life">Buy</a>
             </div>
           </div>
-        </article>
+        </div>
 
-        <!-- Book Card 3 -->
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="assets/covers/cover3.jpg" alt="Book Cover" onerror="this.style.display='none'; this.parentElement.classList.add('cover-fallback')" />
-            <div class="cover-fallback-text">Cover</div>
+        <div class="card">
+          <div class="card-cover">
+            <span class="badge free">FREE</span>
           </div>
-
-          <div class="book-body">
-            <div class="book-top">
-              <h3>Mind Notes</h3>
-              <span class="badge badge-free">FREE</span>
-            </div>
-
-            <p class="book-desc">
-              Short psychology notes and mental models to understand yourself and people — without fake positivity.
-            </p>
-
-            <div class="book-tags">
+          <div class="card-body">
+            <h3>Mind Notes</h3>
+            <p>Short psychology models to understand yourself and people without fake positivity.</p>
+            <div class="tags">
               <span class="tag">Psychology</span>
               <span class="tag">Notes</span>
               <span class="tag">Self</span>
             </div>
-
-            <div class="book-actions">
-              <a class="btn btn-secondary" href="book.html?id=mind-notes">Read Preview</a>
+            <div class="card-actions">
+              <a class="btn btn-ghost" href="book.html?id=mind-notes">Read Preview</a>
               <a class="btn btn-primary" href="book.html?id=mind-notes">Download</a>
             </div>
           </div>
-        </article>
-
+        </div>
       </div>
     </section>
 
-    <!-- ARTICLES PREVIEW -->
+    <!-- ARTICLES -->
     <section class="section">
       <div class="section-head">
         <h2>Latest Articles</h2>
         <a class="link" href="articles.html">View all →</a>
       </div>
 
-      <div class="grid-articles">
-        <article class="article-card">
-          <p class="article-meta">Psychology • 4 min read</p>
+      <div class="article-grid">
+        <div class="article">
+          <div class="meta">Psychology • 4 min read</div>
           <h3>Why Motivation Dies So Fast</h3>
-          <p class="article-desc">
-            Motivation isn’t a fuel tank. It’s a spark. Systems are the engine.
-          </p>
-          <a class="link" href="article.html?id=motivation-dies">Read →</a>
-        </article>
+          <p>Motivation is a spark. Systems are the engine.</p>
+          <a href="article.html?id=motivation">Read →</a>
+        </div>
 
-        <article class="article-card">
-          <p class="article-meta">Life • 5 min read</p>
+        <div class="article">
+          <div class="meta">Life • 5 min read</div>
           <h3>Loneliness Isn’t Always a Problem</h3>
-          <p class="article-desc">
-            Sometimes loneliness is a mirror. Sometimes it’s peace. The difference matters.
-          </p>
-          <a class="link" href="article.html?id=loneliness-mirror">Read →</a>
-        </article>
+          <p>Sometimes loneliness is a mirror. Sometimes it’s peace.</p>
+          <a href="article.html?id=loneliness">Read →</a>
+        </div>
 
-        <article class="article-card">
-          <p class="article-meta">Truth • 3 min read</p>
+        <div class="article">
+          <div class="meta">Truth • 3 min read</div>
           <h3>Stop Trying to Be Liked</h3>
-          <p class="article-desc">
-            Being liked is a drug. Respect is a backbone.
-          </p>
-          <a class="link" href="article.html?id=stop-being-liked">Read →</a>
-        </article>
+          <p>Being liked is a drug. Respect is backbone.</p>
+          <a href="article.html?id=liked">Read →</a>
+        </div>
       </div>
     </section>
 
     <!-- SUBSCRIBE -->
     <section class="section" id="subscribe">
-      <div class="subscribe-box">
+      <div class="subscribe">
         <div>
           <h2>Subscribe for updates</h2>
-          <p>Get new book drops and articles without hunting for them.</p>
+          <p>New books + articles, directly. No chasing.</p>
         </div>
 
-        <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed! (Demo)');">
-          <input type="email" placeholder="Enter your email" required />
+        <form class="sub-form" onsubmit="event.preventDefault(); alert('Subscribed! (Demo)');">
+          <input class="input" type="email" placeholder="Enter your email" required />
           <button class="btn btn-primary" type="submit">Subscribe</button>
         </form>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <p>© <span id="year"></span> Noctivine • All Rights Reserved</p>
-
-        <div class="footer-links">
+    <footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
+        <div>
           <a href="books.html">Books</a>
           <a href="articles.html">Articles</a>
           <a href="about.html">About</a>
@@ -276,84 +847,72 @@
         </div>
       </div>
     </footer>
-  </main>
+  </div>
 
-  <!-- ✅ HIDDEN ADMIN BUTTON -->
-  <button class="admin-fab" id="adminFab" title="Admin">
-    ⚙️
-  </button>
+  <!-- SMALL ADMIN BUTTON -->
+  <button class="admin-fab" id="adminFab" title="Admin">⚙️</button>
 
-  <!-- ✅ ADMIN LOGIN MODAL -->
+  <!-- ADMIN MODAL -->
   <div class="modal-overlay" id="adminModal">
     <div class="modal">
       <div class="modal-head">
         <h3>Admin Login</h3>
-        <button class="modal-close" id="closeAdminModal" aria-label="Close">✕</button>
+        <button class="close" id="closeModal">✕</button>
       </div>
 
-      <p class="modal-sub">
+      <div class="muted" style="font-size:13px;line-height:1.5">
         Authorized access only.
-      </p>
+      </div>
 
-      <form id="adminLoginForm">
+      <form id="adminForm">
         <label>Email</label>
-        <input type="email" id="adminEmail" placeholder="Enter admin email" required />
+        <input class="input" type="email" id="adminEmail" placeholder="Admin email" required />
 
         <label>Password</label>
-        <input type="password" id="adminPassword" placeholder="Enter password" required />
+        <input class="input" type="password" id="adminPass" placeholder="Password" required />
 
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <div style="margin-top:12px">
+          <button class="btn btn-primary" style="width:100%" type="submit">Login</button>
+        </div>
 
-        <p class="error-text" id="loginError"></p>
+        <div class="error" id="err"></div>
       </form>
 
-      <p class="modal-note">
-        This login uses Firebase Authentication (recommended).
-      </p>
+      <div class="muted" style="margin-top:8px;font-size:12px">
+        Firebase Auth will be connected here (secure).
+      </div>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // mobile nav toggle
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    // Mobile nav
+    const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("navLinks");
-    hamburgerBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-    });
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // admin modal
+    // Admin modal
     const adminFab = document.getElementById("adminFab");
     const adminModal = document.getElementById("adminModal");
-    const closeAdminModal = document.getElementById("closeAdminModal");
+    const closeModal = document.getElementById("closeModal");
 
     adminFab.addEventListener("click", () => adminModal.classList.add("show"));
-    closeAdminModal.addEventListener("click", () => adminModal.classList.remove("show"));
+    closeModal.addEventListener("click", () => adminModal.classList.remove("show"));
     adminModal.addEventListener("click", (e) => {
       if (e.target === adminModal) adminModal.classList.remove("show");
     });
 
-    // ✅ Firebase login hook (to be implemented inside js/main.js or js/admin.js)
-    document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+    // Login placeholder (Firebase will replace this)
+    const form = document.getElementById("adminForm");
+    const err = document.getElementById("err");
+
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const email = document.getElementById("adminEmail").value.trim();
-      const password = document.getElementById("adminPassword").value.trim();
-      const err = document.getElementById("loginError");
-
-      err.textContent = "";
-
-      // This is just a placeholder. Real login must be done with Firebase Auth.
-      // After successful login:
+      err.textContent = "Firebase Auth not connected yet. (This is only UI)";
+      // After Firebase login success:
       // window.location.href = "/admin/dashboard.html";
-
-      err.textContent = "Firebase Auth not connected yet. Add Firebase config in js/main.js.";
     });
   </script>
-
 </body>
 </html>
