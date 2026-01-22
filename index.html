@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noctivine — Books, Articles & Psychology Truth</title>
-  <meta name="description" content="Noctivine — books & articles about psychology, truth about life, stories, and real experiences." />
+
+  <!-- ✅ SEO BASIC -->
+  <title>Noctivine — Books, Shortfilm & Podcast | NOCTIVINE.LINKPC.NET</title>
+  <meta name="description" content="Noctivine — Books, shortfilms, podcasts & psychology truth. Real-life stories, brutally honest thoughts, no fake motivation." />
+  <meta name="keywords" content="Noctivine, psychology, books, shortfilm, podcast, stories, truth about life, writing" />
+  <meta name="author" content="Noctivine" />
+  <link rel="canonical" href="https://noctivine.linkpc.net/" />
+
+  <!-- ✅ LOGO / FAVICON -->
+  <!-- NOTE: Your file path includes spaces → encoded below -->
+  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png">
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:site_name" content="Noctivine" />
+  <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
+  <meta property="og:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
+  <meta property="og:url" content="https://noctivine.linkpc.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://noctivine.linkpc.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+
+  <!-- ✅ Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Noctivine — Books, Shortfilm & Podcast" />
+  <meta name="twitter:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
+  <meta name="twitter:image" content="https://noctivine.linkpc.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <style>
     :root{
@@ -75,15 +98,12 @@
       font-size:18px;
       margin-bottom:10px;
     }
-    .orb{
+    .loader-logo img{
       width:44px;height:44px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,0.14);
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(0,255,213,0.55), transparent 62%),
-        radial-gradient(18px 18px at 70% 60%, rgba(124,77,255,0.55), transparent 62%),
-        rgba(255,255,255,0.06);
-      box-shadow: 0 0 30px rgba(0,255,213,0.18);
+      background:rgba(255,255,255,0.05);
+      object-fit:cover;
       animation: floaty 1.6s ease-in-out infinite;
     }
     @keyframes floaty{
@@ -137,13 +157,15 @@
       display:flex;align-items:center;gap:12px;
       font-weight:900; letter-spacing:0.4px;
     }
-    .badge-n{
-      width:36px;height:36px;border-radius:12px;
-      display:grid;place-items:center;
+    .brand img{
+      width:36px;height:36px;
+      border-radius:12px;
       border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.05);
+      object-fit:cover;
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
     }
+
     .nav-links{
       display:flex;
       gap:18px;
@@ -159,19 +181,7 @@
       transition:0.2s;
     }
     .nav-links a:hover{color:var(--text)}
-    .nav-links a.active{
-      color:var(--text);
-      position:relative;
-    }
-    .nav-links a.active::after{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      bottom:-8px;
-      height:2px;
-      border-radius:10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-    }
+    .nav-links a.active{color:var(--text)}
 
     .nav-actions{display:flex;gap:10px;align-items:center;}
     .btn{
@@ -188,11 +198,12 @@
       font-weight:900;
       font-size:14px;
       transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
+      user-select:none;
     }
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
     .btn-primary{
-      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
-      border-color:rgba(0,255,213,0.34);
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.20));
+      border-color: rgba(0,255,213,0.30);
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
     .btn-ghost{background:rgba(255,255,255,0.03)}
@@ -294,7 +305,7 @@
     .mini b{display:block;font-size:14px}
     .mini span{display:block;margin-top:4px;color:var(--muted2);font-size:12px}
 
-    /* BOOK SLIDER */
+    /* SECTION */
     .section{padding:22px 0 10px;}
     .section-head{
       display:flex;
@@ -307,6 +318,7 @@
     .link{color:var(--muted);font-weight:900;font-size:14px}
     .link:hover{color:var(--text)}
 
+    /* BOOK SLIDER */
     .slider-wrap{
       border-radius:var(--radius);
       border:1px solid rgba(255,255,255,0.10);
@@ -336,10 +348,7 @@
     .slide:hover{transform:translateY(-3px);border-color:rgba(0,255,213,0.25)}
     .cover{
       height:170px;
-      background:
-        radial-gradient(140px 140px at 20% 20%, rgba(0,255,213,0.25), transparent 60%),
-        radial-gradient(160px 160px at 80% 40%, rgba(124,77,255,0.25), transparent 60%),
-        rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
       position:relative;
       display:flex;
@@ -363,10 +372,9 @@
       background:rgba(0,0,0,0.25);
       font-weight:900;
       font-size:12px;
+      color:rgba(0,255,213,0.95);
+      border-color:rgba(0,255,213,0.35);
     }
-    .price.free{color:rgba(0,255,213,0.95);border-color:rgba(0,255,213,0.35)}
-    .price.paid{color:rgba(200,180,255,0.95);border-color:rgba(124,77,255,0.35)}
-
     .slide-body{padding:14px;}
     .slide-body h3{margin:0 0 6px;font-size:16px;letter-spacing:-0.2px}
     .slide-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
@@ -399,6 +407,54 @@
       transform:translateY(-1px);
     }
 
+    /* VIDEO GRID */
+    .video-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+    }
+    .video-card{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .video-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .video-top h3{
+      margin:0;
+      font-size:15px;
+      letter-spacing:-0.2px;
+    }
+    .video-top p{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+    }
+    .video-iframe{
+      aspect-ratio: 16/9;
+      background: rgba(0,0,0,0.35);
+    }
+    .video-iframe iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .video-actions{
+      padding:14px;
+      display:flex;
+      gap:10px;
+    }
+    .video-actions .btn{flex:1}
+
     /* FOOTER */
     footer{
       padding: 26px 0 40px;
@@ -421,32 +477,10 @@
     }
     .foot a:hover{color:var(--text)}
 
-    /* Tiny Admin Button */
-    .admin-fab{
-      position:fixed;
-      bottom:16px;
-      right:16px;
-      width:36px;height:36px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.04);
-      color:rgba(234,240,255,0.55);
-      font-size:14px;
-      cursor:pointer;
-      opacity:0.35;
-      transition:0.2s;
-      z-index:80;
-    }
-    .admin-fab:hover{
-      opacity:1;
-      transform:translateY(-2px);
-      border-color:rgba(0,255,213,0.30);
-      color:var(--text);
-    }
-
     /* Responsive */
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;}
+      .video-grid{grid-template-columns:1fr;}
     }
     @media (max-width:860px){
       .nav-links{
@@ -469,19 +503,18 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- ✅ LOADER -->
   <div class="loader-wrap" id="loader">
     <div class="loader">
       <div class="loader-logo">
-        <div class="orb"></div>
+        <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
         <span>Noctivine</span>
       </div>
       <div class="bar"><span></span></div>
-      <div class="load-text">
-        Loading books & stories...
-      </div>
+      <div class="load-text">Loading books & stories...</div>
     </div>
   </div>
 
@@ -490,20 +523,19 @@
     <div class="container">
       <div class="nav-inner">
         <a class="brand" href="index.html">
-          <div class="badge-n">N</div>
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
           <span>Noctivine</span>
         </a>
 
         <nav class="nav-links" id="navLinks">
           <a class="active" href="index.html">Home</a>
           <a href="books.html">Books</a>
-          <a href="articles.html">Articles</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+          <a href="#videos">Shortfilm</a>
+          <a href="#videos">Podcast</a>
         </nav>
 
         <div class="nav-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Visit YouTube</a>
           <button class="hamburger" id="hamburger" aria-label="Open Menu">
             <span></span><span></span><span></span>
           </button>
@@ -518,28 +550,34 @@
     <section class="hero">
       <div class="panel">
         <div class="chip"><span class="dot"></span> Books • Articles • Psychology • Truth</div>
-        <h1>Noctivine — Books, Articles & Psychology Truth</h1>
+
+        <h1>Noctivine — Books, shortfilm, podcast</h1>
+
         <p class="sub">
-          I write real-life stories, psychology-based insights, and brutally honest thoughts about life.
+          I write real-life stories, psychology-based insights, and brutally honest thoughts about life — without fake motivation or shallow advice.
+          <br><br>
+          Built for readers who like meaning.
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Visit My YouTube Channel</a>
-          <a class="btn btn-ghost" href="books.html">Explore Books</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">✅ Visit My YouTube Channel</a>
+          <a class="btn btn-ghost" href="books.html">✅ Explore Books</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">✅ Instagram</a>
         </div>
 
         <div class="mini-grid">
-          <div class="mini"><b>📚 Books</b><span>Real stories</span></div>
-          <div class="mini"><b>🧠 Psychology</b><span>Human mind</span></div>
-          <div class="mini"><b>✍️ Articles</b><span>Truth & life</span></div>
+          <div class="mini"><b>📚 Books</b><span>The human mind — explained simply, honestly.</span></div>
+          <div class="mini"><b>🧠 Psychology</b><span>Truth about life, not motivation.</span></div>
+          <div class="mini"><b>🎧 Podcast</b><span>Thoughts worth replaying.</span></div>
         </div>
       </div>
 
       <div class="panel">
-        <div class="chip"><span class="dot"></span> Your library is growing</div>
+        <div class="chip"><span class="dot"></span> Latest Drop</div>
         <p class="sub" style="margin-top:10px">
-          This website updates as I publish new books. Simple, clean, and built for readers who like real writing.
+          This site updates as I publish new books, and new drops.
+          <br>
+          Simple. clean. and made for people who still love words.
         </p>
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn btn-primary" href="books.html">📚 Open Book Library</a>
@@ -548,7 +586,7 @@
       </div>
     </section>
 
-    <!-- ✅ BOOK SLIDESHOW -->
+    <!-- ✅ MY BOOKS SLIDER -->
     <section class="section" id="books">
       <div class="section-head">
         <h2>My Books (Slide Show)</h2>
@@ -565,6 +603,16 @@
       </div>
     </section>
 
+    <!-- ✅ VIDEOS -->
+    <section class="section" id="videos">
+      <div class="section-head">
+        <h2>Shortfilm / Podcast</h2>
+        <a class="link" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">More on YouTube →</a>
+      </div>
+
+      <div class="video-grid" id="videoGrid"></div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
       <div class="foot">
@@ -579,9 +627,6 @@
 
   </div>
 
-  <!-- tiny admin -->
-  <button class="admin-fab" title="Admin">⚙️</button>
-
   <script>
     // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -591,37 +636,34 @@
     const navLinks = document.getElementById("navLinks");
     hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // ✅ book database (same as books.html)
+    // ✅ BOOKS (you can add more here)
     const BOOKS = [
       {
-        id: "lonely-generation",
         name: "Lonely Generation",
-        cover: "assests/ChatGPT Image Jan 22, 2026, 01_02_19 PM.png",
-        type: "free",
-        price: 0,
-        link: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3",
-        description: `This is not a story about something extraordinary happening. No dramatic turning point.
-No single moment where everything changes. No version of love that fixes a life overnight.
-This is a story about what it feels like to exist quietly in a crowded world...`
+        cover: "assets/covers/image2.jpg",
+        type: "FREE",
+        desc: `This isn’t a story about something extraordinary happening.
+No dramatic turning point. No magical fix.
+Just the quiet reality of growing up in a loud world — and learning what it means to survive it.`,
+        open: "books.html",
+        download: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3"
       }
     ];
 
-    // ✅ render slider
+    // ✅ render books slider
     const slider = document.getElementById("bookSlider");
-    slider.innerHTML = BOOKS.map(book => `
+    slider.innerHTML = BOOKS.map(b => `
       <div class="slide">
         <div class="cover">
-          <img src="${book.cover}" alt="${book.name}" onerror="this.remove()" />
-          <span class="price ${book.type === "free" ? "free" : "paid"}">
-            ${book.type === "free" ? "FREE" : "₹" + book.price}
-          </span>
+          <img src="${b.cover}" alt="${b.name}" onerror="this.remove()" />
+          <span class="price">${b.type}</span>
         </div>
         <div class="slide-body">
-          <h3>${book.name}</h3>
-          <p>${book.description}</p>
+          <h3>${b.type} — ${b.name}</h3>
+          <p>${b.desc}</p>
           <div class="actions">
-            <a class="btn btn-ghost" href="books.html#${book.id}">Open</a>
-            <a class="btn btn-primary" href="${book.link}" target="_blank" rel="noopener">Download</a>
+            <a class="btn btn-ghost" href="${b.open}">✅ Open</a>
+            <a class="btn btn-primary" href="${b.download}" target="_blank" rel="noopener">✅ Download</a>
           </div>
         </div>
       </div>
@@ -631,23 +673,77 @@ This is a story about what it feels like to exist quietly in a crowded world...`
     const nextBtn = document.getElementById("nextBtn");
     const prevBtn = document.getElementById("prevBtn");
 
-    nextBtn.addEventListener("click", () => {
-      slider.scrollBy({ left: 380, behavior: "smooth" });
-    });
-    prevBtn.addEventListener("click", () => {
-      slider.scrollBy({ left: -380, behavior: "smooth" });
-    });
+    nextBtn.addEventListener("click", () => slider.scrollBy({ left: 380, behavior: "smooth" }));
+    prevBtn.addEventListener("click", () => slider.scrollBy({ left: -380, behavior: "smooth" }));
 
     // ✅ auto-slide
     let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500);
     slider.addEventListener("mouseenter", () => clearInterval(auto));
     slider.addEventListener("mouseleave", () => auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500));
 
+    // ✅ VIDEO LIST (customizable — add more easily)
+    const VIDEOS = [
+      {
+        title: "The firewood lake",
+        chapter: "Chapter 1",
+        by: "Noctivine",
+        cover: "assets/covers/22jpg.jpg",
+        youtube: "https://youtu.be/KggsGhzaSQo?si=9E9x4p1PFKonMewM"
+      }
+    ];
+
+    // ✅ convert YouTube to embed URL
+    function toEmbed(url){
+      try{
+        // Handles youtu.be links & normal youtube links
+        if(url.includes("youtu.be/")){
+          const id = url.split("youtu.be/")[1].split("?")[0];
+          return `https://www.youtube.com/embed/${id}`;
+        }
+        if(url.includes("youtube.com/watch")){
+          const id = new URL(url).searchParams.get("v");
+          return `https://www.youtube.com/embed/${id}`;
+        }
+        return url;
+      }catch(e){
+        return url;
+      }
+    }
+
+    // ✅ render videos
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = VIDEOS.map(v => `
+      <div class="video-card">
+        <div class="video-top">
+          <div>
+            <h3>${v.title}</h3>
+            <p>${v.chapter} • ${v.by}</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <img src="${v.cover}" alt="${v.title}" style="width:52px;height:52px;border-radius:16px;border:1px solid rgba(255,255,255,0.10);object-fit:cover;background:rgba(255,255,255,0.05);" onerror="this.remove()">
+          </div>
+        </div>
+
+        <div class="video-iframe">
+          <iframe
+            src="${toEmbed(v.youtube)}"
+            title="${v.title}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="video-actions">
+          <a class="btn btn-primary" href="${v.youtube}" target="_blank" rel="noopener">Open on YouTube</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Channel</a>
+        </div>
+      </div>
+    `).join("");
+
     // ✅ loader hide
     window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.getElementById("loader").classList.add("hide");
-      }, 650);
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 650);
     });
   </script>
 
