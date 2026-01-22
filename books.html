@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noctivine — Books</title>
+  <meta name="description" content="Noctivine Book Library — read, download, and explore." />
+
+  <style>
+    :root{
+      --bg:#070A0F;
+      --text:#EAF0FF;
+      --muted:rgba(234,240,255,0.70);
+      --muted2:rgba(234,240,255,0.55);
+      --line:rgba(255,255,255,0.10);
+      --card:rgba(255,255,255,0.05);
+      --accent:#00FFD5;
+      --accent2:#7C4DFF;
+      --radius:22px;
+      --shadow:0 20px 60px rgba(0,0,0,0.55);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1150px, 92vw);margin:0 auto;}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(16px);
+      background:rgba(7,10,15,0.55);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+      position:relative;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font-weight:900;
+      letter-spacing:0.4px;
+    }
+    .badge-n{
+      width:36px;height:36px;border-radius:12px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+    .nav-links{
+      display:flex;
+      gap:18px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+    }
+    .nav-links a{
+      font-size:14px;
+      color:var(--muted);
+      font-weight:800;
+      transition:0.2s;
+    }
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a.active{
+      color:var(--text);
+      position:relative;
+    }
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:-8px;
+      height:2px;
+      border-radius:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .nav-actions{display:flex;gap:10px;align-items:center;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      cursor:pointer;
+      font-weight:900;
+      font-size:14px;
+      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
+      border-color:rgba(0,255,213,0.34);
+      box-shadow: 0 18px 70px rgba(0,255,213,0.10);
+    }
+    .btn-ghost{background:rgba(255,255,255,0.03)}
+
+    .hamburger{
+      display:none;
+      width:44px;height:44px;border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      cursor:pointer;
+    }
+    .hamburger span{
+      display:block;
+      width:18px;height:2px;
+      margin:4px auto;
+      background:rgba(234,240,255,0.85);
+      border-radius:8px;
+    }
+
+    /* HEADER */
+    .header{
+      padding: 26px 0 10px;
+    }
+    .header h1{
+      margin:0;
+      font-size: clamp(26px, 2.8vw, 38px);
+      letter-spacing:-0.6px;
+    }
+    .header p{
+      margin:8px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    /* Search */
+    .tools{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .input{
+      flex:1;
+      min-width:220px;
+      height:46px;
+      padding:0 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      outline:none;
+    }
+    .input::placeholder{color:rgba(234,240,255,0.45)}
+
+    /* Book Grid */
+    .grid{
+      padding: 14px 0 10px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transition:0.2s;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(0,255,213,0.25);
+    }
+    .cover{
+      height:180px;
+      background:rgba(255,255,255,0.03);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:12px;
+    }
+    .cover img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0.92;
+    }
+    .badge{
+      position:relative;
+      z-index:2;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(0,0,0,0.25);
+      font-weight:900;
+      font-size:12px;
+    }
+    .free{color:rgba(0,255,213,0.95);border-color:rgba(0,255,213,0.35)}
+    .paid{color:rgba(200,180,255,0.95);border-color:rgba(124,77,255,0.35)}
+    .body{padding:14px;}
+    .body h3{margin:0 0 6px;font-size:16px}
+    .body p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      white-space:pre-line;
+    }
+
+    .toggle{
+      margin-top:10px;
+      width:100%;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .actions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+    }
+    .actions .btn{flex:1}
+
+    footer{
+      padding: 26px 0 40px;
+      color: var(--muted2);
+      font-size:13px;
+    }
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding-top:16px;
+    }
+    .foot a{
+      color: var(--muted2);
+      font-weight:800;
+      margin-left:12px;
+    }
+    .foot a:hover{color:var(--text)}
+
+    @media(max-width:980px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:860px){
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:68px;
+        right:4vw;
+        width:min(360px, 92vw);
+        flex-direction:column;
+        align-items:stretch;
+        gap:10px;
+        padding:14px;
+        border-radius:18px;
+        background: rgba(12,16,25,0.92);
+        border:1px solid rgba(255,255,255,0.10);
+      }
+      .nav-links.open{display:flex}
+      .hamburger{display:inline-block}
+      .grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <div class="badge-n">N</div>
+          <span>Noctivine</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a class="active" href="books.html">Books</a>
+          <a href="articles.html">Articles</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <button class="hamburger" id="hamburger" aria-label="Open Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="header">
+      <h1>Book Library</h1>
+      <p>All my books live here. Download and read.</p>
+
+      <div class="tools">
+        <input class="input" id="searchBox" placeholder="Search books by name..." />
+        <a class="btn btn-ghost" href="index.html#books">Back to slideshow</a>
+      </div>
+    </section>
+
+    <section class="grid" id="bookGrid"></section>
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
+        <div>
+          <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // mobile nav
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+
+    // ✅ Book database (same as index)
+    const BOOKS = [
+      {
+        id: "lonely-generation",
+        name: "Lonely Generation",
+        cover: "assets/covers/image2.jpg",
+        type: "free",
+        price: 0,
+        link: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3",
+        description: `This is not a story about something extraordinary happening. No dramatic turning point.
+No single moment where everything changes. No version of love that fixes a life
+overnight. This is a story about what it feels like to exist quietly in a crowded world.
+About waking up every day surrounded by people and still feeling slightly out of place.
+About scrolling through a phone full of names and realizing none of them really know
+you. About laughing at the right moments, saying the safe things, and carrying thoughts
+you never quite say out loud. It’s about being seventeen and expected to know where
+you’re going, when most days you’re still figuring out where you stand. The boy writing
+these pages is not broken. He goes to school. He studies. He jokes. He functions. But
+somewhere between expectations, noise, and constant connection, he begins to notice
+something missing. Not happiness. Not success. Just *presence*. The feeling of being
+seen without having to perform. This book doesn’t move fast. It doesn’t chase drama. It
+doesn’t try to impress you. It pays attention instead. To small pauses in conversation. To
+silence that isn’t awkward. To the difference between being noticed and being needed.
+To the quiet line between attachment and self-respect. Love enters this story slowly, the
+way it does in real life when it’s healthy. Not as obsession. Not as rescue. But as
+steadiness. As something that exists alongside fear, pressure, and uncertainty, not
+above them. If you’re looking for a perfect romance, this book will disappoint you. If
+you’re looking for answers, it probably won’t give you many. But if you’ve ever felt lonely
+without being alone, tired without being exhausted, or unsure without knowing why—
+then these pages might feel familiar. This is not a book about finding everything. It’s
+about stopping the habit of abandoning yourself. And learning, slowly and imperfectly,
+how to keep going without pretending you’re fine when you’re not. That’s where this
+story begins.`
+      }
+    ];
+
+    const grid = document.getElementById("bookGrid");
+    const searchBox = document.getElementById("searchBox");
+
+    function shortText(text, max=260){
+      if(text.length <= max) return text;
+      return text.slice(0, max) + "...";
+    }
+
+    function renderBooks(list){
+      grid.innerHTML = list.map(book => `
+        <div class="card" id="${book.id}">
+          <div class="cover">
+            <img src="${book.cover}" alt="${book.name}" onerror="this.remove()" />
+            <span class="badge ${book.type === "free" ? "free" : "paid"}">
+              ${book.type === "free" ? "FREE" : "₹" + book.price}
+            </span>
+          </div>
+
+          <div class="body">
+            <h3>${book.name}</h3>
+            <p class="desc" data-full="${encodeURIComponent(book.description)}" data-open="false">
+              ${shortText(book.description)}
+            </p>
+
+            <button class="toggle">Show more</button>
+
+            <div class="actions">
+              <a class="btn btn-ghost" href="${book.link}" target="_blank" rel="noopener">Open</a>
+              <a class="btn btn-primary" href="${book.link}" target="_blank" rel="noopener">Download</a>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      // show more / less
+      document.querySelectorAll(".toggle").forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const desc = document.querySelectorAll(".desc")[index];
+          const full = decodeURIComponent(desc.getAttribute("data-full"));
+          const isOpen = desc.getAttribute("data-open") === "true";
+
+          if (!isOpen) {
+            desc.textContent = full;
+            desc.setAttribute("data-open", "true");
+            btn.textContent = "Show less";
+          } else {
+            desc.textContent = shortText(full);
+            desc.setAttribute("data-open", "false");
+            btn.textContent = "Show more";
+          }
+        });
+      });
+    }
+
+    renderBooks(BOOKS);
+
+    // search
+    searchBox.addEventListener("input", () => {
+      const q = searchBox.value.trim().toLowerCase();
+      const filtered = BOOKS.filter(b => b.name.toLowerCase().includes(q));
+      renderBooks(filtered);
+    });
+  </script>
+
+</body>
+</html>
