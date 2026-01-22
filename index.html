@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ✅ SEO BASIC -->
-  <title>Noctivine — Books, Shortfilm & Podcast | NOCTIVINE.LINKPC.NET</title>
-  <meta name="description" content="Noctivine — Books, shortfilms, podcasts & psychology truth. Real-life stories, brutally honest thoughts, no fake motivation." />
+  <title>Noctivine — Books, Shortfilm & Podcast | kuma.2bd.net</title>
+  <meta name="description" content="Noctivine — Books, shortfilms, podcasts & psychology truth. Real-life stories, brutally honest thoughts about life, no fake motivation." />
   <meta name="keywords" content="Noctivine, psychology, books, shortfilm, podcast, stories, truth about life, writing" />
   <meta name="author" content="Noctivine" />
+  <link rel="canonical" href="https://kuma.2bd.net/" />
 
   <!-- ✅ LOGO / FAVICON -->
-  <!-- NOTE: Your file path includes spaces → encoded below -->
-  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png">
+  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <!-- ✅ Open Graph -->
   <meta property="og:site_name" content="Noctivine" />
   <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
   <meta property="og:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
-  <meta property="og:url" content="https://noctivine.linkpc.net/" />
+  <meta property="og:url" content="https://kuma.2bd.net/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://noctivine.linkpc.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <!-- ✅ Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Noctivine — Books, Shortfilm & Podcast" />
   <meta name="twitter:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
-  <meta name="twitter:image" content="https://noctivine.linkpc.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <meta name="twitter:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <style>
     :root{
@@ -406,7 +406,7 @@
       transform:translateY(-1px);
     }
 
-    /* VIDEO GRID */
+    /* ✅ VIDEO GRID (NO IFRAME NOW) */
     .video-grid{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
@@ -418,39 +418,67 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       box-shadow: var(--shadow);
       overflow:hidden;
+      transition:0.2s;
     }
-    .video-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:14px;
+    .video-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(0,255,213,0.25);
+    }
+    .video-cover{
+      height: 190px;
+      position: relative;
+      background: rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
+      overflow:hidden;
+      display:flex;
+      align-items:flex-end;
+      padding:12px;
     }
-    .video-top h3{
-      margin:0;
-      font-size:15px;
-      letter-spacing:-0.2px;
-    }
-    .video-top p{
-      margin:5px 0 0;
-      color:var(--muted);
-      font-size:12px;
-      font-weight:800;
-    }
-    .video-iframe{
-      aspect-ratio: 16/9;
-      background: rgba(0,0,0,0.35);
-    }
-    .video-iframe iframe{
+    .video-cover img{
+      position:absolute;
+      inset:0;
       width:100%;
       height:100%;
-      border:0;
+      object-fit:cover;
+      opacity:0.92;
+      transform: scale(1.02);
+    }
+    .video-cover .play-badge{
+      position:relative;
+      z-index:2;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.28);
+      font-weight:900;
+      color: rgba(234,240,255,0.95);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .video-cover .play-dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(0,255,213,0.25);
+    }
+
+    .video-body{padding:14px;}
+    .video-body h3{
+      margin:0;
+      font-size:16px;
+      letter-spacing:-0.2px;
+    }
+    .video-body p{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.55;
     }
     .video-actions{
-      padding:14px;
+      padding: 14px;
       display:flex;
       gap:10px;
+      border-top:1px solid rgba(255,255,255,0.06);
     }
     .video-actions .btn{flex:1}
 
@@ -639,7 +667,7 @@
     const BOOKS = [
       {
         name: "Lonely Generation",
-        cover: "assests/ChatGPT Image Jan 22, 2026, 01_02_19 PM.png",
+        cover: "assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png",
         type: "FREE",
         desc: `This isn’t a story about something extraordinary happening.
 No dramatic turning point. No magical fix.
@@ -680,57 +708,32 @@ Just the quiet reality of growing up in a loud world — and learning what it me
     slider.addEventListener("mouseenter", () => clearInterval(auto));
     slider.addEventListener("mouseleave", () => auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500));
 
-    // ✅ VIDEO LIST (customizable — add more easily)
+    // ✅ VIDEO LIST (NO IFRAME NOW)
     const VIDEOS = [
       {
         title: "The firewood lake",
         chapter: "Chapter 1",
         by: "Noctivine",
-        cover: "assests/WhatsApp Image 2026-01-22 at 8.31.40 PM.jpeg",
+        cover: "assests/WhatsApp%20Image%202026-01-22%20at%208.31.40%20PM.jpeg",
         youtube: "https://youtu.be/KggsGhzaSQo?si=9E9x4p1PFKonMewM"
       }
     ];
 
-    // ✅ convert YouTube to embed URL
-    function toEmbed(url){
-      try{
-        // Handles youtu.be links & normal youtube links
-        if(url.includes("youtu.be/")){
-          const id = url.split("youtu.be/")[1].split("?")[0];
-          return `https://www.youtube.com/embed/${id}`;
-        }
-        if(url.includes("youtube.com/watch")){
-          const id = new URL(url).searchParams.get("v");
-          return `https://www.youtube.com/embed/${id}`;
-        }
-        return url;
-      }catch(e){
-        return url;
-      }
-    }
-
-    // ✅ render videos
+    // ✅ render videos (cover image + button only)
     const videoGrid = document.getElementById("videoGrid");
     videoGrid.innerHTML = VIDEOS.map(v => `
       <div class="video-card">
-        <div class="video-top">
-          <div>
-            <h3>${v.title}</h3>
-            <p>${v.chapter} • ${v.by}</p>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center">
-            <img src="${v.cover}" alt="${v.title}" style="width:52px;height:52px;border-radius:16px;border:1px solid rgba(255,255,255,0.10);object-fit:cover;background:rgba(255,255,255,0.05);" onerror="this.remove()">
+        <div class="video-cover">
+          <img src="${v.cover}" alt="${v.title}" onerror="this.remove()">
+          <div class="play-badge">
+            <span class="play-dot"></span>
+            ▶ Watch on YouTube
           </div>
         </div>
 
-        <div class="video-iframe">
-          <iframe
-            src="${toEmbed(v.youtube)}"
-            title="${v.title}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+        <div class="video-body">
+          <h3>${v.title}</h3>
+          <p>${v.chapter} • ${v.by}</p>
         </div>
 
         <div class="video-actions">
