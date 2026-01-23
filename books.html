@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noctivine — Books</title>
+
+  <!-- ✅ SEO BASIC -->
+  <title>Noctivine — Book Library | kuma.2bd.net</title>
+  <meta name="description" content="Explore Noctivine’s books — read online inside the website or download the PDF. Minimal, fast, reader-first design." />
+  <meta name="keywords" content="Noctivine, books, psychology, stories, pdf books, read online, download books" />
+  <meta name="author" content="Noctivine" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kuma.2bd.net/books.html" />
+
+  <!-- ✅ FAVICON -->
+  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:site_name" content="Noctivine" />
+  <meta property="og:title" content="Noctivine — Book Library" />
+  <meta property="og:description" content="Read books online or download PDFs. Clean writing. Minimal design." />
+  <meta property="og:url" content="https://kuma.2bd.net/books.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <style>
     :root{
@@ -15,8 +33,10 @@
       --accent2:#7C4DFF;
       --radius:22px;
       --shadow:0 20px 60px rgba(0,0,0,0.55);
+      --line:rgba(255,255,255,0.10);
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       background:
@@ -30,7 +50,82 @@
     a{color:inherit;text-decoration:none}
     .container{width:min(1150px, 92vw);margin:0 auto;}
 
-    /* NAV */
+    /* ✅ LOADER */
+    .loader-wrap{
+      position:fixed; inset:0;
+      background: rgba(7,10,15,0.95);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      transition:opacity 0.35s ease, transform 0.35s ease;
+    }
+    .loader-wrap.hide{
+      opacity:0;
+      pointer-events:none;
+      transform:scale(1.02);
+    }
+    .loader{
+      width:min(520px, 92vw);
+      padding:18px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.65);
+      text-align:center;
+    }
+    .loader-logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      font-weight:950;
+      letter-spacing:0.6px;
+      font-size:18px;
+      margin-bottom:10px;
+    }
+    .loader-logo img{
+      width:46px;height:46px;
+      border-radius:15px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.05);
+      object-fit:cover;
+      animation: floaty 1.6s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-5px)}
+    }
+    .bar{
+      height:10px;
+      width:100%;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      overflow:hidden;
+      margin-top:14px;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:45%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(0,255,213,0.9), rgba(124,77,255,0.9));
+      animation: loading 1.25s ease-in-out infinite;
+    }
+    @keyframes loading{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(260%)}
+    }
+    .load-text{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* ✅ NAV */
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(16px);
@@ -41,25 +136,34 @@
       display:flex;align-items:center;justify-content:space-between;
       padding:14px 0;gap:14px;position:relative;
     }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
-    .badge-n{
-      width:36px;height:36px;border-radius:12px;
-      display:grid;place-items:center;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:950;
+      letter-spacing:0.4px;
+    }
+    .brand img{
+      width:38px;height:38px;
+      border-radius:13px;
       border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.05);
+      object-fit:cover;
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
     }
+
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
       gap:10px;
       padding:12px 14px;border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
-      font-weight:900;font-size:14px;
+      font-weight:950;font-size:14px;
       cursor:pointer;
       user-select:none;
       transition:0.2s;
       color:var(--text);
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
     .btn-primary{
@@ -68,12 +172,12 @@
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
 
-    /* HEADER */
+    /* ✅ HEADER */
     .header{padding:26px 0 10px}
     .header h1{margin:0;font-size:clamp(26px,2.8vw,38px)}
     .header p{margin:8px 0 0;color:var(--muted);line-height:1.6;font-size:14px}
 
-    /* TOOLS */
+    /* ✅ TOOLS */
     .tools{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
     .input{
       flex:1;min-width:220px;height:46px;
@@ -85,7 +189,7 @@
     }
     .input::placeholder{color:rgba(234,240,255,0.45)}
 
-    /* READER VIEWER */
+    /* ✅ READER VIEWER */
     .reader-viewer{
       margin-top:16px;
       border-radius: var(--radius);
@@ -118,7 +222,7 @@
       border:0;
     }
 
-    /* GRID */
+    /* ✅ GRID */
     .grid{
       padding:14px 0 10px;
       display:grid;
@@ -156,7 +260,7 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.14);
       background:rgba(0,0,0,0.25);
-      font-weight:900;
+      font-weight:950;
       font-size:12px;
       color:rgba(0,255,213,0.95);
       border-color:rgba(0,255,213,0.35);
@@ -178,7 +282,7 @@
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.03);
       color:var(--text);
-      font-weight:900;
+      font-weight:950;
       cursor:pointer;
     }
     .actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
@@ -187,13 +291,14 @@
     /* hidden raw data */
     #bookDatabase{display:none;}
 
+    /* ✅ FOOTER */
     footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
     .foot{
       display:flex;justify-content:space-between;flex-wrap:wrap;
       gap:14px;border-top:1px solid rgba(255,255,255,0.06);
       padding-top:16px;
     }
-    .foot a{color:var(--muted2);font-weight:800;margin-left:12px}
+    .foot a{color:var(--muted2);font-weight:900;margin-left:12px}
     .foot a:hover{color:var(--text)}
 
     @media(max-width:980px){.grid{grid-template-columns:1fr 1fr;}}
@@ -206,15 +311,28 @@
 
 <body>
 
+  <!-- ✅ LOADER -->
+  <div class="loader-wrap" id="loader">
+    <div class="loader">
+      <div class="loader-logo">
+        <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
+        <span>Noctivine</span>
+      </div>
+      <div class="bar"><span></span></div>
+      <div class="load-text">Loading library...</div>
+    </div>
+  </div>
+
+  <!-- ✅ NAV -->
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
         <a class="brand" href="index.html">
-          <div class="badge-n">N</div>
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
           <span>Noctivine</span>
         </a>
 
-        <div style="display:flex;gap:10px;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a class="btn" href="index.html">Home</a>
         </div>
@@ -222,11 +340,15 @@
     </div>
   </div>
 
-  <div class="container">
+  <main class="container">
 
     <section class="header">
       <h1>Book Library</h1>
-      <p>Read online inside the website, or download from Google Drive.</p>
+      <p>
+        Welcome to my collection. You can read online inside this website, or download the PDF.
+        <br />
+        This is my writing space — simple, quiet, and built for real readers.
+      </p>
 
       <div class="tools">
         <input class="input" id="searchBox" placeholder="Search books..." />
@@ -238,7 +360,7 @@
       <div class="viewer-head">
         <div>
           <h2 id="viewerTitle">Reading...</h2>
-          <p id="viewerSub">Embedded PDF reader</p>
+          <p id="viewerSub">Embedded PDF Reader</p>
         </div>
 
         <div class="viewer-actions">
@@ -255,40 +377,28 @@
     <!-- ✅ Book Cards -->
     <section class="grid" id="bookGrid"></section>
 
-    <!-- ✅ RAW BOOK DATABASE (EDIT HERE ONLY) -->
+    <!-- ✅ RAW BOOK DATABASE (EDIT ONLY THIS AREA TO ADD MORE BOOKS) -->
     <div id="bookDatabase">
+
       <div class="book-row"
         data-id="lonely-generation"
         data-name="Lonely Generation"
-        data-cover="assests/ChatGPT Image Jan 22, 2026, 01_02_19 PM.png"
-        data-pdf="https://drive.google.com/file/d/1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3/preview
-"
+        data-cover="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png"
+        data-pdf="https://drive.google.com/file/d/1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3/preview"
         data-download="https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3">
 This is not a story about something extraordinary happening. No dramatic turning point.
-No single moment where everything changes. No version of love that fixes a life
-overnight. This is a story about what it feels like to exist quietly in a crowded world.
+No single moment where everything changes. No version of love that fixes a life overnight.
+This is a story about what it feels like to exist quietly in a crowded world.
+
 About waking up every day surrounded by people and still feeling slightly out of place.
-About scrolling through a phone full of names and realizing none of them really know
-you. About laughing at the right moments, saying the safe things, and carrying thoughts
-you never quite say out loud. It’s about being seventeen and expected to know where
-you’re going, when most days you’re still figuring out where you stand. The boy writing
-these pages is not broken. He goes to school. He studies. He jokes. He functions. But
-somewhere between expectations, noise, and constant connection, he begins to notice
-something missing. Not happiness. Not success. Just *presence*. The feeling of being
-seen without having to perform. This book doesn’t move fast. It doesn’t chase drama. It
-doesn’t try to impress you. It pays attention instead. To small pauses in conversation. To
-silence that isn’t awkward. To the difference between being noticed and being needed.
-To the quiet line between attachment and self-respect. Love enters this story slowly, the
-way it does in real life when it’s healthy. Not as obsession. Not as rescue. But as
-steadiness. As something that exists alongside fear, pressure, and uncertainty, not
-above them. If you’re looking for a perfect romance, this book will disappoint you. If
-you’re looking for answers, it probably won’t give you many. But if you’ve ever felt lonely
-without being alone, tired without being exhausted, or unsure without knowing why—
-then these pages might feel familiar. This is not a book about finding everything. It’s
-about stopping the habit of abandoning yourself. And learning, slowly and imperfectly,
-how to keep going without pretending you’re fine when you’re not. That’s where this
-story begins.
+About scrolling through a phone full of names and realizing none of them really know you.
+About laughing at the right moments, saying the safe things, and carrying thoughts you never quite say out loud.
+
+It’s about being seventeen and expected to know where you’re going, when most days you’re still figuring out where you stand.
+
+This book doesn’t move fast. It doesn’t chase drama. It pays attention instead — to silence, to small moments, and to what we don’t say.
       </div>
+
     </div>
 
     <footer>
@@ -299,32 +409,38 @@ story begins.
           <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
+
+      <!-- ✅ DNSExit backlink (required for free DNS) -->
+      <div style="opacity:0.6;font-size:12px;margin-top:10px;">
+        DNS by <a href="https://www.dnsexit.com" target="_blank" rel="noopener">DNSExit</a>
+      </div>
     </footer>
 
-  </div>
+  </main>
 
   <script>
+    // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const grid = document.getElementById("bookGrid");
     const searchBox = document.getElementById("searchBox");
 
-    function shortText(text, max=260){
-      if (!text) return "";
+    function shortText(text, max = 260){
+      if(!text) return "";
       text = text.trim();
-      if (text.length <= max) return text;
+      if(text.length <= max) return text;
       return text.slice(0, max) + "...";
     }
 
-    // ✅ Read raw rows from HTML database (no js file)
+    // ✅ Read raw rows from HTML database (no external JS needed)
     function getBooksFromHTML(){
       const rows = document.querySelectorAll("#bookDatabase .book-row");
       return Array.from(rows).map(row => ({
         id: row.dataset.id,
         name: row.dataset.name,
         cover: row.dataset.cover,
-        pdf: row.dataset.pdf,
-        download: row.dataset.download,
+        pdf: (row.dataset.pdf || "").trim(),          // ✅ trims accidental spaces/newlines
+        download: (row.dataset.download || "").trim(),// ✅ trims accidental spaces/newlines
         description: row.textContent.trim()
       }));
     }
@@ -333,44 +449,46 @@ story begins.
 
     function renderBooks(list){
       grid.innerHTML = list.map(book => `
-        <div class="card" id="${book.id}">
+        <article class="card" id="${book.id}">
           <div class="cover">
-            <img src="${book.cover}" alt="${book.name}" onerror="this.remove()">
+            <img src="${book.cover}" alt="${book.name}" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <span class="badge">FREE</span>
           </div>
 
           <div class="body">
             <h3>${book.name}</h3>
 
-            <p class="desc" data-full="${encodeURIComponent(book.description)}" data-open="false">
+            <p class="desc"
+              data-full="${encodeURIComponent(book.description)}"
+              data-open="false">
               ${shortText(book.description)}
             </p>
 
-            <button class="toggle">Show more</button>
+            <button class="toggle" type="button">Show more</button>
 
             <div class="actions">
-              <button class="btn" onclick="openReader('${book.id}')">Read Online</button>
+              <button class="btn" type="button" onclick="openReader('${book.id}')">Read Online</button>
 
               <a class="btn btn-primary" href="${book.download}" target="_blank" rel="noopener">
                 Download
               </a>
             </div>
           </div>
-        </div>
+        </article>
       `).join("");
 
-      // show more/less
+      // ✅ show more/less logic
       document.querySelectorAll(".toggle").forEach((btn, index) => {
         btn.addEventListener("click", () => {
           const desc = document.querySelectorAll(".desc")[index];
           const full = decodeURIComponent(desc.getAttribute("data-full"));
           const isOpen = desc.getAttribute("data-open") === "true";
 
-          if (!isOpen) {
+          if(!isOpen){
             desc.textContent = full;
             desc.setAttribute("data-open", "true");
             btn.textContent = "Show less";
-          } else {
+          }else{
             desc.textContent = shortText(full);
             desc.setAttribute("data-open", "false");
             btn.textContent = "Show more";
@@ -381,18 +499,24 @@ story begins.
 
     function openReader(bookId){
       const book = BOOKS.find(b => b.id === bookId);
+
       if(!book || !book.pdf){
-        alert("PDF not found. Upload it into assets/books/");
+        alert("PDF link is missing. Please update the book database.");
         return;
       }
 
-      document.getElementById("readerViewer").style.display = "block";
-      document.getElementById("viewerTitle").textContent = book.name;
+      const viewer = document.getElementById("readerViewer");
+      viewer.style.display = "block";
 
-      document.getElementById("bookFrame").src = book.pdf;
+      document.getElementById("viewerTitle").textContent = book.name;
+      document.getElementById("viewerSub").textContent = "Reading inside Noctivine Library";
+
+      const frame = document.getElementById("bookFrame");
+      frame.src = book.pdf;
+
       document.getElementById("openNewTabBtn").href = book.pdf;
 
-      document.getElementById("readerViewer").scrollIntoView({behavior:"smooth"});
+      viewer.scrollIntoView({behavior:"smooth"});
     }
 
     function closeReader(){
@@ -400,14 +524,19 @@ story begins.
       document.getElementById("readerViewer").style.display = "none";
     }
 
-    // init
+    // ✅ init
     renderBooks(BOOKS);
 
-    // search
+    // ✅ search
     searchBox.addEventListener("input", () => {
       const q = searchBox.value.trim().toLowerCase();
       const filtered = BOOKS.filter(b => b.name.toLowerCase().includes(q));
       renderBooks(filtered);
+    });
+
+    // ✅ loader hide (fast)
+    window.addEventListener("load", () => {
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 550);
     });
   </script>
 
