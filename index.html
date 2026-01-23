@@ -3,30 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ✅ SEO BASIC -->
-  <title>Noctivine — Books, Shortfilm & Podcast | kuma.2bd.net</title>
-  <meta name="description" content="Noctivine — Books, shortfilms, podcasts & psychology truth. Real-life stories, brutally honest thoughts about life, no fake motivation." />
-  <meta name="keywords" content="Noctivine, psychology, books, shortfilm, podcast, stories, truth about life, writing" />
-  <meta name="author" content="Noctivine" />
-  <link rel="canonical" href="https://kuma.2bd.net/" />
-
-  <!-- ✅ LOGO / FAVICON -->
-  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
-  <!-- ✅ Open Graph -->
-  <meta property="og:site_name" content="Noctivine" />
-  <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
-  <meta property="og:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
-  <meta property="og:url" content="https://kuma.2bd.net/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
-  <!-- ✅ Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Noctivine — Books, Shortfilm & Podcast" />
-  <meta name="twitter:description" content="Books • Articles • Psychology • Truth. Real stories and brutally honest thoughts about life." />
-  <meta name="twitter:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <title>Noctivine — Books</title>
 
   <style>
     :root{
@@ -34,108 +11,24 @@
       --text:#EAF0FF;
       --muted:rgba(234,240,255,0.70);
       --muted2:rgba(234,240,255,0.55);
-      --line:rgba(255,255,255,0.10);
-      --card:rgba(255,255,255,0.05);
       --accent:#00FFD5;
       --accent2:#7C4DFF;
       --radius:22px;
       --shadow:0 20px 60px rgba(0,0,0,0.55);
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.12), transparent 55%),
-        radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.14), transparent 60%),
-        radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.06), transparent 55%),
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.12), transparent 60%),
         var(--bg);
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       overflow-x:hidden;
     }
-
     a{color:inherit;text-decoration:none}
     .container{width:min(1150px, 92vw);margin:0 auto;}
-
-    /* ✅ LOADER */
-    .loader-wrap{
-      position:fixed; inset:0;
-      background:
-        radial-gradient(600px 300px at 20% 20%, rgba(0,255,213,0.18), transparent 60%),
-        radial-gradient(600px 300px at 80% 40%, rgba(124,77,255,0.16), transparent 60%),
-        rgba(7,10,15,0.96);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      transition:opacity 0.35s ease, transform 0.35s ease;
-    }
-    .loader-wrap.hide{
-      opacity:0;
-      pointer-events:none;
-      transform:scale(1.02);
-    }
-    .loader{
-      width:min(520px, 92vw);
-      padding:18px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.04);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 40px 120px rgba(0,0,0,0.65);
-      text-align:center;
-    }
-    .loader-logo{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      font-weight:900;
-      letter-spacing:0.6px;
-      font-size:18px;
-      margin-bottom:10px;
-    }
-    .loader-logo img{
-      width:44px;height:44px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,0.14);
-      background:rgba(255,255,255,0.05);
-      object-fit:cover;
-      animation: floaty 1.6s ease-in-out infinite;
-    }
-    @keyframes floaty{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-5px)}
-    }
-    .bar{
-      height:10px;
-      width:100%;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.03);
-      overflow:hidden;
-      margin-top:14px;
-    }
-    .bar > span{
-      display:block;
-      height:100%;
-      width:45%;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(0,255,213,0.9), rgba(124,77,255,0.9));
-      animation: loading 1.25s ease-in-out infinite;
-    }
-    @keyframes loading{
-      0%{transform:translateX(-120%)}
-      100%{transform:translateX(260%)}
-    }
-    .load-text{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
 
     /* NAV */
     .nav{
@@ -145,208 +38,104 @@
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
     .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-      position:relative;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;gap:14px;position:relative;
     }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-      font-weight:900; letter-spacing:0.4px;
-    }
-    .brand img{
-      width:36px;height:36px;
-      border-radius:12px;
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .badge-n{
+      width:36px;height:36px;border-radius:12px;
+      display:grid;place-items:center;
       border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.05);
-      object-fit:cover;
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
     }
-
-    .nav-links{
-      display:flex;
-      gap:18px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-    }
-    .nav-links a{
-      font-size:14px;
-      color:var(--muted);
-      font-weight:800;
-      transition:0.2s;
-    }
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a.active{color:var(--text)}
-
-    .nav-actions{display:flex;gap:10px;align-items:center;}
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display:inline-flex;align-items:center;justify-content:center;
       gap:10px;
-      padding:12px 14px;
-      border-radius:16px;
+      padding:12px 14px;border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
-      color:var(--text);
+      font-weight:900;font-size:14px;
       cursor:pointer;
-      font-weight:900;
-      font-size:14px;
-      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
       user-select:none;
+      transition:0.2s;
+      color:var(--text);
     }
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
     .btn-primary{
-      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.20));
-      border-color: rgba(0,255,213,0.30);
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
+      border-color:rgba(0,255,213,0.34);
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
-    .btn-ghost{background:rgba(255,255,255,0.03)}
 
-    .hamburger{
-      display:none;
-      width:44px;height:44px;border-radius:16px;
+    /* HEADER */
+    .header{padding:26px 0 10px}
+    .header h1{margin:0;font-size:clamp(26px,2.8vw,38px)}
+    .header p{margin:8px 0 0;color:var(--muted);line-height:1.6;font-size:14px}
+
+    /* TOOLS */
+    .tools{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .input{
+      flex:1;min-width:220px;height:46px;
+      padding:0 14px;border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.03);
-      cursor:pointer;
+      color:var(--text);
+      outline:none;
     }
-    .hamburger span{
-      display:block;
-      width:18px;height:2px;
-      margin:4px auto;
-      background:rgba(234,240,255,0.85);
-      border-radius:8px;
-    }
+    .input::placeholder{color:rgba(234,240,255,0.45)}
 
-    /* HERO */
-    .hero{
-      padding: 50px 0 20px;
-      display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .panel{
-      border-radius:var(--radius);
+    /* READER VIEWER */
+    .reader-viewer{
+      margin-top:16px;
+      border-radius: var(--radius);
       border:1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       box-shadow: var(--shadow);
-      padding:18px;
-      overflow:hidden;
-      position:relative;
+      padding:14px;
+      display:none;
     }
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(520px 260px at 20% 10%, rgba(0,255,213,0.12), transparent 60%),
-        radial-gradient(450px 240px at 80% 10%, rgba(124,77,255,0.15), transparent 62%);
-      pointer-events:none;
-    }
-    .panel > *{position:relative}
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.03);
-      color:var(--muted);
-      font-size:13px;
-      font-weight:900;
-      width:max-content;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(0,255,213,0.30);
-    }
-
-    h1{
-      margin:12px 0 10px;
-      font-size:clamp(28px, 3.1vw, 44px);
-      line-height:1.1;
-      letter-spacing:-0.7px;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.6;
-    }
-
-    .hero-actions{
+    .viewer-head{
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-      margin-top:16px;
-    }
-    .mini{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.09);
-      background:rgba(255,255,255,0.03);
-      padding:12px;
-    }
-    .mini b{display:block;font-size:14px}
-    .mini span{display:block;margin-top:4px;color:var(--muted2);font-size:12px}
-
-    /* SECTION */
-    .section{padding:22px 0 10px;}
-    .section-head{
-      display:flex;
-      align-items:end;
       justify-content:space-between;
+      align-items:center;
       gap:12px;
+      flex-wrap:wrap;
       margin-bottom:12px;
     }
-    .section-head h2{margin:0;font-size:18px;letter-spacing:-0.2px}
-    .link{color:var(--muted);font-weight:900;font-size:14px}
-    .link:hover{color:var(--text)}
+    .viewer-head h2{margin:0;font-size:18px}
+    .viewer-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .viewer-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .viewer-box{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,0.10);
+      overflow:hidden;
+      background: rgba(0,0,0,0.30);
+    }
+    .viewer-box iframe{
+      width:100%;
+      height:70vh;
+      border:0;
+    }
 
-    /* BOOK SLIDER */
-    .slider-wrap{
+    /* GRID */
+    .grid{
+      padding:14px 0 10px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
       border-radius:var(--radius);
       border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       box-shadow: var(--shadow);
       overflow:hidden;
-      position:relative;
+      transition:0.2s;
     }
-    .slider{
-      display:flex;
-      overflow:auto;
-      scroll-snap-type:x mandatory;
-      gap:14px;
-      padding:14px;
-      scrollbar-width:none;
-    }
-    .slider::-webkit-scrollbar{display:none;}
-    .slide{
-      min-width: min(360px, 85vw);
-      scroll-snap-align: start;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      overflow:hidden;
-      transition: transform 0.18s ease, border 0.2s ease;
-    }
-    .slide:hover{transform:translateY(-3px);border-color:rgba(0,255,213,0.25)}
+    .card:hover{transform:translateY(-3px);border-color:rgba(0,255,213,0.25)}
     .cover{
-      height:170px;
+      height:180px;
       background:rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
       position:relative;
@@ -355,14 +144,12 @@
       padding:12px;
     }
     .cover img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
+      position:absolute;inset:0;
+      width:100%;height:100%;
       object-fit:cover;
       opacity:0.92;
     }
-    .price{
+    .badge{
       position:relative;
       z-index:2;
       padding:7px 10px;
@@ -374,198 +161,62 @@
       color:rgba(0,255,213,0.95);
       border-color:rgba(0,255,213,0.35);
     }
-    .slide-body{padding:14px;}
-    .slide-body h3{margin:0 0 6px;font-size:16px;letter-spacing:-0.2px}
-    .slide-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
-
-    .actions{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-    }
-    .actions .btn{flex:1}
-
-    .slider-controls{
-      position:absolute;
-      inset:auto 12px 12px auto;
-      display:flex;
-      gap:8px;
-      z-index:5;
-    }
-    .icon-btn{
-      width:42px;height:42px;border-radius:14px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(0,0,0,0.22);
-      color:var(--text);
-      cursor:pointer;
-      font-weight:900;
-      transition:0.2s;
-    }
-    .icon-btn:hover{
-      border-color:rgba(0,255,213,0.28);
-      transform:translateY(-1px);
-    }
-
-    /* ✅ VIDEO GRID (NO IFRAME NOW) */
-    .video-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:14px;
-    }
-    .video-card{
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transition:0.2s;
-    }
-    .video-card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(0,255,213,0.25);
-    }
-    .video-cover{
-      height: 190px;
-      position: relative;
-      background: rgba(255,255,255,0.03);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      overflow:hidden;
-      display:flex;
-      align-items:flex-end;
-      padding:12px;
-    }
-    .video-cover img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:0.92;
-      transform: scale(1.02);
-    }
-    .video-cover .play-badge{
-      position:relative;
-      z-index:2;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.28);
-      font-weight:900;
-      color: rgba(234,240,255,0.95);
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .video-cover .play-dot{
-      width:10px;height:10px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(0,255,213,0.25);
-    }
-
-    .video-body{padding:14px;}
-    .video-body h3{
+    .body{padding:14px;}
+    .body h3{margin:0 0 6px;font-size:16px}
+    .body p{
       margin:0;
-      font-size:16px;
-      letter-spacing:-0.2px;
-    }
-    .video-body p{
-      margin:6px 0 0;
-      color: var(--muted);
+      color:var(--muted);
       font-size:13px;
       line-height:1.55;
+      white-space:pre-line;
     }
-    .video-actions{
-      padding: 14px;
-      display:flex;
-      gap:10px;
-      border-top:1px solid rgba(255,255,255,0.06);
+    .toggle{
+      margin-top:10px;
+      width:100%;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
     }
-    .video-actions .btn{flex:1}
+    .actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+    .actions .btn{flex:1;min-width:150px}
 
-    /* FOOTER */
-    footer{
-      padding: 26px 0 40px;
-      color: var(--muted2);
-      font-size:13px;
-    }
+    /* hidden raw data */
+    #bookDatabase{display:none;}
+
+    footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
     .foot{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;justify-content:space-between;flex-wrap:wrap;
+      gap:14px;border-top:1px solid rgba(255,255,255,0.06);
       padding-top:16px;
     }
-    .foot a{
-      color: var(--muted2);
-      font-weight:800;
-      margin-left:12px;
-    }
+    .foot a{color:var(--muted2);font-weight:800;margin-left:12px}
     .foot a:hover{color:var(--text)}
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .video-grid{grid-template-columns:1fr;}
-    }
-    @media (max-width:860px){
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:68px;
-        right:4vw;
-        width:min(360px, 92vw);
-        flex-direction:column;
-        align-items:stretch;
-        gap:10px;
-        padding:14px;
-        border-radius:18px;
-        background: rgba(12,16,25,0.92);
-        border:1px solid rgba(255,255,255,0.10);
-      }
-      .nav-links.open{display:flex}
-      .hamburger{display:inline-block}
-      .mini-grid{grid-template-columns:1fr;}
+    @media(max-width:980px){.grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:860px){
+      .grid{grid-template-columns:1fr;}
+      .viewer-box iframe{height:60vh;}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ✅ LOADER -->
-  <div class="loader-wrap" id="loader">
-    <div class="loader">
-      <div class="loader-logo">
-        <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
-        <span>Noctivine</span>
-      </div>
-      <div class="bar"><span></span></div>
-      <div class="load-text">Loading books & stories...</div>
-    </div>
-  </div>
-
-  <!-- NAV -->
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
         <a class="brand" href="index.html">
-          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
+          <div class="badge-n">N</div>
           <span>Noctivine</span>
         </a>
 
-        <nav class="nav-links" id="navLinks">
-          <a class="active" href="index.html">Home</a>
-          <a href="books.html">Books</a>
-          <a href="#videos">Shortfilm</a>
-          <a href="#videos">Podcast</a>
-        </nav>
-
-        <div class="nav-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Visit YouTube</a>
-          <button class="hamburger" id="hamburger" aria-label="Open Menu">
-            <span></span><span></span><span></span>
-          </button>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn" href="index.html">Home</a>
         </div>
       </div>
     </div>
@@ -573,79 +224,77 @@
 
   <div class="container">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="panel">
-        <div class="chip"><span class="dot"></span> Books • Articles • Psychology • Truth</div>
+    <section class="header">
+      <h1>Book Library</h1>
+      <p>Read online inside the website, or download from Google Drive.</p>
 
-        <h1>Noctivine — Books, shortfilm, podcast</h1>
-
-        <p class="sub">
-          I write real-life stories, psychology-based insights, and brutally honest thoughts about life — without fake motivation or shallow advice.
-          <br><br>
-          Built for readers who like meaning.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">✅ Visit My YouTube Channel</a>
-          <a class="btn btn-ghost" href="books.html">✅ Explore Books</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">✅ Instagram</a>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini"><b>📚 Books</b><span>The human mind — explained simply, honestly.</span></div>
-          <div class="mini"><b>🧠 Psychology</b><span>Truth about life, not motivation.</span></div>
-          <div class="mini"><b>🎧 Podcast</b><span>Thoughts worth replaying.</span></div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="chip"><span class="dot"></span> Latest Drop</div>
-        <p class="sub" style="margin-top:10px">
-          This site updates as I publish new books, and new drops.
-          <br>
-          Simple. clean. and made for people who still love words.
-        </p>
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="books.html">📚 Open Book Library</a>
-          <a class="btn btn-ghost" href="#books">🔥 Latest Drop</a>
-        </div>
+      <div class="tools">
+        <input class="input" id="searchBox" placeholder="Search books..." />
       </div>
     </section>
 
-    <!-- ✅ MY BOOKS SLIDER -->
-    <section class="section" id="books">
-      <div class="section-head">
-        <h2>My Books (Slide Show)</h2>
-        <a class="link" href="books.html">View all →</a>
-      </div>
+    <!-- ✅ Embedded Reader -->
+    <section class="reader-viewer" id="readerViewer">
+      <div class="viewer-head">
+        <div>
+          <h2 id="viewerTitle">Reading...</h2>
+          <p id="viewerSub">Embedded PDF reader</p>
+        </div>
 
-      <div class="slider-wrap">
-        <div class="slider" id="bookSlider"></div>
-
-        <div class="slider-controls">
-          <button class="icon-btn" id="prevBtn">‹</button>
-          <button class="icon-btn" id="nextBtn">›</button>
+        <div class="viewer-actions">
+          <button class="btn" onclick="closeReader()">Close</button>
+          <a class="btn btn-primary" id="openNewTabBtn" href="#" target="_blank" rel="noopener">Open Fullscreen</a>
         </div>
       </div>
-    </section>
 
-    <!-- ✅ VIDEOS -->
-    <section class="section" id="videos">
-      <div class="section-head">
-        <h2>Shortfilm / Podcast</h2>
-        <a class="link" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">More on YouTube →</a>
+      <div class="viewer-box">
+        <iframe id="bookFrame" src="" loading="lazy"></iframe>
       </div>
-
-      <div class="video-grid" id="videoGrid"></div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ✅ Book Cards -->
+    <section class="grid" id="bookGrid"></section>
+
+    <!-- ✅ RAW BOOK DATABASE (EDIT HERE ONLY) -->
+    <div id="bookDatabase">
+      <div class="book-row"
+        data-id="lonely-generation"
+        data-name="Lonely Generation"
+        data-cover="assests/ChatGPT Image Jan 22, 2026, 01_02_19 PM.png"
+        data-pdf="https://drive.google.com/file/d/1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3/preview
+"
+        data-download="https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3">
+This is not a story about something extraordinary happening. No dramatic turning point.
+No single moment where everything changes. No version of love that fixes a life
+overnight. This is a story about what it feels like to exist quietly in a crowded world.
+About waking up every day surrounded by people and still feeling slightly out of place.
+About scrolling through a phone full of names and realizing none of them really know
+you. About laughing at the right moments, saying the safe things, and carrying thoughts
+you never quite say out loud. It’s about being seventeen and expected to know where
+you’re going, when most days you’re still figuring out where you stand. The boy writing
+these pages is not broken. He goes to school. He studies. He jokes. He functions. But
+somewhere between expectations, noise, and constant connection, he begins to notice
+something missing. Not happiness. Not success. Just *presence*. The feeling of being
+seen without having to perform. This book doesn’t move fast. It doesn’t chase drama. It
+doesn’t try to impress you. It pays attention instead. To small pauses in conversation. To
+silence that isn’t awkward. To the difference between being noticed and being needed.
+To the quiet line between attachment and self-respect. Love enters this story slowly, the
+way it does in real life when it’s healthy. Not as obsession. Not as rescue. But as
+steadiness. As something that exists alongside fear, pressure, and uncertainty, not
+above them. If you’re looking for a perfect romance, this book will disappoint you. If
+you’re looking for answers, it probably won’t give you many. But if you’ve ever felt lonely
+without being alone, tired without being exhausted, or unsure without knowing why—
+then these pages might feel familiar. This is not a book about finding everything. It’s
+about stopping the habit of abandoning yourself. And learning, slowly and imperfectly,
+how to keep going without pretending you’re fine when you’re not. That’s where this
+story begins.
+      </div>
+    </div>
+
     <footer>
       <div class="foot">
         <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
         <div>
-          <a href="books.html">Books</a>
           <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
@@ -655,97 +304,110 @@
   </div>
 
   <script>
-    // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ✅ mobile nav
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+    const grid = document.getElementById("bookGrid");
+    const searchBox = document.getElementById("searchBox");
 
-    // ✅ BOOKS (you can add more here)
-    const BOOKS = [
-      {
-        name: "Lonely Generation",
-        cover: "assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png",
-        type: "FREE",
-        desc: `This isn’t a story about something extraordinary happening.
-No dramatic turning point. No magical fix.
-Just the quiet reality of growing up in a loud world — and learning what it means to survive it.`,
-        open: "books.html",
-        download: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3"
-      }
-    ];
+    function shortText(text, max=260){
+      if (!text) return "";
+      text = text.trim();
+      if (text.length <= max) return text;
+      return text.slice(0, max) + "...";
+    }
 
-    // ✅ render books slider
-    const slider = document.getElementById("bookSlider");
-    slider.innerHTML = BOOKS.map(b => `
-      <div class="slide">
-        <div class="cover">
-          <img src="${b.cover}" alt="${b.name}" onerror="this.remove()" />
-          <span class="price">${b.type}</span>
-        </div>
-        <div class="slide-body">
-          <h3>${b.type} — ${b.name}</h3>
-          <p>${b.desc}</p>
-          <div class="actions">
-            <a class="btn btn-ghost" href="${b.open}">✅ Open</a>
-            <a class="btn btn-primary" href="${b.download}" target="_blank" rel="noopener">✅ Download</a>
+    // ✅ Read raw rows from HTML database (no js file)
+    function getBooksFromHTML(){
+      const rows = document.querySelectorAll("#bookDatabase .book-row");
+      return Array.from(rows).map(row => ({
+        id: row.dataset.id,
+        name: row.dataset.name,
+        cover: row.dataset.cover,
+        pdf: row.dataset.pdf,
+        download: row.dataset.download,
+        description: row.textContent.trim()
+      }));
+    }
+
+    const BOOKS = getBooksFromHTML();
+
+    function renderBooks(list){
+      grid.innerHTML = list.map(book => `
+        <div class="card" id="${book.id}">
+          <div class="cover">
+            <img src="${book.cover}" alt="${book.name}" onerror="this.remove()">
+            <span class="badge">FREE</span>
+          </div>
+
+          <div class="body">
+            <h3>${book.name}</h3>
+
+            <p class="desc" data-full="${encodeURIComponent(book.description)}" data-open="false">
+              ${shortText(book.description)}
+            </p>
+
+            <button class="toggle">Show more</button>
+
+            <div class="actions">
+              <button class="btn" onclick="openReader('${book.id}')">Read Online</button>
+
+              <a class="btn btn-primary" href="${book.download}" target="_blank" rel="noopener">
+                Download
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    `).join("");
+      `).join("");
 
-    // ✅ slider buttons
-    const nextBtn = document.getElementById("nextBtn");
-    const prevBtn = document.getElementById("prevBtn");
+      // show more/less
+      document.querySelectorAll(".toggle").forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const desc = document.querySelectorAll(".desc")[index];
+          const full = decodeURIComponent(desc.getAttribute("data-full"));
+          const isOpen = desc.getAttribute("data-open") === "true";
 
-    nextBtn.addEventListener("click", () => slider.scrollBy({ left: 380, behavior: "smooth" }));
-    prevBtn.addEventListener("click", () => slider.scrollBy({ left: -380, behavior: "smooth" }));
+          if (!isOpen) {
+            desc.textContent = full;
+            desc.setAttribute("data-open", "true");
+            btn.textContent = "Show less";
+          } else {
+            desc.textContent = shortText(full);
+            desc.setAttribute("data-open", "false");
+            btn.textContent = "Show more";
+          }
+        });
+      });
+    }
 
-    // ✅ auto-slide
-    let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500);
-    slider.addEventListener("mouseenter", () => clearInterval(auto));
-    slider.addEventListener("mouseleave", () => auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 4500));
-
-    // ✅ VIDEO LIST (NO IFRAME NOW)
-    const VIDEOS = [
-      {
-        title: "The firewood lake",
-        chapter: "Chapter 1",
-        by: "Noctivine",
-        cover: "assests/WhatsApp%20Image%202026-01-22%20at%208.31.40%20PM.jpeg",
-        youtube: "https://youtu.be/KggsGhzaSQo?si=9E9x4p1PFKonMewM"
+    function openReader(bookId){
+      const book = BOOKS.find(b => b.id === bookId);
+      if(!book || !book.pdf){
+        alert("PDF not found. Upload it into assets/books/");
+        return;
       }
-    ];
 
-    // ✅ render videos (cover image + button only)
-    const videoGrid = document.getElementById("videoGrid");
-    videoGrid.innerHTML = VIDEOS.map(v => `
-      <div class="video-card">
-        <div class="video-cover">
-          <img src="${v.cover}" alt="${v.title}" onerror="this.remove()">
-          <div class="play-badge">
-            <span class="play-dot"></span>
-            ▶ Watch on YouTube
-          </div>
-        </div>
+      document.getElementById("readerViewer").style.display = "block";
+      document.getElementById("viewerTitle").textContent = book.name;
 
-        <div class="video-body">
-          <h3>${v.title}</h3>
-          <p>${v.chapter} • ${v.by}</p>
-        </div>
+      document.getElementById("bookFrame").src = book.pdf;
+      document.getElementById("openNewTabBtn").href = book.pdf;
 
-        <div class="video-actions">
-          <a class="btn btn-primary" href="${v.youtube}" target="_blank" rel="noopener">Open on YouTube</a>
-          <a class="btn btn-ghost" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Channel</a>
-        </div>
-      </div>
-    `).join("");
+      document.getElementById("readerViewer").scrollIntoView({behavior:"smooth"});
+    }
 
-    // ✅ loader hide
-    window.addEventListener("load", () => {
-      setTimeout(() => document.getElementById("loader").classList.add("hide"), 650);
+    function closeReader(){
+      document.getElementById("bookFrame").src = "";
+      document.getElementById("readerViewer").style.display = "none";
+    }
+
+    // init
+    renderBooks(BOOKS);
+
+    // search
+    searchBox.addEventListener("input", () => {
+      const q = searchBox.value.trim().toLowerCase();
+      const filtered = BOOKS.filter(b => b.name.toLowerCase().includes(q));
+      renderBooks(filtered);
     });
   </script>
 
