@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- ✅ SEO BASIC -->
+  <!-- ✅ SEO -->
   <title>Noctivine — Book Library | kuma.2bd.net</title>
   <meta name="description" content="Explore Noctivine’s books — read online inside the website or download the PDF. Minimal, fast, reader-first design." />
   <meta name="keywords" content="Noctivine, books, psychology, stories, pdf books, read online, download books" />
@@ -14,8 +15,9 @@
 
   <!-- ✅ FAVICON -->
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
-  <!-- ✅ Open Graph -->
+  <!-- ✅ OPEN GRAPH -->
   <meta property="og:site_name" content="Noctivine" />
   <meta property="og:title" content="Noctivine — Book Library" />
   <meta property="og:description" content="Read books online or download PDFs. Clean writing. Minimal design." />
@@ -26,29 +28,36 @@
   <style>
     :root{
       --bg:#070A0F;
+      --panel:rgba(255,255,255,0.04);
+      --panel2:rgba(255,255,255,0.06);
       --text:#EAF0FF;
-      --muted:rgba(234,240,255,0.70);
-      --muted2:rgba(234,240,255,0.55);
+      --muted:rgba(234,240,255,0.72);
+      --muted2:rgba(234,240,255,0.58);
       --accent:#00FFD5;
       --accent2:#7C4DFF;
       --radius:22px;
       --shadow:0 20px 60px rgba(0,0,0,0.55);
       --line:rgba(255,255,255,0.10);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       background:
         radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.10), transparent 55%),
         radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.12), transparent 60%),
+        radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.05), transparent 55%),
         var(--bg);
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       overflow-x:hidden;
     }
+
     a{color:inherit;text-decoration:none}
-    .container{width:min(1150px, 92vw);margin:0 auto;}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px, 92vw);margin:0 auto;}
 
     /* ✅ LOADER */
     .loader-wrap{
@@ -68,12 +77,17 @@
     .loader{
       width:min(520px, 92vw);
       padding:18px;
-      border-radius:24px;
+      border-radius:26px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       box-shadow: 0 40px 120px rgba(0,0,0,0.65);
       text-align:center;
+      animation: pop 0.5s ease forwards;
+    }
+    @keyframes pop{
+      from{transform:scale(0.98); opacity:0;}
+      to{transform:scale(1); opacity:1;}
     }
     .loader-logo{
       display:flex;
@@ -111,8 +125,8 @@
       height:100%;
       width:45%;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(0,255,213,0.9), rgba(124,77,255,0.9));
-      animation: loading 1.25s ease-in-out infinite;
+      background: linear-gradient(90deg, rgba(0,255,213,0.95), rgba(124,77,255,0.9));
+      animation: loading 1.2s ease-in-out infinite;
     }
     @keyframes loading{
       0%{transform:translateX(-120%)}
@@ -133,15 +147,21 @@
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
     .nav-inner{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 0;gap:14px;position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+      position:relative;
     }
+
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
       font-weight:950;
       letter-spacing:0.4px;
+      min-width:0;
     }
     .brand img{
       width:38px;height:38px;
@@ -150,38 +170,77 @@
       background:rgba(255,255,255,0.05);
       object-fit:cover;
       box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      flex-shrink:0;
+    }
+    .brand span{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:140px;
+      font-size:16px;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex-shrink:0;
     }
 
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       gap:10px;
-      padding:12px 14px;border-radius:16px;
+      padding:12px 14px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
-      font-weight:950;font-size:14px;
+      font-weight:950;
+      font-size:14px;
       cursor:pointer;
       user-select:none;
       transition:0.2s;
       color:var(--text);
       white-space:nowrap;
     }
-    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,0.18)
+    }
+
     .btn-primary{
       background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
       border-color:rgba(0,255,213,0.34);
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
 
+    .btn-donate{
+      background: linear-gradient(90deg, rgba(124,77,255,0.22), rgba(0,255,213,0.18));
+      border-color: rgba(124,77,255,0.34);
+      box-shadow: 0 18px 70px rgba(124,77,255,0.10);
+    }
+
     /* ✅ HEADER */
-    .header{padding:26px 0 10px}
-    .header h1{margin:0;font-size:clamp(26px,2.8vw,38px)}
-    .header p{margin:8px 0 0;color:var(--muted);line-height:1.6;font-size:14px}
+    .header{padding:26px 0 8px}
+    .header h1{margin:0;font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.6px}
+    .header p{margin:10px 0 0;color:var(--muted);line-height:1.65;font-size:14px}
 
     /* ✅ TOOLS */
-    .tools{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .tools{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .input{
-      flex:1;min-width:220px;height:46px;
-      padding:0 14px;border-radius:16px;
+      flex:1;
+      min-width:220px;
+      height:46px;
+      padding:0 14px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.03);
       color:var(--text);
@@ -194,10 +253,15 @@
       margin-top:16px;
       border-radius: var(--radius);
       border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
       box-shadow: var(--shadow);
       padding:14px;
       display:none;
+      animation: fadeUp 0.45s ease both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(10px);}
+      to{opacity:1; transform:translateY(0);}
     }
     .viewer-head{
       display:flex;
@@ -232,12 +296,16 @@
     .card{
       border-radius:var(--radius);
       border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
       box-shadow: var(--shadow);
       overflow:hidden;
       transition:0.2s;
+      will-change: transform;
     }
-    .card:hover{transform:translateY(-3px);border-color:rgba(0,255,213,0.25)}
+    .card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(0,255,213,0.25)
+    }
     .cover{
       height:180px;
       background:rgba(255,255,255,0.03);
@@ -248,7 +316,8 @@
       padding:12px;
     }
     .cover img{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
       width:100%;height:100%;
       object-fit:cover;
       opacity:0.92;
@@ -284,12 +353,34 @@
       color:var(--text);
       font-weight:950;
       cursor:pointer;
+      transition:0.2s;
     }
+    .toggle:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-1px);}
     .actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
     .actions .btn{flex:1;min-width:150px}
 
     /* hidden raw data */
     #bookDatabase{display:none;}
+
+    /* ✅ ADS */
+    .sponsor-box{
+      margin-top:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+      padding:14px;
+      text-align:center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+    .sponsor-label{
+      font-size:12px;
+      opacity:0.6;
+      margin-bottom:10px;
+      letter-spacing:0.3px;
+      font-weight:900;
+      color:rgba(234,240,255,0.70);
+    }
 
     /* ✅ FOOTER */
     footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
@@ -297,14 +388,21 @@
       display:flex;justify-content:space-between;flex-wrap:wrap;
       gap:14px;border-top:1px solid rgba(255,255,255,0.06);
       padding-top:16px;
+      margin-top:18px;
     }
     .foot a{color:var(--muted2);font-weight:900;margin-left:12px}
     .foot a:hover{color:var(--text)}
 
-    @media(max-width:980px){.grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:980px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
     @media(max-width:860px){
       .grid{grid-template-columns:1fr;}
       .viewer-box iframe{height:60vh;}
+    }
+    @media (max-width:520px){
+      .brand span{display:none;}
+      .btn{padding:10px 12px;font-size:13px;border-radius:14px;}
     }
   </style>
 </head>
@@ -332,9 +430,10 @@
           <span>Noctivine</span>
         </a>
 
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+        <div class="nav-actions">
           <a class="btn" href="index.html">Home</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-donate" href="don.html">Donate</a>
         </div>
       </div>
     </div>
@@ -345,9 +444,10 @@
     <section class="header">
       <h1>Book Library</h1>
       <p>
-        Welcome to my collection. You can read online inside this website, or download the PDF.
+        Welcome to my collection.
+        Read online inside this website, or download the PDF for offline reading.
         <br />
-        This is my writing space — simple, quiet, and built for real readers.
+        This space is built for real readers — clean, quiet, and distraction-free.
       </p>
 
       <div class="tools">
@@ -364,7 +464,7 @@
         </div>
 
         <div class="viewer-actions">
-          <button class="btn" onclick="closeReader()">Close</button>
+          <button class="btn" type="button" onclick="closeReader()">Close</button>
           <a class="btn btn-primary" id="openNewTabBtn" href="#" target="_blank" rel="noopener">Open Fullscreen</a>
         </div>
       </div>
@@ -401,10 +501,21 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
 
     </div>
 
+    <!-- ✅ ADS (BOTTOM) -->
+    <section class="sponsor-box" aria-label="Sponsored Content">
+      <div class="sponsor-label">Sponsored</div>
+
+      <!-- ✅ Adsterra Code -->
+      <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
+      <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+    </section>
+
     <footer>
       <div class="foot">
         <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
         <div>
+          <a href="index.html">Home</a>
+          <a href="don.html">Donate</a>
           <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
@@ -439,8 +550,8 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
         id: row.dataset.id,
         name: row.dataset.name,
         cover: row.dataset.cover,
-        pdf: (row.dataset.pdf || "").trim(),          // ✅ trims accidental spaces/newlines
-        download: (row.dataset.download || "").trim(),// ✅ trims accidental spaces/newlines
+        pdf: (row.dataset.pdf || "").trim(),
+        download: (row.dataset.download || "").trim(),
         description: row.textContent.trim()
       }));
     }
@@ -477,7 +588,7 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
         </article>
       `).join("");
 
-      // ✅ show more/less logic
+      // ✅ show more/less
       document.querySelectorAll(".toggle").forEach((btn, index) => {
         btn.addEventListener("click", () => {
           const desc = document.querySelectorAll(".desc")[index];
@@ -534,9 +645,9 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
       renderBooks(filtered);
     });
 
-    // ✅ loader hide (fast)
+    // ✅ loader hide
     window.addEventListener("load", () => {
-      setTimeout(() => document.getElementById("loader").classList.add("hide"), 550);
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 520);
     });
   </script>
 
