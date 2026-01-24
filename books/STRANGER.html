@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ✅ PRIMARY SEO -->
+  <title>The Stranger In My Room — Noctivine</title>
+  <meta name="description" content="Read The Stranger In My Room — a one shot story by Noctivine. A suspenseful psychological short story where time stops at 3:13." />
+  <meta name="keywords" content="Noctivine, The Stranger In My Room, one shot story, psychological thriller, horror story, Indian writer, short story" />
+  <meta name="author" content="Noctivine" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kuma.2bd.net/stranger.html" />
+
+  <!-- ✅ FAVICON -->
+  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:site_name" content="Noctivine" />
+  <meta property="og:title" content="The Stranger In My Room — Noctivine" />
+  <meta property="og:description" content="A psychological one-shot story where time stops at 3:13." />
+  <meta property="og:url" content="https://kuma.2bd.net/stranger.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+
+  <style>
+    :root{
+      --bg:#070A0F;
+      --panel:rgba(255,255,255,0.04);
+      --panel2:rgba(255,255,255,0.06);
+      --text:#EAF0FF;
+      --muted:rgba(234,240,255,0.70);
+      --muted2:rgba(234,240,255,0.55);
+      --line:rgba(255,255,255,0.10);
+      --accent:#00FFD5;
+      --accent2:#7C4DFF;
+      --radius:22px;
+      --shadow:0 20px 60px rgba(0,0,0,0.55);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.10), transparent 55%),
+        radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.12), transparent 60%),
+        radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.05), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      overflow-x:hidden;
+      line-height:1.75;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(900px, 92vw);margin:0 auto;}
+
+    /* ✅ LOADER */
+    .loader-wrap{
+      position:fixed; inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      background: rgba(7,10,15,0.97);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .loader-wrap.hide{
+      opacity:0;
+      pointer-events:none;
+      transform:scale(1.01);
+    }
+    .loader{
+      width:min(520px, 92vw);
+      padding:18px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.65);
+      text-align:center;
+    }
+    .loader-head{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      font-weight:950;
+      letter-spacing:0.7px;
+      font-size:18px;
+      margin-bottom:10px;
+    }
+    .loader-head img{
+      width:46px;height:46px;
+      border-radius:15px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.06);
+      object-fit:cover;
+      animation: floaty 1.6s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-5px)}
+    }
+    .bar{
+      height:10px;
+      width:100%;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      overflow:hidden;
+      margin-top:14px;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:45%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(0,255,213,0.95), rgba(124,77,255,0.9));
+      animation: loading 1.2s ease-in-out infinite;
+    }
+    @keyframes loading{
+      0%{transform:translateX(-120%)}
+      100%{transform:translateX(260%)}
+    }
+    .load-text{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* ✅ NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(16px);
+      background:rgba(7,10,15,0.55);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:950;
+      letter-spacing:0.4px;
+      min-width:0;
+    }
+    .brand img{
+      width:38px;height:38px;
+      border-radius:13px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.06);
+      object-fit:cover;
+      flex-shrink:0;
+    }
+    .brand span{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:170px;
+      font-size:16px;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex-shrink:0;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      cursor:pointer;
+      font-weight:950;
+      font-size:14px;
+      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,0.18)}
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.20));
+      border-color: rgba(0,255,213,0.30);
+      box-shadow: 0 18px 70px rgba(0,255,213,0.10);
+    }
+    .btn-donate{
+      background: linear-gradient(90deg, rgba(124,77,255,0.24), rgba(0,255,213,0.16));
+      border-color: rgba(124,77,255,0.35);
+      box-shadow: 0 18px 70px rgba(124,77,255,0.10);
+    }
+
+    /* ✅ HEADER */
+    .story-head{
+      padding:28px 0 10px;
+      animation: fadeUp 0.55s ease both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.03);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:950;
+      width:max-content;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(0,255,213,0.28);
+    }
+
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(26px, 3vw, 44px);
+      line-height:1.1;
+      letter-spacing:-0.7px;
+    }
+    .byline{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* ✅ READER PANEL */
+    .panel{
+      margin-top:16px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      animation: fadeUp 0.65s ease both;
+    }
+    .panel-top{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .panel-top b{
+      font-size:14px;
+      letter-spacing:0.2px;
+    }
+    .panel-top span{
+      color:var(--muted2);
+      font-size:12px;
+    }
+
+    .story{
+      padding:18px 16px;
+      font-size:16px;
+      color:rgba(234,240,255,0.92);
+    }
+    .story p{
+      margin:0 0 16px;
+      white-space:pre-line;
+    }
+
+    .divider{
+      height:1px;
+      background:rgba(255,255,255,0.08);
+      margin:18px 0;
+    }
+
+    /* ✅ ADS (optional bottom) */
+    .sponsor{
+      margin-top:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+      padding:14px;
+      text-align:center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+    .sponsor small{
+      display:block;
+      opacity:0.6;
+      font-weight:900;
+      margin-bottom:10px;
+      letter-spacing:0.3px;
+    }
+
+    /* ✅ FOOTER */
+    footer{
+      padding:26px 0 40px;
+      color:rgba(234,240,255,0.55);
+      font-size:13px;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding-top:16px;
+    }
+
+    /* ✅ MOBILE */
+    @media (max-width:520px){
+      .brand span{display:none;}
+      .btn{font-size:13px;padding:10px 12px;border-radius:14px;}
+      .story{font-size:15px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ LOADER -->
+  <div class="loader-wrap" id="loader" aria-label="Loading">
+    <div class="loader">
+      <div class="loader-head">
+        <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
+        <span>Noctivine</span>
+      </div>
+      <div class="bar"><span></span></div>
+      <div class="load-text">Loading story...</div>
+    </div>
+  </div>
+
+  <!-- ✅ NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a class="brand" href="index.html">
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
+          <span>Noctivine</span>
+        </a>
+
+        <div class="nav-actions">
+          <a class="btn" href="index.html">Home</a>
+          <a class="btn" href="books.html">Books</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-donate" href="don.html">Support</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- ✅ STORY HEADER -->
+    <header class="story-head">
+      <div class="chip"><span class="dot"></span> One Shot • Psychological Thriller</div>
+      <h1>THE STRANGER IN MY ROOM</h1>
+      <p class="byline">— Noctivine • <span id="wordCount">0</span> words</p>
+    </header>
+
+    <!-- ✅ STORY PANEL -->
+    <section class="panel">
+      <div class="panel-top">
+        <div>
+          <b>Reading Mode</b>
+          <span>Scroll-friendly • Mobile-first</span>
+        </div>
+        <div>
+          <span id="timeTag">03:13</span>
+        </div>
+      </div>
+
+      <article class="story" id="storyText">
+        <p>It started on a Tuesday.</p>
+
+        <p>
+I remember because I had an exam the next morning and I was still lying there pretending I’d revise in the morning.
+
+Which was a lie.
+        </p>
+
+        <p>
+My notebook was open beside me. Admit card under it. Charger cable twisted the wrong way again. Half empty water bottle near my pillow. My cheap perfume bottle sat on the table like I was still trying to be a person.
+        </p>
+
+        <p>I closed my eyes.</p>
+        <p>Told myself: sleep now.</p>
+        <p>And then I woke up.</p>
+
+        <div class="divider"></div>
+
+        <p>
+Not slowly.
+
+My eyes just opened.
+
+The fan kept spinning. Same soft whirr. Nothing sounded wrong.
+
+Then I rolled my head a little and saw him.
+
+A guy sitting on the edge of my bed.
+        </p>
+
+        <p>
+My tongue felt like paper.
+
+I didn’t scream.
+
+I should’ve.
+
+I didn’t.
+        </p>
+
+        <p>“Who are you?” I asked.</p>
+
+        <p>
+He turned his head slowly. Patient.
+
+“You’re awake,” he said.
+        </p>
+
+        <p>“Yeah,” I snapped. “Congrats.”</p>
+
+        <p>
+It came out sarcastic even though my hands were tight under the blanket. That’s just how my brain works when it’s scared. It tries to act like it isn’t.
+        </p>
+
+        <p>
+He looked at me for a second.
+
+Then his eyes dropped to his wrist.
+
+A watch. Dark strap. Old looking.
+
+The hands weren’t moving.
+
+Stuck at 3:13.
+        </p>
+
+        <p>
+He looked back up at me and said, “You always say that.”
+        </p>
+
+        <p>“What?” I asked.</p>
+
+        <p>He didn’t explain.</p>
+
+        <p>I swallowed. “Get out.”</p>
+
+        <p>He stayed seated.</p>
+
+        <p>Then he said, “You’re late.”</p>
+
+        <p>
+My brain stalled on that word.
+
+“Late for what?”
+        </p>
+
+        <p>
+His eyes flicked to my phone. “Check.”
+        </p>
+
+        <p>
+I grabbed it and pressed the power button.
+
+The screen lit up.
+
+Relief hit me for half a second.
+
+Then it disappeared.
+        </p>
+
+        <p>
+My wallpaper wasn’t mine.
+
+It was a room.
+
+Dark. Narrow. Wrong.
+
+A cracked mirror. A window with bars.
+        </p>
+
+        <p>
+And on the lock screen there were words.
+
+Not a message. Not a notification.
+
+Just text sitting there like it belonged.
+        </p>
+
+        <p>
+3:13
+You’re late.
+        </p>
+
+        <p>
+I didn’t move.
+
+The room stayed quiet.
+
+Like it was listening.
+        </p>
+
+        <p>
+I looked up at him.
+
+“Did you do this?” I asked.
+        </p>
+
+        <p>
+He shrugged. “Does it matter?”
+        </p>
+
+        <p>“Yes,” I said. “It’s my phone.”</p>
+
+        <p>
+He smiled a little. Not warm. Not cute. More like he’d heard me say that before.
+        </p>
+
+        <p>“You don’t remember,” he said.</p>
+
+        <p>“Remember what?”</p>
+
+        <p>
+His thumb rubbed his ring finger once. Small. Controlled. Like he was stopping himself from doing something else.
+        </p>
+
+        <p>Then he said, “You opened it.”</p>
+
+        <p>“I didn’t open anything,” I said.</p>
+
+        <p>He blinked a beat late.</p>
+
+        <p>“You did.”</p>
+
+        <div class="divider"></div>
+
+        <p>
+I stared at him, trying to keep my face normal.
+
+Something stupid flashed in my head.
+
+Earlier that night, my phone had buzzed at 3:13.
+        </p>
+
+        <p>
+Unknown number.
+
+A link.
+
+I clicked it without thinking.
+
+It opened to a blank page and I remember rolling my eyes and going back to my notes.
+        </p>
+
+        <p>
+I didn’t tell him that.
+        </p>
+
+        <p>“Leave,” I said.</p>
+
+        <p>
+He didn’t move.
+
+So I reached for the lamp. My hand shook a little and I hated that it did.
+        </p>
+
+        <p>Click.</p>
+
+        <p>
+The lamp turned on.
+
+The room lit up.
+        </p>
+
+        <p>
+My desk, my notebook, the floor.
+
+But the light didn’t reach him properly.
+        </p>
+
+        <p>
+Everything around him stayed wrong.
+
+Not shadow dark.
+
+Wrong dark.
+
+Like the light didn’t know what to do with him.
+        </p>
+
+        <p>
+My mouth went dry again.
+
+He watched my face.
+
+“You see it,” he said.
+        </p>
+
+        <p>
+I wanted to say something smart. Something sharp. Something that made me feel like I had control.
+
+Nothing came out.
+        </p>
+
+        <p>
+He leaned forward a little. Not enough to trap me. Enough to make the air feel heavier.
+        </p>
+
+        <p>“Why are you here?” I whispered.</p>
+
+        <p>
+His thumb moved again, rubbing the ring finger once.
+
+He didn’t answer right away.
+
+He just looked at me like he was waiting for me to catch up.
+        </p>
+
+        <p>“I didn’t choose this,” I said.</p>
+
+        <p>
+He didn’t react.
+
+He just looked at me like that sentence was pointless.
+        </p>
+
+        <p>
+Then he lifted his hand slowly.
+
+I flinched.
+
+He didn’t touch me.
+        </p>
+
+        <p>
+His fingers stopped right before my hair. Close enough that my skin reacted anyway.
+
+A shiver. A pull.
+
+I hated that I felt it.
+        </p>
+
+        <p>“Don’t,” I said fast.</p>
+
+        <p>
+His hand froze instantly.
+
+“Okay,” he said.
+
+Too easy.
+
+Too controlled.
+        </p>
+
+        <p>
+Like he didn’t need to push harder to win.
+
+He leaned closer.
+
+I could smell him.
+        </p>
+
+        <p>
+Clean. Like rain.
+
+Not perfume. Not smoke. Just that cold fresh smell that sticks after a storm.
+        </p>
+
+        <p>Then he whispered my name.</p>
+
+        <p>
+Perfectly.
+
+Not like someone reading it.
+
+Like someone who’d said it a hundred times.
+        </p>
+
+        <p>
+My breath caught.
+
+“How do you know my name?” I asked.
+        </p>
+
+        <p>
+His eyes stayed on mine. Too familiar.
+
+“You say mine too,” he said.
+        </p>
+
+        <p>
+My stomach didn’t drop.
+
+It folded.
+        </p>
+
+        <p>
+Because I didn’t feel like he was lying.
+
+I didn’t feel like I was dreaming.
+
+It didn’t feel like a nightmare.
+
+It felt like a memory waking up.
+        </p>
+
+        <p>I hated that thought.</p>
+
+        <p>
+I wanted him gone.
+
+I also wanted him to speak again, because silence would mean I imagined him.
+        </p>
+
+        <p>
+He stood up slowly.
+
+The bed rose back like it was relieved.
+        </p>
+
+        <p>“Sleep,” he said.</p>
+
+        <p>“I’m not sleeping.”</p>
+
+        <p>“You will.”</p>
+
+        <p>
+Not a threat.
+
+A schedule.
+        </p>
+
+        <p>
+Then his fingers touched my hair for one second.
+
+Real touch. Warm. Gentle.
+
+And my body leaned into it before my brain could stop it.
+        </p>
+
+        <p>
+I pulled back fast, disgusted with myself.
+
+He watched me like he expected it.
+        </p>
+
+        <p>“You always fight first,” he said.</p>
+
+        <p>“What do you mean always?” I snapped.</p>
+
+        <p>
+He didn’t answer.
+
+He just looked at his watch again.
+
+3:13.
+        </p>
+
+        <p>Then he was gone.</p>
+
+        <p>
+No footsteps. No door. No sound.
+
+Gone.
+        </p>
+
+        <p>
+The room blinked wrong.
+
+The light filled everything again.
+
+My phone wallpaper snapped back to mine.
+        </p>
+
+        <p>
+I stared at the screen.
+
+3:14 AM.
+        </p>
+
+        <p>
+Outside, a dog barked once.
+
+Just once.
+        </p>
+
+        <p>
+I lay back down.
+
+Staring at the ceiling.
+
+Telling myself it didn’t happen.
+        </p>
+
+        <p>
+Closing my eyes like sleep was a choice.
+        </p>
+
+        <p>
+Then I whispered into the dark, because I needed to feel like I had control.
+        </p>
+
+        <p>“Come back.”</p>
+
+        <div class="divider"></div>
+
+        <p>Next night, 3:13.</p>
+
+        <p>
+My eyes opened again.
+
+Cold air on my arms.
+
+I sat up fast.
+        </p>
+
+        <p>
+Different ceiling.
+
+Different fan.
+
+Different silence.
+        </p>
+
+        <p>
+My pillow smelled wrong.
+
+Clean and wet.
+
+Rain.
+        </p>
+
+        <p>
+I looked around and my body went still.
+        </p>
+
+        <p>This wasn’t my room.</p>
+
+        <p>
+The shadows felt older here.
+
+The air felt like it had been waiting.
+        </p>
+
+        <p>Then his voice came from the dark, close.</p>
+
+        <p>“Good.”</p>
+
+        <p>
+I turned my head.
+
+He was sitting on the edge of the bed again.
+
+Same calm face.
+
+Same watch, still stuck at 3:13.
+        </p>
+
+        <p>“Where am I?” I asked.</p>
+
+        <p>“Here,” he said.</p>
+
+        <p>“No,” I said quickly. “I didn’t…”</p>
+
+        <p>“You did.”</p>
+
+        <p>Two words.</p>
+
+        <p>Final.</p>
+
+        <p>“I didn’t choose this,” I whispered.</p>
+
+        <p>
+He leaned back a little.
+
+“You came,” he said.
+        </p>
+
+        <p>
+Knife clean.
+
+No romance.
+
+No explanation.
+
+Just fact.
+        </p>
+
+        <p>
+He reached out slowly.
+
+Not rushing. Not forcing.
+
+His fingers brushed my hair again.
+
+Warm.
+
+Real.
+        </p>
+
+        <p>
+And my body reacted like it wanted it.
+        </p>
+
+        <p>
+The worst part wasn’t that I was scared.
+        </p>
+
+        <p>
+The worst part was that my body didn’t hate him.
+        </p>
+
+        <p>I whispered, “I’m not yours.”</p>
+
+        <p>
+He leaned in close enough that his voice hit my skin.
+        </p>
+
+        <p>“Sleep.”</p>
+
+        <p>
+Behind him, carved into the wall, were marks.
+
+One line.
+
+Then another.
+
+Then another.
+        </p>
+
+        <p>Like someone had been counting nights.</p>
+
+        <div class="divider"></div>
+
+        <p>Morning came and I woke up in my room.</p>
+
+        <p>
+My bed. My ceiling. My fan.
+
+My notebook still open beside me.
+        </p>
+
+        <p>
+Everything looked normal.
+        </p>
+
+        <p>
+Except my hair part was wrong.
+
+And it stayed wrong, even when I tried to fix it.
+        </p>
+
+        <p>
+I sat there for a minute, staring at the pillow.
+        </p>
+
+        <p>
+A single strand of hair lay there.
+
+Not mine.
+
+Too dark. Too straight.
+        </p>
+
+        <p>
+I picked it up and it stuck to my finger like it didn’t want to leave.
+        </p>
+
+        <p>
+The smell of rain stayed.
+        </p>
+
+        <p>
+Hours later, it was still there.
+        </p>
+
+        <p>
+I walked into the kitchen.
+        </p>
+
+        <p>My mom was making tea.</p>
+
+        <p>Normal.</p>
+
+        <p>Real.</p>
+
+        <p>I exhaled.</p>
+
+        <p>“Mom,” I said.</p>
+
+        <p>
+She turned around.
+
+Paused.
+
+Looked at me like she was trying to recognize someone in bad lighting.
+        </p>
+
+        <p>
+Then she smiled awkwardly.
+        </p>
+
+        <p>“Beta… are you okay?”</p>
+
+        <p>“Yes,” I said. “Why?”</p>
+
+        <p>
+She hesitated.
+
+Then she said slowly, “You don’t call me mom.”
+        </p>
+
+        <p>
+My body went cold.
+        </p>
+
+        <p>“What?”</p>
+
+        <p>
+She laughed like I was joking.
+        </p>
+
+        <p>
+“You always call me aunty,” she said.
+        </p>
+
+        <p>Like that was normal.</p>
+
+        <p>
+I looked past her at the fridge.
+        </p>
+
+        <p>
+The family photo was the same.
+        </p>
+
+        <p>
+But my smile in it felt rehearsed.
+        </p>
+
+        <p>
+My phone buzzed in my hand.
+        </p>
+
+        <p>Unknown number.</p>
+
+        <p>
+3:13 tonight.
+Don’t pretend.
+        </p>
+
+        <p>I stared at it.</p>
+
+        <p>
+My thumbs moved.
+
+Not me. My thumbs.
+        </p>
+
+        <p>Okay.</p>
+
+        <p>It sent anyway.</p>
+
+        <p>I won’t wake up tonight.</p>
+
+        <p>Which was a lie.</p>
+      </article>
+    </section>
+
+    <!-- ✅ ADS BOTTOM (Optional) -->
+    <section class="sponsor" aria-label="Sponsored Content">
+      <small>Sponsored</small>
+
+      <!-- ✅ Adsterra Banner Code -->
+      <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
+      <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
+        <div style="opacity:0.7">Quiet stories. Loud impact.</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // ✅ year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ✅ word count
+    const story = document.getElementById("storyText").innerText.trim();
+    const words = story.split(/\s+/).filter(Boolean).length;
+    document.getElementById("wordCount").textContent = words;
+
+    // ✅ loader hide
+    window.addEventListener("load", () => {
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 450);
+    });
+  </script>
+
+</body>
+</html>
