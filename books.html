@@ -7,8 +7,8 @@
 
   <!-- ✅ SEO -->
   <title>Noctivine — Book Library | kuma.2bd.net</title>
-  <meta name="description" content="Explore Noctivine’s books — read online inside the website or download the PDF. Minimal, fast, reader-first design." />
-  <meta name="keywords" content="Noctivine, books, psychology, stories, pdf books, read online, download books" />
+  <meta name="description" content="Explore Noctivine’s books and stories — read online inside the website or open story pages. Minimal, fast, reader-first design." />
+  <meta name="keywords" content="Noctivine, books, stories, psychology, read online, short stories, wattpad style, Indian writer" />
   <meta name="author" content="Noctivine" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kuma.2bd.net/books.html" />
@@ -20,7 +20,7 @@
   <!-- ✅ OPEN GRAPH -->
   <meta property="og:site_name" content="Noctivine" />
   <meta property="og:title" content="Noctivine — Book Library" />
-  <meta property="og:description" content="Read books online or download PDFs. Clean writing. Minimal design." />
+  <meta property="og:description" content="Read books online or open story pages. Clean writing. Minimal design." />
   <meta property="og:url" content="https://kuma.2bd.net/books.html" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
@@ -229,12 +229,7 @@
     .header p{margin:10px 0 0;color:var(--muted);line-height:1.65;font-size:14px}
 
     /* ✅ TOOLS */
-    .tools{
-      margin-top:14px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+    .tools{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
     .input{
       flex:1;
       min-width:220px;
@@ -248,7 +243,7 @@
     }
     .input::placeholder{color:rgba(234,240,255,0.45)}
 
-    /* ✅ READER VIEWER */
+    /* ✅ READER VIEWER (PDF only) */
     .reader-viewer{
       margin-top:16px;
       border-radius: var(--radius);
@@ -274,6 +269,7 @@
     .viewer-head h2{margin:0;font-size:18px}
     .viewer-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
     .viewer-actions{display:flex;gap:10px;flex-wrap:wrap}
+
     .viewer-box{
       border-radius: 18px;
       border:1px solid rgba(255,255,255,0.10);
@@ -293,6 +289,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
+
     .card{
       border-radius:var(--radius);
       border:1px solid rgba(255,255,255,0.10);
@@ -306,11 +303,15 @@
       transform:translateY(-3px);
       border-color:rgba(0,255,213,0.25)
     }
+
+    /* ✅ Cover ratio 2:3 */
     .cover{
-      height:180px;
+      position:relative;
+      width:100%;
+      aspect-ratio: 2 / 3; /* ✅ width:height 2:3 */
       background:rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
-      position:relative;
+      overflow:hidden;
       display:flex;
       align-items:flex-end;
       padding:12px;
@@ -318,10 +319,13 @@
     .cover img{
       position:absolute;
       inset:0;
-      width:100%;height:100%;
+      width:100%;
+      height:100%;
       object-fit:cover;
-      opacity:0.92;
+      opacity:0.95;
+      transform: scale(1.01);
     }
+
     .badge{
       position:relative;
       z-index:2;
@@ -334,8 +338,17 @@
       color:rgba(0,255,213,0.95);
       border-color:rgba(0,255,213,0.35);
     }
+    .badge-story{
+      color: rgba(234,240,255,0.95);
+      border-color: rgba(124,77,255,0.35);
+    }
+
     .body{padding:14px;}
-    .body h3{margin:0 0 6px;font-size:16px}
+    .body h3{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-0.2px;
+    }
     .body p{
       margin:0;
       color:var(--muted);
@@ -343,6 +356,7 @@
       line-height:1.55;
       white-space:pre-line;
     }
+
     .toggle{
       margin-top:10px;
       width:100%;
@@ -355,8 +369,17 @@
       cursor:pointer;
       transition:0.2s;
     }
-    .toggle:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-1px);}
-    .actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+    .toggle:hover{
+      border-color:rgba(255,255,255,0.18);
+      transform:translateY(-1px);
+    }
+
+    .actions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .actions .btn{flex:1;min-width:150px}
 
     /* hidden raw data */
@@ -385,8 +408,11 @@
     /* ✅ FOOTER */
     footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
     .foot{
-      display:flex;justify-content:space-between;flex-wrap:wrap;
-      gap:14px;border-top:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:14px;
+      border-top:1px solid rgba(255,255,255,0.06);
       padding-top:16px;
       margin-top:18px;
     }
@@ -410,7 +436,7 @@
 <body>
 
   <!-- ✅ LOADER -->
-  <div class="loader-wrap" id="loader">
+  <div class="loader-wrap" id="loader" aria-label="Loading">
     <div class="loader">
       <div class="loader-logo">
         <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
@@ -445,9 +471,9 @@
       <h1>Book Library</h1>
       <p>
         Welcome to my collection.
-        Read online inside this website, or download the PDF for offline reading.
+        Read online inside this website, or open story pages for a Wattpad-style experience.
         <br />
-        This space is built for real readers — clean, quiet, and distraction-free.
+        Built for real readers — clean, quiet, and distraction-free.
       </p>
 
       <div class="tools">
@@ -455,12 +481,12 @@
       </div>
     </section>
 
-    <!-- ✅ Embedded Reader -->
+    <!-- ✅ Embedded Reader (ONLY FOR PDF BOOKS) -->
     <section class="reader-viewer" id="readerViewer">
       <div class="viewer-head">
         <div>
           <h2 id="viewerTitle">Reading...</h2>
-          <p id="viewerSub">Embedded PDF Reader</p>
+          <p id="viewerSub">Embedded Reader</p>
         </div>
 
         <div class="viewer-actions">
@@ -475,36 +501,38 @@
     </section>
 
     <!-- ✅ Book Cards -->
-    <section class="grid" id="bookGrid"></section>
+    <section class="grid" id="bookGrid" aria-label="Books"></section>
 
-    <!-- ✅ RAW BOOK DATABASE (EDIT ONLY THIS AREA TO ADD MORE BOOKS) -->
+    <!-- ✅ RAW BOOK DATABASE (EDIT ONLY THIS PART) -->
     <div id="bookDatabase">
 
+      <!-- ✅ PDF BOOK -->
       <div class="book-row"
         data-id="lonely-generation"
+        data-type="PDF"
         data-name="Lonely Generation"
         data-cover="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png"
         data-pdf="https://drive.google.com/file/d/1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3/preview"
         data-download="https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3">
-This is not a story about something extraordinary happening. No dramatic turning point.
-No single moment where everything changes. No version of love that fixes a life overnight.
-This is a story about what it feels like to exist quietly in a crowded world.
-
-About waking up every day surrounded by people and still feeling slightly out of place.
-About scrolling through a phone full of names and realizing none of them really know you.
-About laughing at the right moments, saying the safe things, and carrying thoughts you never quite say out loud.
-
-It’s about being seventeen and expected to know where you’re going, when most days you’re still figuring out where you stand.
-
-This book doesn’t move fast. It doesn’t chase drama. It pays attention instead — to silence, to small moments, and to what we don’t say.
+My first book — written for people who feel alone in a crowded world.
+Slow-paced, real, and honest.
       </div>
+
+      <!-- ✅ STORY PAGE (NO PDF) -->
       <div class="book-row"
-        data-id="THE STRANGER IN MY ROOM"
+        data-id="stranger-room"
+        data-type="STORY"
         data-name="THE STRANGER IN MY ROOM"
-        data-cover="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png"
-        data-pdf="books/STRANGER.html">
-      </div>
+        data-cover="assests/image4.png"
+        data-page="books/STRANGER.html">
+On the night before an exam, she wakes up at 3:13 AM to find a boy sitting on the edge of her bed—silent, steady, like he’s been there before.
+Her phone wallpaper changes. The light refuses to reach him. And he speaks like he already knows her.
 
+But the real horror begins when she wakes up in a room that isn’t hers… and returns to a life that no longer feels the same.
+
+Because the stranger isn’t just visiting her room.
+He’s rewriting her world.
+      </div>
 
     </div>
 
@@ -512,7 +540,6 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
     <section class="sponsor-box" aria-label="Sponsored Content">
       <div class="sponsor-label">Sponsored</div>
 
-      <!-- ✅ Adsterra Code -->
       <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
       <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
     </section>
@@ -528,7 +555,6 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
         </div>
       </div>
 
-      <!-- ✅ DNSExit backlink (required for free DNS) -->
       <div style="opacity:0.6;font-size:12px;margin-top:10px;">
         DNS by <a href="https://www.dnsexit.com" target="_blank" rel="noopener">DNSExit</a>
       </div>
@@ -550,15 +576,17 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
       return text.slice(0, max) + "...";
     }
 
-    // ✅ Read raw rows from HTML database (no external JS needed)
+    // ✅ Read books from HTML database
     function getBooksFromHTML(){
       const rows = document.querySelectorAll("#bookDatabase .book-row");
       return Array.from(rows).map(row => ({
-        id: row.dataset.id,
-        name: row.dataset.name,
-        cover: row.dataset.cover,
+        id: (row.dataset.id || "").trim(),
+        type: (row.dataset.type || "PDF").trim(),  // PDF or STORY
+        name: (row.dataset.name || "").trim(),
+        cover: (row.dataset.cover || "").trim(),
         pdf: (row.dataset.pdf || "").trim(),
         download: (row.dataset.download || "").trim(),
+        page: (row.dataset.page || "").trim(),
         description: row.textContent.trim()
       }));
     }
@@ -566,36 +594,46 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
     const BOOKS = getBooksFromHTML();
 
     function renderBooks(list){
-      grid.innerHTML = list.map(book => `
-        <article class="card" id="${book.id}">
-          <div class="cover">
-            <img src="${book.cover}" alt="${book.name}" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            <span class="badge">FREE</span>
-          </div>
+      grid.innerHTML = list.map(book => {
+        const isStory = book.type.toUpperCase() === "STORY";
+        const badgeText = isStory ? "STORY" : "FREE PDF";
 
-          <div class="body">
-            <h3>${book.name}</h3>
+        const primaryBtn = isStory
+          ? `<a class="btn btn-primary" href="${book.page}" target="_blank" rel="noopener">Read Story</a>`
+          : `<button class="btn btn-primary" type="button" onclick="openReader('${book.id}')">Read Online</button>`;
 
-            <p class="desc"
-              data-full="${encodeURIComponent(book.description)}"
-              data-open="false">
-              ${shortText(book.description)}
-            </p>
+        const secondaryBtn = isStory
+          ? `<a class="btn" href="${book.page}" target="_blank" rel="noopener">Open</a>`
+          : `<a class="btn" href="${book.download}" target="_blank" rel="noopener">Download</a>`;
 
-            <button class="toggle" type="button">Show more</button>
-
-            <div class="actions">
-              <button class="btn" type="button" onclick="openReader('${book.id}')">Read Online</button>
-
-              <a class="btn btn-primary" href="${book.download}" target="_blank" rel="noopener">
-                Download
-              </a>
+        return `
+          <article class="card" id="${book.id}">
+            <div class="cover">
+              <img src="${book.cover}" alt="${book.name}" loading="lazy" decoding="async" onerror="this.style.display='none'">
+              <span class="badge ${isStory ? "badge-story" : ""}">${badgeText}</span>
             </div>
-          </div>
-        </article>
-      `).join("");
 
-      // ✅ show more/less
+            <div class="body">
+              <h3>${book.name}</h3>
+
+              <p class="desc"
+                data-full="${encodeURIComponent(book.description)}"
+                data-open="false">
+                ${shortText(book.description)}
+              </p>
+
+              <button class="toggle" type="button">Show more</button>
+
+              <div class="actions">
+                ${primaryBtn}
+                ${secondaryBtn}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // ✅ show more / less
       document.querySelectorAll(".toggle").forEach((btn, index) => {
         btn.addEventListener("click", () => {
           const desc = document.querySelectorAll(".desc")[index];
@@ -606,7 +644,7 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
             desc.textContent = full;
             desc.setAttribute("data-open", "true");
             btn.textContent = "Show less";
-          }else{
+          } else {
             desc.textContent = shortText(full);
             desc.setAttribute("data-open", "false");
             btn.textContent = "Show more";
@@ -615,11 +653,12 @@ This book doesn’t move fast. It doesn’t chase drama. It pays attention inste
       });
     }
 
+    // ✅ PDF Reader only
     function openReader(bookId){
       const book = BOOKS.find(b => b.id === bookId);
 
       if(!book || !book.pdf){
-        alert("PDF link is missing. Please update the book database.");
+        alert("This book has no PDF reader. Try opening the story page instead.");
         return;
       }
 
