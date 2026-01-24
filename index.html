@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kuma.2bd.net/" />
 
-  <!-- ✅ FAVICON + LOGO -->
+  <!-- ✅ FAVICON + ICON -->
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
@@ -66,6 +67,7 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       background:
@@ -165,14 +167,13 @@
       border-bottom:1px solid rgba(255,255,255,0.06);
     }
 
-    /* ✅ FIXED NAV LAYOUT (NO MERGE ISSUE) */
+    /* ✅ FIXED NAV (NO MERGE MESS) */
     .nav-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:14px 0;
       gap:12px;
-      position:relative;
     }
 
     .brand{
@@ -182,6 +183,7 @@
       font-weight:950;
       letter-spacing:0.4px;
       min-width:0;
+      flex:1;
     }
     .brand img{
       width:38px;height:38px;
@@ -189,41 +191,24 @@
       border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.06);
       object-fit:cover;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.40);
       flex-shrink:0;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.40);
     }
-
-    /* ✅ prevents Noctivine name from colliding */
     .brand span{
       font-size:16px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:160px;
+      max-width:180px;
     }
-
-    .nav-links{
-      display:flex;
-      gap:18px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-    }
-    .nav-links a{
-      font-size:14px;
-      color:var(--muted);
-      font-weight:900;
-      transition:0.2s;
-    }
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a.active{color:var(--text)}
 
     .nav-actions{
       display:flex;
       gap:10px;
       align-items:center;
       flex-shrink:0;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .btn{
@@ -245,7 +230,7 @@
     }
     .btn:hover{
       transform:translateY(-1px);
-      border-color:rgba(255,255,255,0.18)
+      border-color:rgba(255,255,255,0.18);
     }
     .btn-primary{
       background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.20));
@@ -257,21 +242,6 @@
       background: linear-gradient(90deg, rgba(124,77,255,0.22), rgba(0,255,213,0.18));
       border-color: rgba(124,77,255,0.34);
       box-shadow: 0 18px 70px rgba(124,77,255,0.10);
-    }
-
-    .hamburger{
-      display:none;
-      width:44px;height:44px;border-radius:16px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.03);
-      cursor:pointer;
-    }
-    .hamburger span{
-      display:block;
-      width:18px;height:2px;
-      margin:4px auto;
-      background:rgba(234,240,255,0.85);
-      border-radius:8px;
     }
 
     /* ✅ HERO */
@@ -368,12 +338,12 @@
     .section-head h2{
       margin:0;
       font-size:18px;
-      letter-spacing:-0.2px
+      letter-spacing:-0.2px;
     }
     .link{
       color:var(--muted);
       font-weight:950;
-      font-size:14px
+      font-size:14px;
     }
     .link:hover{color:var(--text)}
 
@@ -407,7 +377,7 @@
     }
     .slide:hover{
       transform:translateY(-3px);
-      border-color:rgba(0,255,213,0.25)
+      border-color:rgba(0,255,213,0.25);
     }
     .cover{
       height:170px;
@@ -442,14 +412,15 @@
     .slide-body h3{
       margin:0 0 6px;
       font-size:16px;
-      letter-spacing:-0.2px
+      letter-spacing:-0.2px;
     }
     .slide-body p{
       margin:0;
       color:var(--muted);
       font-size:13px;
-      line-height:1.55
+      line-height:1.55;
     }
+
     .actions{
       margin-top:12px;
       display:flex;
@@ -550,7 +521,7 @@
     }
     .video-actions .btn{flex:1}
 
-    /* ✅ SPONSORED AD AREA */
+    /* ✅ SPONSORED AD AREA (SAFE MODE) */
     .sponsor-box{
       border-radius:18px;
       border:1px solid rgba(255,255,255,0.08);
@@ -562,11 +533,21 @@
     }
     .sponsor-label{
       font-size:12px;
-      opacity:0.6;
+      opacity:0.7;
       margin-bottom:10px;
       letter-spacing:0.3px;
       font-weight:900;
       color:rgba(234,240,255,0.70);
+    }
+    .sponsor-note{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.55;
+      margin:10px 0 14px;
+    }
+    #adSlot{
+      margin-top:12px;
+      min-height: 60px;
     }
 
     /* ✅ FOOTER */
@@ -596,38 +577,18 @@
       .hero{grid-template-columns:1fr;}
       .video-grid{grid-template-columns:1fr;}
     }
-    @media (max-width:860px){
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:68px;
-        right:4vw;
-        width:min(360px, 92vw);
-        flex-direction:column;
-        align-items:stretch;
-        gap:10px;
-        padding:14px;
-        border-radius:18px;
-        background: rgba(12,16,25,0.92);
-        border:1px solid rgba(255,255,255,0.10);
-      }
-      .nav-links.open{display:flex}
-      .hamburger{display:inline-block}
-      .mini-grid{grid-template-columns:1fr;}
-    }
 
-    /* ✅ ULTRA MOBILE FIX (NOCTIVINE TEXT HIDDEN) */
-    @media (max-width:520px){
-      .brand span{display:none;}
-      .brand img{
-        width:34px;height:34px;
-        border-radius:12px;
-      }
+    /* ✅ ULTRA MOBILE: prevent ugly navbar merge */
+    @media (max-width:560px){
+      .brand span{max-width:110px;}
       .btn{
         padding:10px 12px;
         font-size:13px;
         border-radius:14px;
       }
+    }
+    @media (max-width:420px){
+      .brand span{display:none;}
     }
   </style>
 </head>
@@ -650,27 +611,18 @@
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
+
         <a class="brand" href="index.html">
           <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
           <span>Noctivine</span>
         </a>
 
-        <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
-          <a class="active" href="index.html">Home</a>
-          <a href="books.html">Books</a>
-          <a href="#videos">Shortfilm</a>
-          <a href="#videos">Podcast</a>
-        </nav>
-
         <div class="nav-actions">
           <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a class="btn btn-ghost" href="books.html">Books</a>
           <a class="btn btn-donate" href="don.html">Donate</a>
-
-          <button class="hamburger" id="hamburger" aria-label="Open Menu">
-            <span></span><span></span><span></span>
-          </button>
         </div>
+
       </div>
     </div>
   </div>
@@ -682,12 +634,12 @@
       <div class="panel">
         <div class="chip"><span class="dot"></span> Books • Stories • Psychology • Truth</div>
 
-        <h1>Noctivine — Books, shortfilm, podcast</h1>
+        <h1>Noctivine — Books, Shortfilm & Podcast</h1>
 
         <p class="sub">
           I write original stories and psychology-driven insights — honest, minimal, and real.
           <br><br>
-          This platform is built for readers who enjoy meaning, silence, and depth — not noise.
+          This space is designed for readers who prefer meaning over noise.
         </p>
 
         <div class="hero-actions">
@@ -698,9 +650,9 @@
         </div>
 
         <div class="mini-grid">
-          <div class="mini"><b>📚 Books</b><span>Original writing, published clean and simple.</span></div>
-          <div class="mini"><b>🧠 Psychology</b><span>Truth-first ideas, explained without hype.</span></div>
-          <div class="mini"><b>🎧 Podcast</b><span>Short thoughts, sharp perspective.</span></div>
+          <div class="mini"><b>📚 Books</b><span>Reader-first writing, published clean & simple.</span></div>
+          <div class="mini"><b>🧠 Psychology</b><span>Truth-first ideas, without fake motivation.</span></div>
+          <div class="mini"><b>🎧 Podcast</b><span>Short thoughts. Sharp perspective.</span></div>
         </div>
       </div>
 
@@ -710,7 +662,7 @@
         <p class="sub" style="margin-top:10px">
           Everything I create goes live here — books, shortfilms, and writing experiments.
           <br>
-          Designed for reading. Built to stay fast. Made to feel real.
+          Minimal design. Fast load. Real content.
         </p>
 
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
@@ -747,14 +699,21 @@
       <div class="video-grid" id="videoGrid" aria-label="Video Cards"></div>
     </section>
 
-    <!-- ✅ ADS (BOTTOM) -->
+    <!-- ✅ ADS (BOTTOM) — SAFE MODE -->
     <section class="section" aria-label="Sponsored Content">
       <div class="sponsor-box">
         <div class="sponsor-label">Sponsored</div>
 
-        <!-- ✅ Adsterra Code -->
-        <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
-        <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+        <div class="sponsor-note">
+          Ads help support this project.
+          <br />
+          If an ad feels intrusive, you can simply ignore it — your reading always comes first.
+        </div>
+
+        <button class="btn btn-ghost" id="loadAdsBtn" type="button">Load Sponsored Banner</button>
+
+        <!-- ✅ ad loads inside this container only -->
+        <div id="adSlot"></div>
       </div>
     </section>
 
@@ -782,12 +741,7 @@
     // ✅ dynamic year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ✅ mobile nav toggle
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
-
-    // ✅ Books Data (add more books here)
+    // ✅ Books Data
     const BOOKS = [
       {
         name: "Lonely Generation",
@@ -833,7 +787,7 @@
       auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5200);
     });
 
-    // ✅ Video Cards (cover-only)
+    // ✅ Video Cards
     const VIDEOS = [
       {
         title: "The Firewood Lake",
@@ -867,6 +821,31 @@
         </div>
       </article>
     `).join("");
+
+    // ✅ SAFE ADS: Load only after user clicks (reduces forced redirects)
+    const loadAdsBtn = document.getElementById("loadAdsBtn");
+    const adSlot = document.getElementById("adSlot");
+
+    loadAdsBtn.addEventListener("click", () => {
+      loadAdsBtn.textContent = "Loading...";
+      loadAdsBtn.disabled = true;
+
+      // container for Adsterra
+      adSlot.innerHTML = `
+        <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+      `;
+
+      const s = document.createElement("script");
+      s.async = true;
+      s.setAttribute("data-cfasync", "false");
+      s.src = "https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js";
+      document.body.appendChild(s);
+
+      // hide button after loaded
+      setTimeout(() => {
+        loadAdsBtn.style.display = "none";
+      }, 900);
+    });
 
     // ✅ loader hide
     window.addEventListener("load", () => {
