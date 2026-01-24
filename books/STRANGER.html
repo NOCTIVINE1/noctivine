@@ -23,7 +23,7 @@
   <meta property="og:description" content="A psychological one-shot story where time stops at 3:13." />
   <meta property="og:url" content="https://kuma.2bd.net/stranger.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
+  <meta property="og:image" content="https://kuma.2bd.net/assests/file_000000005bcc723091fda73dc7b10b9.jpeg" />
 
   <style>
     :root{
@@ -58,7 +58,7 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
-    .container{width:min(900px, 92vw);margin:0 auto;}
+    .container{width:min(950px, 92vw);margin:0 auto;}
 
     /* ✅ LOADER */
     .loader-wrap{
@@ -148,6 +148,7 @@
       justify-content:space-between;
       padding:14px 0;
       gap:12px;
+      flex-wrap:wrap;
     }
     .brand{
       display:flex;
@@ -164,12 +165,13 @@
       background:rgba(255,255,255,0.06);
       object-fit:cover;
       flex-shrink:0;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
     }
     .brand span{
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:170px;
+      max-width:190px;
       font-size:16px;
     }
 
@@ -210,10 +212,15 @@
       border-color: rgba(124,77,255,0.35);
       box-shadow: 0 18px 70px rgba(124,77,255,0.10);
     }
+    .btn-small{
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:13px;
+    }
 
     /* ✅ HEADER */
     .story-head{
-      padding:28px 0 10px;
+      padding:22px 0 10px;
       animation: fadeUp 0.55s ease both;
     }
     @keyframes fadeUp{
@@ -252,7 +259,61 @@
       font-size:13px;
     }
 
-    /* ✅ READER PANEL */
+    /* ✅ COVER (2:3 exact) */
+    .coverWrap{
+      margin-top:14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      animation: fadeUp 0.65s ease both;
+    }
+    .coverGrid{
+      display:grid;
+      grid-template-columns: 0.45fr 0.55fr;
+      gap:0;
+    }
+    .coverArt{
+      aspect-ratio: 2 / 3; /* ✅ FIXED 2:3 */
+      position:relative;
+      background: rgba(255,255,255,0.03);
+      overflow:hidden;
+      border-right:1px solid rgba(255,255,255,0.06);
+    }
+    .coverArt img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      opacity:0.94;
+    }
+    .coverMeta{
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+    .coverMeta b{
+      font-size:15px;
+      letter-spacing:0.2px;
+    }
+    .coverMeta p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .langRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+
+    /* ✅ STORY PANEL */
     .panel{
       margin-top:16px;
       border-radius:var(--radius);
@@ -260,7 +321,7 @@
       background: linear-gradient(180deg, var(--panel2), var(--panel));
       box-shadow: var(--shadow);
       overflow:hidden;
-      animation: fadeUp 0.65s ease both;
+      animation: fadeUp 0.75s ease both;
     }
     .panel-top{
       padding:14px 16px;
@@ -282,21 +343,19 @@
 
     .story{
       padding:18px 16px;
-      font-size:16px;
       color:rgba(234,240,255,0.92);
     }
-    .story p{
-      margin:0 0 16px;
-      white-space:pre-line;
+
+    .storyPre{
+      margin:0;
+      white-space:pre-wrap; /* ✅ keeps paragraph breaks */
+      font-family: inherit;
+      font-size:16px;
+      line-height:1.85;
+      color:rgba(234,240,255,0.92);
     }
 
-    .divider{
-      height:1px;
-      background:rgba(255,255,255,0.08);
-      margin:18px 0;
-    }
-
-    /* ✅ ADS (optional bottom) */
+    /* ✅ ADS */
     .sponsor{
       margin-top:18px;
       border-radius:18px;
@@ -331,11 +390,20 @@
       padding-top:16px;
     }
 
-    /* ✅ MOBILE */
+    @media (max-width:860px){
+      .coverGrid{
+        grid-template-columns:1fr;
+      }
+      .coverArt{
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,0.06);
+      }
+    }
+
     @media (max-width:520px){
       .brand span{display:none;}
       .btn{font-size:13px;padding:10px 12px;border-radius:14px;}
-      .story{font-size:15px;}
+      .storyPre{font-size:15px;}
     }
   </style>
 </head>
@@ -365,10 +433,10 @@
         </a>
 
         <div class="nav-actions">
-          <a class="btn" href="index.html">Home</a>
-          <a class="btn" href="books.html">Books</a>
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn btn-donate" href="don.html">Support</a>
+          <a class="btn btn-small" href="index.html">Home</a>
+          <a class="btn btn-small" href="books.html">Books</a>
+          <a class="btn btn-primary btn-small" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-donate btn-small" href="don.html">Support</a>
         </div>
 
       </div>
@@ -381,8 +449,34 @@
     <header class="story-head">
       <div class="chip"><span class="dot"></span> One Shot • Psychological Thriller</div>
       <h1>THE STRANGER IN MY ROOM</h1>
-      <p class="byline">— Noctivine • <span id="wordCount">0</span> words</p>
+      <p class="byline">— Noctivine • <span id="wordCount">0</span> words • <span id="langTag">English</span></p>
     </header>
+
+    <!-- ✅ COVER -->
+    <section class="coverWrap" aria-label="Story Cover">
+      <div class="coverGrid">
+        <div class="coverArt">
+          <img src="assests/file_000000005bcc723091fda73dc7b10b9.jpeg" alt="The Stranger In My Room Cover" loading="lazy" decoding="async"
+               onerror="this.style.display='none'"/>
+        </div>
+
+        <div class="coverMeta">
+          <b>Story Description</b>
+          <p>
+            On the night before an exam, she wakes up at 3:13 AM to find a boy sitting on the edge of her bed—silent, steady, like he’s been there before.
+            Her phone wallpaper changes. The light refuses to reach him. And he speaks like he already knows her.
+            But the real horror begins when she wakes up in a room that isn’t hers… and returns to a life that no longer feels the same.
+            Because the stranger isn’t just visiting her room.
+            He’s rewriting her world.
+          </p>
+
+          <div class="langRow">
+            <button class="btn btn-primary btn-small" id="btnEN" type="button">English</button>
+            <button class="btn btn-small" id="btnHI" type="button">Hindi</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ✅ STORY PANEL -->
     <section class="panel">
@@ -396,26 +490,25 @@
         </div>
       </div>
 
-      <article class="story" id="storyText">
-        <p>It started on a Tuesday.</p>
+      <!-- ✅ ENGLISH -->
+      <article class="story" id="storyEN">
+        <pre class="storyPre">
+THE STRANGER IN MY ROOM
+                                                          -noctivine
+It started on a Tuesday.
 
-        <p>
 I remember because I had an exam the next morning and I was still lying there pretending I’d revise in the morning.
 
 Which was a lie.
-        </p>
 
-        <p>
 My notebook was open beside me. Admit card under it. Charger cable twisted the wrong way again. Half empty water bottle near my pillow. My cheap perfume bottle sat on the table like I was still trying to be a person.
-        </p>
 
-        <p>I closed my eyes.</p>
-        <p>Told myself: sleep now.</p>
-        <p>And then I woke up.</p>
+I closed my eyes.
 
-        <div class="divider"></div>
+Told myself: sleep now.
 
-        <p>
+And then I woke up.
+
 Not slowly.
 
 My eyes just opened.
@@ -425,9 +518,7 @@ The fan kept spinning. Same soft whirr. Nothing sounded wrong.
 Then I rolled my head a little and saw him.
 
 A guy sitting on the edge of my bed.
-        </p>
 
-        <p>
 My tongue felt like paper.
 
 I didn’t scream.
@@ -435,23 +526,17 @@ I didn’t scream.
 I should’ve.
 
 I didn’t.
-        </p>
 
-        <p>“Who are you?” I asked.</p>
+“Who are you?” I asked.
 
-        <p>
 He turned his head slowly. Patient.
 
 “You’re awake,” he said.
-        </p>
 
-        <p>“Yeah,” I snapped. “Congrats.”</p>
+“Yeah,” I snapped. “Congrats.”
 
-        <p>
 It came out sarcastic even though my hands were tight under the blanket. That’s just how my brain works when it’s scared. It tries to act like it isn’t.
-        </p>
 
-        <p>
 He looked at me for a second.
 
 Then his eyes dropped to his wrist.
@@ -461,33 +546,25 @@ A watch. Dark strap. Old looking.
 The hands weren’t moving.
 
 Stuck at 3:13.
-        </p>
 
-        <p>
 He looked back up at me and said, “You always say that.”
-        </p>
 
-        <p>“What?” I asked.</p>
+“What?” I asked.
 
-        <p>He didn’t explain.</p>
+He didn’t explain.
 
-        <p>I swallowed. “Get out.”</p>
+I swallowed. “Get out.”
 
-        <p>He stayed seated.</p>
+He stayed seated.
 
-        <p>Then he said, “You’re late.”</p>
+Then he said, “You’re late.”
 
-        <p>
 My brain stalled on that word.
 
 “Late for what?”
-        </p>
 
-        <p>
 His eyes flicked to my phone. “Check.”
-        </p>
 
-        <p>
 I grabbed it and pressed the power button.
 
 The screen lit up.
@@ -495,9 +572,7 @@ The screen lit up.
 Relief hit me for half a second.
 
 Then it disappeared.
-        </p>
 
-        <p>
 My wallpaper wasn’t mine.
 
 It was a room.
@@ -505,72 +580,52 @@ It was a room.
 Dark. Narrow. Wrong.
 
 A cracked mirror. A window with bars.
-        </p>
 
-        <p>
 And on the lock screen there were words.
 
 Not a message. Not a notification.
 
 Just text sitting there like it belonged.
-        </p>
 
-        <p>
 3:13
 You’re late.
-        </p>
 
-        <p>
 I didn’t move.
 
 The room stayed quiet.
 
 Like it was listening.
-        </p>
 
-        <p>
 I looked up at him.
 
 “Did you do this?” I asked.
-        </p>
 
-        <p>
 He shrugged. “Does it matter?”
-        </p>
 
-        <p>“Yes,” I said. “It’s my phone.”</p>
+“Yes,” I said. “It’s my phone.”
 
-        <p>
 He smiled a little. Not warm. Not cute. More like he’d heard me say that before.
-        </p>
 
-        <p>“You don’t remember,” he said.</p>
+“You don’t remember,” he said.
 
-        <p>“Remember what?”</p>
+“Remember what?”
 
-        <p>
 His thumb rubbed his ring finger once. Small. Controlled. Like he was stopping himself from doing something else.
-        </p>
 
-        <p>Then he said, “You opened it.”</p>
+Then he said, “You opened it.”
 
-        <p>“I didn’t open anything,” I said.</p>
+“I didn’t open anything,” I said.
 
-        <p>He blinked a beat late.</p>
+He blinked a beat late.
 
-        <p>“You did.”</p>
+“You did.”
 
-        <div class="divider"></div>
-
-        <p>
 I stared at him, trying to keep my face normal.
 
 Something stupid flashed in my head.
 
 Earlier that night, my phone had buzzed at 3:13.
-        </p>
 
-        <p>
 Unknown number.
 
 A link.
@@ -578,35 +633,25 @@ A link.
 I clicked it without thinking.
 
 It opened to a blank page and I remember rolling my eyes and going back to my notes.
-        </p>
 
-        <p>
 I didn’t tell him that.
-        </p>
 
-        <p>“Leave,” I said.</p>
+“Leave,” I said.
 
-        <p>
 He didn’t move.
 
 So I reached for the lamp. My hand shook a little and I hated that it did.
-        </p>
 
-        <p>Click.</p>
+Click.
 
-        <p>
 The lamp turned on.
 
 The room lit up.
-        </p>
 
-        <p>
 My desk, my notebook, the floor.
 
 But the light didn’t reach him properly.
-        </p>
 
-        <p>
 Everything around him stayed wrong.
 
 Not shadow dark.
@@ -614,63 +659,47 @@ Not shadow dark.
 Wrong dark.
 
 Like the light didn’t know what to do with him.
-        </p>
 
-        <p>
 My mouth went dry again.
 
 He watched my face.
 
 “You see it,” he said.
-        </p>
 
-        <p>
 I wanted to say something smart. Something sharp. Something that made me feel like I had control.
 
 Nothing came out.
-        </p>
 
-        <p>
 He leaned forward a little. Not enough to trap me. Enough to make the air feel heavier.
-        </p>
 
-        <p>“Why are you here?” I whispered.</p>
+“Why are you here?” I whispered.
 
-        <p>
 His thumb moved again, rubbing the ring finger once.
 
 He didn’t answer right away.
 
 He just looked at me like he was waiting for me to catch up.
-        </p>
 
-        <p>“I didn’t choose this,” I said.</p>
+“I didn’t choose this,” I said.
 
-        <p>
 He didn’t react.
 
 He just looked at me like that sentence was pointless.
-        </p>
 
-        <p>
 Then he lifted his hand slowly.
 
 I flinched.
 
 He didn’t touch me.
-        </p>
 
-        <p>
 His fingers stopped right before my hair. Close enough that my skin reacted anyway.
 
 A shiver. A pull.
 
 I hated that I felt it.
-        </p>
 
-        <p>“Don’t,” I said fast.</p>
+“Don’t,” I said fast.
 
-        <p>
 His hand froze instantly.
 
 “Okay,” he said.
@@ -678,51 +707,37 @@ His hand froze instantly.
 Too easy.
 
 Too controlled.
-        </p>
 
-        <p>
 Like he didn’t need to push harder to win.
 
 He leaned closer.
 
 I could smell him.
-        </p>
 
-        <p>
 Clean. Like rain.
 
 Not perfume. Not smoke. Just that cold fresh smell that sticks after a storm.
-        </p>
 
-        <p>Then he whispered my name.</p>
+Then he whispered my name.
 
-        <p>
 Perfectly.
 
 Not like someone reading it.
 
 Like someone who’d said it a hundred times.
-        </p>
 
-        <p>
 My breath caught.
 
 “How do you know my name?” I asked.
-        </p>
 
-        <p>
 His eyes stayed on mine. Too familiar.
 
 “You say mine too,” he said.
-        </p>
 
-        <p>
 My stomach didn’t drop.
 
 It folded.
-        </p>
 
-        <p>
 Because I didn’t feel like he was lying.
 
 I didn’t feel like I was dreaming.
@@ -730,151 +745,111 @@ I didn’t feel like I was dreaming.
 It didn’t feel like a nightmare.
 
 It felt like a memory waking up.
-        </p>
 
-        <p>I hated that thought.</p>
+I hated that thought.
 
-        <p>
 I wanted him gone.
 
 I also wanted him to speak again, because silence would mean I imagined him.
-        </p>
 
-        <p>
 He stood up slowly.
 
 The bed rose back like it was relieved.
-        </p>
 
-        <p>“Sleep,” he said.</p>
+“Sleep,” he said.
 
-        <p>“I’m not sleeping.”</p>
+“I’m not sleeping.”
 
-        <p>“You will.”</p>
+“You will.”
 
-        <p>
 Not a threat.
 
 A schedule.
-        </p>
 
-        <p>
 Then his fingers touched my hair for one second.
 
 Real touch. Warm. Gentle.
 
 And my body leaned into it before my brain could stop it.
-        </p>
 
-        <p>
 I pulled back fast, disgusted with myself.
 
 He watched me like he expected it.
-        </p>
 
-        <p>“You always fight first,” he said.</p>
+“You always fight first,” he said.
 
-        <p>“What do you mean always?” I snapped.</p>
+“What do you mean always?” I snapped.
 
-        <p>
 He didn’t answer.
 
 He just looked at his watch again.
 
 3:13.
-        </p>
 
-        <p>Then he was gone.</p>
+Then he was gone.
 
-        <p>
 No footsteps. No door. No sound.
 
 Gone.
-        </p>
 
-        <p>
 The room blinked wrong.
 
 The light filled everything again.
 
 My phone wallpaper snapped back to mine.
-        </p>
 
-        <p>
 I stared at the screen.
 
 3:14 AM.
-        </p>
 
-        <p>
 Outside, a dog barked once.
 
 Just once.
-        </p>
 
-        <p>
 I lay back down.
 
 Staring at the ceiling.
 
 Telling myself it didn’t happen.
-        </p>
 
-        <p>
 Closing my eyes like sleep was a choice.
-        </p>
 
-        <p>
 Then I whispered into the dark, because I needed to feel like I had control.
-        </p>
 
-        <p>“Come back.”</p>
+“Come back.”
 
-        <div class="divider"></div>
+Next night, 3:13.
 
-        <p>Next night, 3:13.</p>
-
-        <p>
 My eyes opened again.
 
 Cold air on my arms.
 
 I sat up fast.
-        </p>
 
-        <p>
 Different ceiling.
 
 Different fan.
 
 Different silence.
-        </p>
 
-        <p>
 My pillow smelled wrong.
 
 Clean and wet.
 
 Rain.
-        </p>
 
-        <p>
 I looked around and my body went still.
-        </p>
 
-        <p>This wasn’t my room.</p>
+This wasn’t my room.
 
-        <p>
 The shadows felt older here.
 
 The air felt like it had been waiting.
-        </p>
 
-        <p>Then his voice came from the dark, close.</p>
+Then his voice came from the dark, close.
 
-        <p>“Good.”</p>
+“Good.”
 
-        <p>
 I turned my head.
 
 He was sitting on the edge of the bed again.
@@ -882,29 +857,25 @@ He was sitting on the edge of the bed again.
 Same calm face.
 
 Same watch, still stuck at 3:13.
-        </p>
 
-        <p>“Where am I?” I asked.</p>
+“Where am I?” I asked.
 
-        <p>“Here,” he said.</p>
+“Here,” he said.
 
-        <p>“No,” I said quickly. “I didn’t…”</p>
+“No,” I said quickly. “I didn’t…”
 
-        <p>“You did.”</p>
+“You did.”
 
-        <p>Two words.</p>
+Two words.
 
-        <p>Final.</p>
+Final.
 
-        <p>“I didn’t choose this,” I whispered.</p>
+“I didn’t choose this,” I whispered.
 
-        <p>
 He leaned back a little.
 
 “You came,” he said.
-        </p>
 
-        <p>
 Knife clean.
 
 No romance.
@@ -912,9 +883,7 @@ No romance.
 No explanation.
 
 Just fact.
-        </p>
 
-        <p>
 He reached out slowly.
 
 Not rushing. Not forcing.
@@ -924,29 +893,19 @@ His fingers brushed my hair again.
 Warm.
 
 Real.
-        </p>
 
-        <p>
 And my body reacted like it wanted it.
-        </p>
 
-        <p>
 The worst part wasn’t that I was scared.
-        </p>
 
-        <p>
 The worst part was that my body didn’t hate him.
-        </p>
 
-        <p>I whispered, “I’m not yours.”</p>
+I whispered, “I’m not yours.”
 
-        <p>
 He leaned in close enough that his voice hit my skin.
-        </p>
 
-        <p>“Sleep.”</p>
+“Sleep.”
 
-        <p>
 Behind him, carved into the wall, were marks.
 
 One line.
@@ -954,152 +913,390 @@ One line.
 Then another.
 
 Then another.
-        </p>
 
-        <p>Like someone had been counting nights.</p>
+Like someone had been counting nights.
 
-        <div class="divider"></div>
+Morning came and I woke up in my room.
 
-        <p>Morning came and I woke up in my room.</p>
-
-        <p>
 My bed. My ceiling. My fan.
 
 My notebook still open beside me.
-        </p>
 
-        <p>
 Everything looked normal.
-        </p>
 
-        <p>
 Except my hair part was wrong.
 
 And it stayed wrong, even when I tried to fix it.
-        </p>
 
-        <p>
 I sat there for a minute, staring at the pillow.
-        </p>
 
-        <p>
 A single strand of hair lay there.
 
 Not mine.
 
 Too dark. Too straight.
-        </p>
 
-        <p>
 I picked it up and it stuck to my finger like it didn’t want to leave.
-        </p>
 
-        <p>
 The smell of rain stayed.
-        </p>
 
-        <p>
 Hours later, it was still there.
-        </p>
 
-        <p>
 I walked into the kitchen.
-        </p>
 
-        <p>My mom was making tea.</p>
+My mom was making tea.
 
-        <p>Normal.</p>
+Normal.
 
-        <p>Real.</p>
+Real.
 
-        <p>I exhaled.</p>
+I exhaled.
 
-        <p>“Mom,” I said.</p>
+“Mom,” I said.
 
-        <p>
 She turned around.
 
 Paused.
 
 Looked at me like she was trying to recognize someone in bad lighting.
-        </p>
 
-        <p>
 Then she smiled awkwardly.
-        </p>
 
-        <p>“Beta… are you okay?”</p>
+“Beta… are you okay?”
 
-        <p>“Yes,” I said. “Why?”</p>
+“Yes,” I said. “Why?”
 
-        <p>
 She hesitated.
 
 Then she said slowly, “You don’t call me mom.”
-        </p>
 
-        <p>
 My body went cold.
-        </p>
 
-        <p>“What?”</p>
+“What?”
 
-        <p>
 She laughed like I was joking.
-        </p>
 
-        <p>
 “You always call me aunty,” she said.
-        </p>
 
-        <p>Like that was normal.</p>
+Like that was normal.
 
-        <p>
 I looked past her at the fridge.
-        </p>
 
-        <p>
 The family photo was the same.
-        </p>
 
-        <p>
 But my smile in it felt rehearsed.
-        </p>
 
-        <p>
 My phone buzzed in my hand.
-        </p>
 
-        <p>Unknown number.</p>
+Unknown number.
 
-        <p>
 3:13 tonight.
 Don’t pretend.
-        </p>
 
-        <p>I stared at it.</p>
+I stared at it.
 
-        <p>
 My thumbs moved.
 
 Not me. My thumbs.
-        </p>
 
-        <p>Okay.</p>
+Okay.
 
-        <p>It sent anyway.</p>
+It sent anyway.
 
-        <p>I won’t wake up tonight.</p>
+I won’t wake up tonight.
 
-        <p>Which was a lie.</p>
+Which was a lie.
+        </pre>
+      </article>
+
+      <!-- ✅ HINDI -->
+      <article class="story" id="storyHI" style="display:none;">
+        <pre class="storyPre">
+ये सब मंगलवार से शुरू हुआ।
+मुझे याद है, क्योंकि अगली सुबह मेरा एग्ज़ाम था… और मैं फिर भी बिस्तर पर पड़ी हुई थी, ये सोचते हुए कि “सुबह पढ़ लूँगी।”
+जो कि झूठ था।
+मेरी नोटबुक मेरे पास खुली पड़ी थी। उसके नीचे एडमिट कार्ड दबा हुआ था। चार्जर की केबल फिर से उलझी हुई थी। तकिए के पास पानी की बोतल आधी खाली पड़ी थी। और टेबल पर मेरा सस्ता परफ्यूम ऐसे रखा था जैसे मैं अभी भी “ठीक” बनने की कोशिश कर रही थी।
+मैंने आँखें बंद कीं।
+खुद से कहा— सो जा। बस सो जा।
+और फिर…
+मैं जाग गई।
+धीरे-धीरे नहीं।
+बस एकदम से।
+पंखा चल रहा था। वही हल्की सी आवाज़। सब कुछ वैसा ही था जैसा होना चाहिए था।
+फिर मैंने सिर थोड़ा सा घुमाया… और वहीं मेरी दुनिया बदल गई।
+मेरे बिस्तर के किनारे एक लड़का बैठा हुआ था।
+एक पल के लिए मैं समझ ही नहीं पाई कि मैं सपना देख रही थी या सच में जागी हुई थी।
+लेकिन वो वहाँ था।
+इतना साफ, इतना असली… कि दिमाग को कोई बहाना नहीं मिला।
+मैं चीखी नहीं।
+मुझे चीखना चाहिए था।
+लेकिन मेरी आवाज़ ही नहीं निकली।
+“तुम… कौन हो?” मैंने जैसे-तैसे पूछा।
+उसने धीरे से मेरी तरफ देखा। बहुत शांत। बहुत आराम से।
+“तुम जाग गई हो,” उसने कहा।
+“हाँ,” मेरे मुँह से निकल गया। “वाह। क्या कमाल कर दिया।”
+मेरी आवाज़ में चिढ़ आ गई थी, जबकि अंदर से मैं डर चुकी थी। डर में मेरा दिमाग अक्सर ऐसे ही करता है—बात को हल्का बना देता है, ताकि लगे कि सब ठीक है।
+वो मुझे बस देखता रहा।
+फिर उसकी नज़र उसकी कलाई पर गई।
+घड़ी थी। पुरानी-सी। गहरी पट्टी वाली।
+और उसकी सुइयाँ… चल ही नहीं रही थीं।
+3:13 पर अटकी हुई।
+वो वापस मुझे देखने लगा और बोला,
+“तुम हमेशा यही बोलती हो।”
+“क्या?” मैंने पूछा।
+उसने जवाब नहीं दिया।
+एक पल के लिए मैं बस उसे देखती रह गई।
+फिर मैंने खुद को संभाला और कहा—
+“बाहर निकलो।”
+वो वहीं बैठा रहा।
+फिर उसके मुँह से निकला—
+“तुम लेट हो।”
+मेरे दिमाग ने उस बात को पकड़ लिया जैसे कोई बात चुभ गई हो।
+“किस चीज़ के लिए लेट?”
+उसकी नज़र मेरे फोन पर गई।
+“चेक करो।”
+मैंने फोन उठाया और स्क्रीन ऑन की।
+स्क्रीन जल गई।
+एक सेकंड के लिए लगा— ठीक है… कुछ नहीं हुआ।
+फिर मैं बस स्क्रीन को देखती रह गई।
+मेरा वॉलपेपर मेरा नहीं था।
+स्क्रीन पर एक कमरा था।
+अंधेरा। संकरा। गलत-सा।
+एक टूटा हुआ आईना। सलाखों वाली खिड़की।
+और लॉक स्क्रीन पर कोई नोटिफिकेशन नहीं था।
+बस शब्द थे।
+ऐसे, जैसे वो वहीं के हों।
+3:13
+तुम लेट हो।
+मैं कुछ कर नहीं पाई।
+कमरा… बहुत ज़्यादा शांत था।
+वैसी शांति, जैसे कोई चीज़ सुन रही हो।
+मैंने उसकी तरफ देखा।
+“ये तुमने किया?” मैंने पूछा।
+वो कंधे उचकाकर बोला,
+“इससे क्या फर्क पड़ता है?”
+“फर्क पड़ता है,” मैंने कहा। “ये मेरा फोन है।”
+उसके होंठों पर हल्की सी मुस्कान आई।
+लेकिन उसमें अपनापन नहीं था।
+वो मुस्कान वैसी थी जैसे कोई मुझे पहले से जानता हो।
+“तुम्हें याद नहीं,” उसने कहा।
+“क्या याद नहीं?”
+उसका अंगूठा उसकी अनामिका पर एक बार फिसला।
+फिर उसने कहा,
+“तुमने उसे खोला था।”
+“मैंने कुछ नहीं खोला,” मैंने तुरंत कहा।
+वो एक पल रुका।
+“तुमने खोला था।”
+मैं उसे देखती रही… और दिमाग में एक बात चमकी।
+उस रात मेरा फोन 3:13 पर बजा था।
+अनजान नंबर।
+एक लिंक।
+मैंने बिना सोचे क्लिक कर दिया था।
+वो खाली पेज पर खुला था… और मैंने उसे छोड़ दिया था।
+मैंने उसे ये नहीं बताया।
+बस इतना कहा—
+“यहाँ से निकलो।”
+वो नहीं हिला।
+तो मैं लैंप की तरफ बढ़ी।
+मेरे हाथ थोड़ा काँप रहे थे और मुझे खुद पर गुस्सा आया।
+क्लिक।
+लाइट जल गई।
+कमरा रोशन हो गया—
+मेरा डेस्क, मेरी नोटबुक, फर्श… सब कुछ।
+लेकिन…
+रोशनी उसकी तरफ ठीक से नहीं गई।
+उसके आसपास सब कुछ छाया जैसा नहीं था।
+बस… गलत था।
+मैंने अपनी साँस अंदर ही रोक ली।
+वो मेरा चेहरा देख रहा था।
+“तुम देख रही हो,” उसने कहा।
+मैं कुछ बोलना चाहती थी… कुछ तेज… कुछ ऐसा जिससे लगे कि मैं डर नहीं रही।
+पर सच ये था—
+मैं समझ ही नहीं पा रही थी कि ये हो क्या रहा है।
+और यही सबसे डरावना था।
+वो थोड़ा आगे झुका।
+इतना नहीं कि मैं फँस जाऊँ।
+बस इतना कि हवा भारी लगने लगी।
+“तुम यहाँ क्यों हो?” मेरी आवाज़ बहुत धीमी थी।
+उसने जवाब नहीं दिया।
+वो बस मुझे ऐसे देख रहा था जैसे वो इंतज़ार कर रहा हो कि मैं खुद समझ जाऊँ।
+“मैंने ये नहीं चुना,” मैंने कहा।
+वो ऐसे देखता रहा जैसे ये बात बेकार हो।
+फिर उसने धीरे से अपना हाथ उठाया।
+मैं चौंक गई।
+उसने मुझे छुआ नहीं।
+बस उसकी उंगलियाँ मेरे बालों के पास आकर रुक गईं।
+इतनी पास कि… मेरा शरीर अपने आप सिहर गया।
+और मुझे उस बात से नफरत हुई।
+“मत करो,” मैंने जल्दी से कहा।
+उसका हाथ वहीं रुक गया।
+“ठीक है,” उसने कहा।
+इतना आसान।
+इतना शांत।
+वो और पास आया।
+मैं उसकी खुशबू महसूस कर पा रही थी।
+बारिश जैसी। साफ। ठंडी।
+फिर उसने मेरा नाम लिया।
+बिल्कुल सही।
+ऐसे नहीं जैसे कोई पहली बार बोल रहा हो।
+सीने में झटका लगा।
+“तुम्हें मेरा नाम कैसे पता?” मैंने पूछा।
+उसकी आँखें मेरी आँखों में थीं।
+“तुम मेरा नाम भी लेती हो,” उसने कहा।
+और पता नहीं क्यों…
+मुझे नहीं लगा वो झूठ बोल रहा है।
+मुझे नहीं लगा मैं सपना देख रही हूँ।
+ये… किसी भूली हुई याद जैसा लग रहा था, जो अचानक लौट आई हो।
+मुझे उस सोच से नफरत हुई।
+मैं चाहती थी वो चला जाए।
+और मैं ये भी चाहती थी कि वो बोले… क्योंकि उसकी चुप्पी डर को और बढ़ा देती थी।
+वो धीरे से खड़ा हुआ।
+“सो जाओ,” उसने कहा।
+“मैं नहीं सो रही।”
+“तुम सो जाओगी।”
+धमकी नहीं थी।
+बस एक तय बात थी।
+फिर उसके हाथ ने मेरे बालों को एक सेकंड के लिए छुआ।
+असली।
+गर्म।
+नरम।
+और मेरा शरीर…
+उस तरफ झुक गया, इससे पहले कि मेरा दिमाग रोक पाता।
+मैं तुरंत पीछे हट गई।
+खुद से ही घिन आने लगी।
+वो मुझे ऐसे देख रहा था जैसे उसे पता था मैं यही करूँगी।
+“तुम पहले लड़ती हो,” उसने कहा।
+“ये ‘पहले’ क्या होता है?” मैंने झटके से कहा।
+उसने जवाब नहीं दिया।
+बस अपनी घड़ी देखी।
+3:13।
+और फिर…
+वो गायब हो गया।
+ना कदमों की आवाज़।
+ना दरवाज़ा।
+बस गायब।
+कमरा एक पल के लिए अजीब-सा लगने लगा।
+फिर सब ठीक।
+रोशनी हर तरफ फैल गई।
+फोन का वॉलपेपर वापस मेरा हो गया।
+मैं स्क्रीन देखती रह गई।
+3:14 AM
+बाहर एक कुत्ता एक बार भौंका।
+बस एक बार।
+मैं वापस लेट गई।
+छत को देखते हुए।
+खुद से कहती रही— ये हुआ ही नहीं था।
+आँखें बंद करती रही जैसे नींद कोई फैसला हो।
+फिर मैंने अंधेरे में धीमे से कहा, सिर्फ इसलिए क्योंकि मुझे लग रहा था मेरे पास कुछ तो कंट्रोल होना चाहिए—
+“वापस आओ।”
+अगली रात, 3:13।
+मेरी आँखें फिर खुल गईं।
+हवा ठंडी थी।
+मैं झटके से बैठ गई।
+और वहीं समझ आ गया—
+ये मेरा कमरा नहीं था।
+छत अलग थी।
+पंखा अलग था।
+सन्नाटा… अलग था।
+तकिए की खुशबू भी अलग थी।
+साफ… और गीली।
+बारिश।
+मैंने चारों तरफ देखा और मेरे अंदर कुछ बैठ गया।
+यहाँ की परछाइयाँ पुरानी लग रही थीं।
+कमरा ऐसा लग रहा था जैसे वो बहुत देर से इंतज़ार कर रहा हो।
+फिर अंधेरे से उसकी आवाज़ आई— बहुत पास।
+“गुड।”
+मैंने सिर घुमाया।
+वो फिर वहीँ था।
+बिस्तर के किनारे बैठा हुआ।
+वही शांत चेहरा।
+वही घड़ी, जो अब भी 3:13 पर अटकी हुई थी।
+“मैं… कहाँ हूँ?” मैंने पूछा।
+“यहीं,” उसने कहा।
+“नहीं,” मैं जल्दी से बोली। “मैंने—”
+“तुमने किया था।”
+बस दो शब्द।
+जैसे बहस की कोई जगह ही नहीं थी।
+“मैंने ये नहीं चुना,” मैंने कहा।
+वो थोड़ा पीछे झुका।
+“तुम आई थी,” उसने कहा।
+बहुत साफ़। बहुत ठंडा।
+ना रोमांस, ना वजह।
+बस एक सच।
+उसने धीरे से हाथ बढ़ाया।
+बिना जल्दी। बिना ज़ोर।
+उसकी उंगलियाँ फिर मेरे बालों से टकराईं।
+गर्म।
+असली।
+और मेरा शरीर…
+जैसे वो स्पर्श पहचानता हो।
+सबसे बुरा ये नहीं था कि मैं डर रही थी।
+सबसे बुरा ये था कि मेरा शरीर उससे नफरत नहीं कर रहा था।
+मैंने बहुत धीमे कहा,
+“मैं तुम्हारी नहीं हूँ।”
+वो इतना पास आया कि उसकी आवाज़ मेरे कान में नहीं… मेरी त्वचा पर लगी।
+“सो जाओ।”
+उसके पीछे दीवार पर कुछ निशान खुदे हुए थे।
+एक लाइन।
+फिर दूसरी।
+फिर तीसरी।
+जैसे कोई रातें गिन रहा था।
+सुबह हुई…
+और मैं अपने कमरे में थी।
+मेरा बिस्तर।
+मेरी छत।
+मेरा पंखा।
+मेरी नोटबुक अब भी खुली थी।
+सब कुछ वैसा ही लग रहा था जैसा कल था।
+सिर्फ…
+मेरे बालों की माँग गलत थी।
+मैं तकिए को देखती रही।
+वहाँ बाल का एक स्ट्रैंड था।
+मेरा नहीं।
+बहुत काला… बहुत सीधा।
+बारिश की खुशबू भी वहीं थी।
+मैं किचन में गई।
+माँ चाय बना रही थीं।
+सब कुछ बिल्कुल सामान्य था।
+साँस जैसे वापस आई।
+“मम्मी,” मैंने कहा।
+वो पलटीं।
+रुक गईं।
+फिर मुझे ऐसे देखने लगीं जैसे वो पहचान नहीं पा रही हों।
+“बेटा… तुम ठीक हो?”
+“हाँ,” मैंने कहा। “क्यों?”
+वो हिचकिचाईं।
+फिर धीरे से बोलीं,
+“तुम मुझे मम्मी नहीं कहती हो।”
+दिल धक से रह गया।
+“क्या?”
+वो हँसीं जैसे मैं मज़ाक कर रही हूँ।
+“तुम मुझे हमेशा आंटी बोलती हो,” उन्होंने कहा।
+मैंने उनके पीछे फ्रिज़ की तरफ देखा।
+फैमिली फोटो वही थी।
+लेकिन उसमें मेरी मुस्कान…
+अभ्यास की हुई लग रही थी।
+फोन मेरे हाथ में वाइब्रेट हुआ।
+अनजान नंबर।
+आज रात 3:13।
+नाटक मत करना।
+मैं स्क्रीन देखती रह गई।
+मेरे अंगूठे अपने आप चलने लगे।
+मैं नहीं।
+मेरे अंगूठे।
+ओके।
+मैंने भेजा नहीं था।
+फिर भी चला गया।
+आज रात मैं नहीं जागूँगी।
+जो कि झूठ था।
+        </pre>
       </article>
     </section>
 
-    <!-- ✅ ADS BOTTOM (Optional) -->
+    <!-- ✅ ADS BOTTOM -->
     <section class="sponsor" aria-label="Sponsored Content">
       <small>Sponsored</small>
 
-      <!-- ✅ Adsterra Banner Code -->
       <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
       <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
     </section>
@@ -1117,10 +1314,43 @@ Not me. My thumbs.
     // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ✅ word count
-    const story = document.getElementById("storyText").innerText.trim();
-    const words = story.split(/\s+/).filter(Boolean).length;
-    document.getElementById("wordCount").textContent = words;
+    const storyEN = document.getElementById("storyEN");
+    const storyHI = document.getElementById("storyHI");
+    const btnEN = document.getElementById("btnEN");
+    const btnHI = document.getElementById("btnHI");
+    const langTag = document.getElementById("langTag");
+
+    function countWords(text){
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    function setLanguage(lang){
+      if(lang === "HI"){
+        storyEN.style.display = "none";
+        storyHI.style.display = "block";
+        btnEN.classList.remove("btn-primary");
+        btnHI.classList.add("btn-primary");
+        langTag.textContent = "Hindi";
+        const words = countWords(storyHI.innerText);
+        document.getElementById("wordCount").textContent = words;
+      }else{
+        storyEN.style.display = "block";
+        storyHI.style.display = "none";
+        btnHI.classList.remove("btn-primary");
+        btnEN.classList.add("btn-primary");
+        langTag.textContent = "English";
+        const words = countWords(storyEN.innerText);
+        document.getElementById("wordCount").textContent = words;
+      }
+
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+
+    btnEN.addEventListener("click", () => setLanguage("EN"));
+    btnHI.addEventListener("click", () => setLanguage("HI"));
+
+    // ✅ default word count (English)
+    document.getElementById("wordCount").textContent = countWords(storyEN.innerText);
 
     // ✅ loader hide
     window.addEventListener("load", () => {
