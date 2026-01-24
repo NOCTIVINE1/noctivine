@@ -28,6 +28,15 @@
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://kuma.2bd.net/assests/file_000000005bcc723091fda73dc7b10b9.jpeg" />
 
+  <!-- ✅ Google tag (gtag.js) ✅ MUST BE INSIDE HEAD -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHH7RXK7T0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DHH7RXK7T0');
+  </script>
+
   <style>
     :root{
       --bg:#070A0F;
@@ -307,6 +316,7 @@
       color:var(--muted);
       font-size:13px;
       line-height:1.55;
+      white-space:pre-line;
     }
     .langRow{
       display:flex;
@@ -448,7 +458,9 @@
     <header class="story-head">
       <div class="chip"><span class="dot"></span> One Shot • Psychological Thriller</div>
       <h1>THE STRANGER IN MY ROOM</h1>
-      <p class="byline">— Noctivine • <span id="wordCount">0</span> words • <span id="langTag">English</span></p>
+      <p class="byline">
+        — Noctivine • <span id="wordCount">0</span> words • <span id="langTag">English</span> • 👁️ <span id="viewCount">0</span> reads
+      </p>
     </header>
 
     <!-- ✅ COVER -->
@@ -465,7 +477,7 @@
         <div class="coverMeta">
           <b>Story Description</b>
           <p>
-            A boy who’s been through too many endings.
+A boy who’s been through too many endings.
 He’s looking for a corner.
 A place inside someone where he can breathe without explaining himself.
 A place that feels safe. Familiar. Quiet.
@@ -1139,17 +1151,53 @@ Author’s Note
       setTimeout(() => document.getElementById("loader").classList.add("hide"), 450);
     });
   </script>
-<head>
-  ...
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHH7RXK7T0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-DHH7RXK7T0');
+
+  <!-- ✅ FIREBASE VIEW COUNTER (INBUILT READS SYSTEM) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD5Bz2Qx4UC1hWFi7g580-omgf1Fa0rKbg",
+      authDomain: "nocti-4b9e0.firebaseapp.com",
+      projectId: "nocti-4b9e0",
+      storageBucket: "nocti-4b9e0.firebasestorage.app",
+      messagingSenderId: "1028072381853",
+      appId: "1:1028072381853:web:cec893894f20fe43626374",
+      measurementId: "G-LTXG4N317R"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const STORY_ID = "stranger-room"; // ✅ unique for this story
+    const KEY = `viewed_${STORY_ID}`;
+    const now = Date.now();
+    const last = Number(localStorage.getItem(KEY) || 0);
+    const DAY = 24 * 60 * 60 * 1000;
+
+    async function updateViews(){
+      const ref = doc(db, "storyViews", STORY_ID);
+
+      const snap = await getDoc(ref);
+      if(!snap.exists()){
+        await setDoc(ref, { views: 0 });
+      }
+
+      if(now - last > DAY){
+        await updateDoc(ref, { views: increment(1) });
+        localStorage.setItem(KEY, String(now));
+      }
+
+      const updated = await getDoc(ref);
+      const views = updated.data()?.views ?? 0;
+
+      const el = document.getElementById("viewCount");
+      if(el) el.textContent = views.toLocaleString();
+    }
+
+    updateViews().catch(console.error);
   </script>
-</head>
 
 </body>
 </html>
