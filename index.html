@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
-  <!-- ✅ PERFORMANCE: PRELOAD IMPORTANT IMAGE -->
+  <!-- ✅ PERFORMANCE -->
   <link rel="preload" as="image" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <!-- ✅ OPEN GRAPH -->
@@ -34,7 +34,7 @@
   <meta name="twitter:description" content="Books • Stories • Psychology • Truth. Clean writing and real-life insights." />
   <meta name="twitter:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
-  <!-- ✅ SIMPLE STRUCTURED DATA (SEO BOOST) -->
+  <!-- ✅ STRUCTURED DATA -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -233,6 +233,11 @@
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
     .btn-ghost{background:rgba(255,255,255,0.03)}
+    .btn-donate{
+      background: linear-gradient(90deg, rgba(124,77,255,0.22), rgba(0,255,213,0.18));
+      border-color: rgba(124,77,255,0.34);
+      box-shadow: 0 18px 70px rgba(124,77,255,0.10);
+    }
 
     .hamburger{
       display:none;
@@ -453,7 +458,7 @@
       transform:translateY(-1px);
     }
 
-    /* ✅ VIDEO CARDS (COVER ONLY) */
+    /* ✅ VIDEO CARDS */
     .video-grid{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
@@ -524,6 +529,25 @@
       border-top:1px solid rgba(255,255,255,0.06);
     }
     .video-actions .btn{flex:1}
+
+    /* ✅ SPONSORED AD AREA */
+    .sponsor-box{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+      padding:14px;
+      text-align:center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+    .sponsor-label{
+      font-size:12px;
+      opacity:0.6;
+      margin-bottom:10px;
+      letter-spacing:0.3px;
+      font-weight:900;
+      color:rgba(234,240,255,0.70);
+    }
 
     /* ✅ FOOTER */
     footer{
@@ -605,7 +629,10 @@
         </nav>
 
         <div class="nav-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Visit YouTube</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-ghost" href="books.html">Books</a>
+          <a class="btn btn-donate" href="don.html">Donate</a>
+
           <button class="hamburger" id="hamburger" aria-label="Open Menu">
             <span></span><span></span><span></span>
           </button>
@@ -630,8 +657,9 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">✅ Visit My YouTube Channel</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">✅ Visit YouTube</a>
           <a class="btn btn-ghost" href="books.html">✅ Explore Books</a>
+          <a class="btn btn-donate" href="don.html">❤️ Support My Work</a>
           <a class="btn btn-ghost" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">✅ Instagram</a>
         </div>
 
@@ -643,17 +671,17 @@
       </div>
 
       <div class="panel">
-        <div class="chip"><span class="dot"></span> Latest Drop</div>
+        <div class="chip"><span class="dot"></span> Latest Update</div>
 
         <p class="sub" style="margin-top:10px">
-          Every new upload goes live here — books, shortfilms, and writing experiments.
+          Everything I create goes live here — books, shortfilms, and writing experiments.
           <br>
-          Minimal design. Fast reading. No distractions.
+          Designed for reading. Built to stay fast. Made to feel real.
         </p>
 
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="books.html">📚 Open Book Library</a>
-          <a class="btn btn-ghost" href="#books">🔥 View Featured Book</a>
+          <a class="btn btn-primary" href="books.html">📚 Open Library</a>
+          <a class="btn btn-ghost" href="#books">🔥 Featured Book</a>
         </div>
       </div>
     </section>
@@ -685,12 +713,24 @@
       <div class="video-grid" id="videoGrid" aria-label="Video Cards"></div>
     </section>
 
+    <!-- ✅ ADS (BOTTOM) -->
+    <section class="section" aria-label="Sponsored Content">
+      <div class="sponsor-box">
+        <div class="sponsor-label">Sponsored</div>
+
+        <!-- ✅ Adsterra Code -->
+        <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
+        <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+      </div>
+    </section>
+
     <!-- ✅ FOOTER -->
     <footer>
       <div class="foot">
         <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
         <div>
           <a href="books.html">Books</a>
+          <a href="don.html">Donate</a>
           <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
         </div>
@@ -713,7 +753,7 @@
     const navLinks = document.getElementById("navLinks");
     hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // ✅ Books Data (edit here to add more books later)
+    // ✅ Books Data (add more books here)
     const BOOKS = [
       {
         name: "Lonely Generation",
@@ -725,12 +765,13 @@
       }
     ];
 
-    // ✅ render books slider (fast DOM rendering)
+    // ✅ render books slider
     const slider = document.getElementById("bookSlider");
     slider.innerHTML = BOOKS.map(b => `
       <article class="slide" aria-label="Book Card">
         <div class="cover">
-          <img src="${b.cover}" alt="${b.name}" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+          <img src="${b.cover}" alt="${b.name}" loading="lazy" decoding="async"
+            onerror="this.style.display='none'" />
           <span class="price">${b.type}</span>
         </div>
         <div class="slide-body">
@@ -752,13 +793,13 @@
     prevBtn.addEventListener("click", () => slider.scrollBy({ left: -380, behavior: "smooth" }));
 
     // ✅ auto-scroll slider (paused on hover)
-    let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5000);
+    let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5200);
     slider.addEventListener("mouseenter", () => clearInterval(auto));
     slider.addEventListener("mouseleave", () => {
-      auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5000);
+      auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5200);
     });
 
-    // ✅ Video Cards (cover-only; no iframe = faster)
+    // ✅ Video Cards (cover-only)
     const VIDEOS = [
       {
         title: "The Firewood Lake",
@@ -773,7 +814,8 @@
     videoGrid.innerHTML = VIDEOS.map(v => `
       <article class="video-card" aria-label="Video Card">
         <div class="video-cover">
-          <img src="${v.cover}" alt="${v.title}" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+          <img src="${v.cover}" alt="${v.title}" loading="lazy" decoding="async"
+            onerror="this.style.display='none'" />
           <div class="badge">
             <span class="badge-dot"></span>
             ▶ Watch on YouTube
@@ -792,9 +834,9 @@
       </article>
     `).join("");
 
-    // ✅ loader hide (fast)
+    // ✅ loader hide
     window.addEventListener("load", () => {
-      setTimeout(() => document.getElementById("loader").classList.add("hide"), 550);
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 520);
     });
   </script>
 
