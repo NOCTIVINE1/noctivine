@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://kuma.2bd.net/stranger.html" />
 
   <!-- ✅ FAVICON -->
-  <link rel="icon" type="image/png" href="assests/ChatGPT Image Jan 22, 2026, 06_27_49 PM.png" />
+  <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <!-- ✅ Open Graph -->
@@ -275,7 +275,7 @@
       gap:0;
     }
     .coverArt{
-      aspect-ratio: 2 / 3; /* ✅ FIXED 2:3 */
+      aspect-ratio: 2 / 3;
       position:relative;
       background: rgba(255,255,255,0.03);
       overflow:hidden;
@@ -348,7 +348,7 @@
 
     .storyPre{
       margin:0;
-      white-space:pre-wrap; /* ✅ keeps paragraph breaks */
+      white-space:pre-wrap;
       font-family: inherit;
       font-size:16px;
       line-height:1.85;
@@ -428,7 +428,7 @@
       <div class="nav-inner">
 
         <a class="brand" href="index.html">
-          <img src="assests/ChatGPT Image Jan 22, 2026, 06_27_49 PM.png" alt="Noctivine Logo">
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
           <span>Noctivine</span>
         </a>
 
@@ -1291,6 +1291,7 @@ Which was a lie.
 जो कि झूठ था।
         </pre>
       </article>
+
     </section>
 
     <!-- ✅ ADS BOTTOM -->
@@ -1319,6 +1320,7 @@ Which was a lie.
     const btnEN = document.getElementById("btnEN");
     const btnHI = document.getElementById("btnHI");
     const langTag = document.getElementById("langTag");
+    const wordCountEl = document.getElementById("wordCount");
 
     function countWords(text){
       return text.trim().split(/\s+/).filter(Boolean).length;
@@ -1331,16 +1333,14 @@ Which was a lie.
         btnEN.classList.remove("btn-primary");
         btnHI.classList.add("btn-primary");
         langTag.textContent = "Hindi";
-        const words = countWords(storyHI.innerText);
-        document.getElementById("wordCount").textContent = words;
+        wordCountEl.textContent = countWords(storyHI.innerText);
       }else{
         storyEN.style.display = "block";
         storyHI.style.display = "none";
         btnHI.classList.remove("btn-primary");
         btnEN.classList.add("btn-primary");
         langTag.textContent = "English";
-        const words = countWords(storyEN.innerText);
-        document.getElementById("wordCount").textContent = words;
+        wordCountEl.textContent = countWords(storyEN.innerText);
       }
 
       window.scrollTo({top: 0, behavior: "smooth"});
@@ -1350,7 +1350,7 @@ Which was a lie.
     btnHI.addEventListener("click", () => setLanguage("HI"));
 
     // ✅ default word count (English)
-    document.getElementById("wordCount").textContent = countWords(storyEN.innerText);
+    wordCountEl.textContent = countWords(storyEN.innerText);
 
     // ✅ loader hide
     window.addEventListener("load", () => {
