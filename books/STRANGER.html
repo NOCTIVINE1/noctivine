@@ -1154,50 +1154,73 @@ Author’s Note
 
   <!-- ✅ FIREBASE VIEW COUNTER (INBUILT READS SYSTEM) -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    increment
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyD5Bz2Qx4UC1hWFi7g580-omgf1Fa0rKbg",
-      authDomain: "nocti-4b9e0.firebaseapp.com",
-      projectId: "nocti-4b9e0",
-      storageBucket: "nocti-4b9e0.firebasestorage.app",
-      messagingSenderId: "1028072381853",
-      appId: "1:1028072381853:web:cec893894f20fe43626374",
-      measurementId: "G-LTXG4N317R"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyD5Bz2Qx4UC1hWFi7g580-omgf1Fa0rKbg",
+    authDomain: "nocti-4b9e0.firebaseapp.com",
+    projectId: "nocti-4b9e0",
+    storageBucket: "nocti-4b9e0.firebasestorage.app",
+    messagingSenderId: "1028072381853",
+    appId: "1:1028072381853:web:cec893894f20fe43626374",
+    measurementId: "G-LTXG4N317R"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    const STORY_ID = "stranger-room"; // ✅ unique for this story
-    const KEY = `viewed_${STORY_ID}`;
-    const now = Date.now();
-    const last = Number(localStorage.getItem(KEY) || 0);
-    const DAY = 24 * 60 * 60 * 1000;
+  const readCountEl = document.getElementById("readCount");
 
-    async function updateViews(){
-      const ref = doc(db, "storyViews", STORY_ID);
+  // ✅ Unique ID for this story page
+  const STORY_ID = "stranger_in_my_room";
 
+  // ✅ counts 1 view per device per 12 hours (anti-spam)
+  const KEY = "viewed_" + STORY_ID;
+  const LAST = localStorage.getItem(KEY);
+  const NOW = Date.now();
+  const COOLDOWN = 12 * 60 * 60 * 1000; // 12 hours
+
+  const shouldCount = !LAST || (NOW - Number(LAST)) > COOLDOWN;
+
+  async function updateReadCounter() {
+    try {
+      const ref = doc(db, "storyReads", STORY_ID);
+
+      // ✅ create doc if missing
       const snap = await getDoc(ref);
-      if(!snap.exists()){
-        await setDoc(ref, { views: 0 });
+
+      if (!snap.exists()) {
+        await setDoc(ref, { reads: 0 });
       }
 
-      if(now - last > DAY){
-        await updateDoc(ref, { views: increment(1) });
-        localStorage.setItem(KEY, String(now));
+      // ✅ increase only if allowed
+      if (shouldCount) {
+        await updateDoc(ref, { reads: increment(1) });
+        localStorage.setItem(KEY, String(NOW));
       }
 
-      const updated = await getDoc(ref);
-      const views = updated.data()?.views ?? 0;
+      // ✅ read latest count
+      const fresh = await getDoc(ref);
+      const data = fresh.data();
 
-      const el = document.getElementById("viewCount");
-      if(el) el.textContent = views.toLocaleString();
+      readCountEl.textContent = data?.reads ?? 0;
+
+    } catch (err) {
+      console.log("Counter error:", err);
+      readCountEl.textContent = "0";
     }
+  }
 
-    updateViews().catch(console.error);
-  </script>
+  updateReadCounter();
+</script>
 
 </body>
 </html>
