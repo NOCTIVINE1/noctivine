@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- ✅ PRIMARY SEO -->
-  <title>Noctivine — Books, Shortfilm & Podcast | kuma.2bd.net</title>
-  <meta name="description" content="Noctivine — original books, shortfilms, podcasts, and psychology-driven truth about life. Real writing. No fake motivation." />
-  <meta name="keywords" content="Noctivine, books, psychology, shortfilm, podcast, stories, truth about life, writing, Indian writer" />
+  <!-- ✅ SEO -->
+  <title>Noctivine — Book Library | kuma.2bd.net</title>
+  <meta name="description" content="Explore Noctivine’s books and stories — read online inside the website or open story pages. Minimal, fast, reader-first design." />
+  <meta name="keywords" content="Noctivine, books, stories, psychology, read online, short stories, wattpad style, Indian writer" />
   <meta name="author" content="Noctivine" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://kuma.2bd.net/" />
+  <link rel="canonical" href="https://kuma.2bd.net/books.html" />
 
-  <!-- ✅ FAVICON + LOGO -->
+  <!-- ✅ FAVICON -->
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
   <!-- ✅ OPEN GRAPH -->
   <meta property="og:site_name" content="Noctivine" />
-  <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
-  <meta property="og:description" content="Books • Stories • Psychology • Truth. Clean writing and real-life insights." />
-  <meta property="og:url" content="https://kuma.2bd.net/" />
+  <meta property="og:title" content="Noctivine — Book Library" />
+  <meta property="og:description" content="Read books online or open story pages. Clean writing. Minimal design." />
+  <meta property="og:url" content="https://kuma.2bd.net/books.html" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
 
@@ -33,15 +33,16 @@
       --text:#EAF0FF;
       --muted:rgba(234,240,255,0.72);
       --muted2:rgba(234,240,255,0.58);
-      --line:rgba(255,255,255,0.10);
       --accent:#00FFD5;
       --accent2:#7C4DFF;
       --radius:22px;
       --shadow:0 20px 60px rgba(0,0,0,0.55);
+      --line:rgba(255,255,255,0.10);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       background:
@@ -61,17 +62,17 @@
     /* ✅ LOADER */
     .loader-wrap{
       position:fixed; inset:0;
+      background: rgba(7,10,15,0.95);
       display:flex;
       align-items:center;
       justify-content:center;
       z-index:9999;
-      background: rgba(7,10,15,0.97);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition:opacity 0.35s ease, transform 0.35s ease;
     }
     .loader-wrap.hide{
       opacity:0;
       pointer-events:none;
-      transform: scale(1.01);
+      transform:scale(1.02);
     }
     .loader{
       width:min(520px, 92vw);
@@ -82,22 +83,27 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 40px 120px rgba(0,0,0,0.65);
       text-align:center;
+      animation: pop 0.5s ease forwards;
     }
-    .loader-head{
+    @keyframes pop{
+      from{transform:scale(0.98); opacity:0;}
+      to{transform:scale(1); opacity:1;}
+    }
+    .loader-logo{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:12px;
       font-weight:950;
-      letter-spacing:0.7px;
+      letter-spacing:0.6px;
       font-size:18px;
       margin-bottom:10px;
     }
-    .loader-head img{
+    .loader-logo img{
       width:46px;height:46px;
       border-radius:15px;
       border:1px solid rgba(255,255,255,0.14);
-      background:rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.05);
       object-fit:cover;
       animation: floaty 1.6s ease-in-out infinite;
     }
@@ -161,26 +167,26 @@
       width:38px;height:38px;
       border-radius:13px;
       border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.05);
       object-fit:cover;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.40);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
       flex-shrink:0;
     }
     .brand span{
-      font-size:16px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:160px;
+      max-width:140px;
+      font-size:16px;
     }
 
     .nav-actions{
       display:flex;
       gap:10px;
       align-items:center;
-      flex-shrink:0;
       flex-wrap:wrap;
       justify-content:flex-end;
+      flex-shrink:0;
     }
 
     .btn{
@@ -192,174 +198,120 @@
       border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
-      color:var(--text);
-      cursor:pointer;
       font-weight:950;
       font-size:14px;
-      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
+      cursor:pointer;
       user-select:none;
+      transition:0.2s;
+      color:var(--text);
       white-space:nowrap;
     }
     .btn:hover{
       transform:translateY(-1px);
       border-color:rgba(255,255,255,0.18)
     }
+
     .btn-primary{
-      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.20));
-      border-color: rgba(0,255,213,0.30);
+      background: linear-gradient(90deg, rgba(0,255,213,0.22), rgba(124,77,255,0.18));
+      border-color:rgba(0,255,213,0.34);
       box-shadow: 0 18px 70px rgba(0,255,213,0.10);
     }
+
     .btn-donate{
       background: linear-gradient(90deg, rgba(124,77,255,0.22), rgba(0,255,213,0.18));
       border-color: rgba(124,77,255,0.34);
       box-shadow: 0 18px 70px rgba(124,77,255,0.10);
     }
 
-    /* ✅ HERO */
-    .hero{
-      padding: 52px 0 20px;
-      display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap:18px;
-      align-items:stretch;
+    /* ✅ HEADER */
+    .header{padding:26px 0 8px}
+    .header h1{margin:0;font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.6px}
+    .header p{margin:10px 0 0;color:var(--muted);line-height:1.65;font-size:14px}
+
+    /* ✅ TOOLS */
+    .tools{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+    .input{
+      flex:1;
+      min-width:220px;
+      height:46px;
+      padding:0 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      outline:none;
     }
-    .panel{
+    .input::placeholder{color:rgba(234,240,255,0.45)}
+
+    /* ✅ READER VIEWER (PDF only) */
+    .reader-viewer{
+      margin-top:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      box-shadow: var(--shadow);
+      padding:14px;
+      display:none;
+      animation: fadeUp 0.45s ease both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(10px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    .viewer-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .viewer-head h2{margin:0;font-size:18px}
+    .viewer-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .viewer-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    .viewer-box{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,0.10);
+      overflow:hidden;
+      background: rgba(0,0,0,0.30);
+    }
+    .viewer-box iframe{
+      width:100%;
+      height:70vh;
+      border:0;
+    }
+
+    /* ✅ GRID */
+    .grid{
+      padding:14px 0 10px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .card{
       border-radius:var(--radius);
       border:1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, var(--panel2), var(--panel));
       box-shadow: var(--shadow);
-      padding:18px;
       overflow:hidden;
-      position:relative;
-      animation: fadeUp 0.55s ease both;
-    }
-    @keyframes fadeUp{
-      from{opacity:0; transform:translateY(10px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(520px 260px at 20% 10%, rgba(0,255,213,0.12), transparent 60%),
-        radial-gradient(450px 240px at 80% 10%, rgba(124,77,255,0.15), transparent 62%);
-      pointer-events:none;
-    }
-    .panel > *{position:relative}
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.03);
-      color:var(--muted);
-      font-size:13px;
-      font-weight:950;
-      width:max-content;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 20px rgba(0,255,213,0.28);
-    }
-
-    h1{
-      margin:12px 0 10px;
-      font-size:clamp(30px, 3.2vw, 46px);
-      line-height:1.1;
-      letter-spacing:-0.7px;
-    }
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.6;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-      margin-top:16px;
-    }
-    .mini{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.09);
-      background:rgba(255,255,255,0.03);
-      padding:12px;
-    }
-    .mini b{display:block;font-size:14px}
-    .mini span{display:block;margin-top:4px;color:var(--muted2);font-size:12px}
-
-    /* ✅ SECTION */
-    .section{padding:22px 0 10px;}
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-0.2px
-    }
-    .link{
-      color:var(--muted);
-      font-weight:950;
-      font-size:14px
-    }
-    .link:hover{color:var(--text)}
-
-    /* ✅ BOOK SLIDER */
-    .slider-wrap{
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(255,255,255,0.03);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .slider{
-      display:flex;
-      overflow:auto;
-      scroll-snap-type:x mandatory;
-      gap:14px;
-      padding:14px;
-      scrollbar-width:none;
-    }
-    .slider::-webkit-scrollbar{display:none;}
-    .slide{
-      min-width: min(360px, 85vw);
-      scroll-snap-align: start;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      overflow:hidden;
-      transition: transform 0.18s ease, border 0.2s ease;
+      transition:0.2s;
       will-change: transform;
     }
-    .slide:hover{
+    .card:hover{
       transform:translateY(-3px);
       border-color:rgba(0,255,213,0.25)
     }
+
+    /* ✅ Cover ratio 2:3 */
     .cover{
-      height:170px;
+      position:relative;
+      width:100%;
+      aspect-ratio: 2 / 3; /* ✅ width:height 2:3 */
       background:rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
-      position:relative;
+      overflow:hidden;
       display:flex;
       align-items:flex-end;
       padding:12px;
@@ -370,9 +322,11 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      opacity:0.92;
+      opacity:0.95;
+      transform: scale(1.01);
     }
-    .price{
+
+    .badge{
       position:relative;
       z-index:2;
       padding:7px 10px;
@@ -384,120 +338,56 @@
       color:rgba(0,255,213,0.95);
       border-color:rgba(0,255,213,0.35);
     }
-    .slide-body{padding:14px;}
-    .slide-body h3{
+    .badge-story{
+      color: rgba(234,240,255,0.95);
+      border-color: rgba(124,77,255,0.35);
+    }
+
+    .body{padding:14px;}
+    .body h3{
       margin:0 0 6px;
       font-size:16px;
-      letter-spacing:-0.2px
+      letter-spacing:-0.2px;
     }
-    .slide-body p{
+    .body p{
       margin:0;
       color:var(--muted);
       font-size:13px;
-      line-height:1.55
+      line-height:1.55;
+      white-space:pre-line;
     }
+
+    .toggle{
+      margin-top:10px;
+      width:100%;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      font-weight:950;
+      cursor:pointer;
+      transition:0.2s;
+    }
+    .toggle:hover{
+      border-color:rgba(255,255,255,0.18);
+      transform:translateY(-1px);
+    }
+
     .actions{
       margin-top:12px;
       display:flex;
       gap:10px;
+      flex-wrap:wrap;
     }
-    .actions .btn{flex:1}
+    .actions .btn{flex:1;min-width:150px}
 
-    .slider-controls{
-      position:absolute;
-      inset:auto 12px 12px auto;
-      display:flex;
-      gap:8px;
-      z-index:5;
-    }
-    .icon-btn{
-      width:42px;height:42px;border-radius:14px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:rgba(0,0,0,0.22);
-      color:var(--text);
-      cursor:pointer;
-      font-weight:950;
-      transition:0.2s;
-    }
-    .icon-btn:hover{
-      border-color:rgba(0,255,213,0.28);
-      transform:translateY(-1px);
-    }
+    /* hidden raw data */
+    #bookDatabase{display:none;}
 
-    /* ✅ VIDEO GRID */
-    .video-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:14px;
-    }
-    .video-card{
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transition:0.2s;
-    }
-    .video-card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(0,255,213,0.25);
-    }
-    .video-cover{
-      height: 190px;
-      position: relative;
-      background: rgba(255,255,255,0.03);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      overflow:hidden;
-      display:flex;
-      align-items:flex-end;
-      padding:12px;
-    }
-    .video-cover img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:0.92;
-      transform: scale(1.02);
-    }
-    .badge{
-      position:relative;
-      z-index:2;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.28);
-      font-weight:950;
-      color: rgba(234,240,255,0.95);
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .badge-dot{
-      width:10px;height:10px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 18px rgba(0,255,213,0.25);
-    }
-
-    .video-body{padding:14px;}
-    .video-body h3{margin:0;font-size:16px}
-    .video-body p{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
-    .video-actions{
-      padding: 14px;
-      display:flex;
-      gap:10px;
-      border-top:1px solid rgba(255,255,255,0.06);
-    }
-    .video-actions .btn{flex:1}
-
-    /* ✅ SAFE AD AREA */
+    /* ✅ ADS */
     .sponsor-box{
+      margin-top:18px;
       border-radius:18px;
       border:1px solid rgba(255,255,255,0.08);
       background:rgba(255,255,255,0.03);
@@ -514,49 +404,31 @@
       font-weight:900;
       color:rgba(234,240,255,0.70);
     }
-    .ad-frame{
-      width:100%;
-      min-height:90px;
-      border:0;
-      border-radius:16px;
-      overflow:hidden;
-      background:rgba(0,0,0,0.20);
-    }
 
     /* ✅ FOOTER */
-    footer{
-      padding: 26px 0 40px;
-      color: var(--muted2);
-      font-size:13px;
-    }
+    footer{padding:26px 0 40px;color:var(--muted2);font-size:13px}
     .foot{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:14px;
       flex-wrap:wrap;
+      gap:14px;
       border-top:1px solid rgba(255,255,255,0.06);
       padding-top:16px;
+      margin-top:18px;
     }
-    .foot a{
-      color: var(--muted2);
-      font-weight:900;
-      margin-left:12px;
-    }
+    .foot a{color:var(--muted2);font-weight:900;margin-left:12px}
     .foot a:hover{color:var(--text)}
 
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .video-grid{grid-template-columns:1fr;}
+    @media(max-width:980px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:860px){
+      .grid{grid-template-columns:1fr;}
+      .viewer-box iframe{height:60vh;}
     }
     @media (max-width:520px){
       .brand span{display:none;}
-      .btn{
-        padding:10px 12px;
-        font-size:13px;
-        border-radius:14px;
-      }
-      .mini-grid{grid-template-columns:1fr;}
+      .btn{padding:10px 12px;font-size:13px;border-radius:14px;}
     }
   </style>
 </head>
@@ -566,12 +438,12 @@
   <!-- ✅ LOADER -->
   <div class="loader-wrap" id="loader" aria-label="Loading">
     <div class="loader">
-      <div class="loader-head">
+      <div class="loader-logo">
         <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
         <span>Noctivine</span>
       </div>
       <div class="bar"><span></span></div>
-      <div class="load-text">Loading books & stories...</div>
+      <div class="load-text">Loading library...</div>
     </div>
   </div>
 
@@ -580,13 +452,13 @@
     <div class="container">
       <div class="nav-inner">
         <a class="brand" href="index.html">
-          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo" />
           <span>Noctivine</span>
         </a>
 
         <div class="nav-actions">
+          <a class="btn" href="index.html">Home</a>
           <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
-          <a class="btn" href="books.html">Books</a>
           <a class="btn btn-donate" href="don.html">Donate</a>
         </div>
       </div>
@@ -595,109 +467,88 @@
 
   <main class="container">
 
-    <!-- ✅ HERO -->
-    <section class="hero">
-      <div class="panel">
-        <div class="chip"><span class="dot"></span> Books • Stories • Psychology • Truth</div>
+    <section class="header">
+      <h1>Book Library</h1>
+      <p>
+        Welcome to my collection.
+        Read online inside this website, or open story pages for a Wattpad-style experience.
+        <br />
+        Built for real readers — clean, quiet, and distraction-free.
+      </p>
 
-        <h1>Noctivine — Books, shortfilm, podcast</h1>
-
-        <p class="sub">
-          I write original stories and psychology-driven insights — honest, minimal, and real.
-          <br><br>
-          This platform is built for readers who enjoy meaning, silence, and depth — not noise.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">✅ Visit YouTube</a>
-          <a class="btn" href="books.html">✅ Explore Books</a>
-          <a class="btn btn-donate" href="don.html">❤️ Support My Work</a>
-          <a class="btn" href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">✅ Instagram</a>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini"><b>📚 Books</b><span>Original writing, published clean and simple.</span></div>
-          <div class="mini"><b>🧠 Psychology</b><span>Truth-first ideas, explained without hype.</span></div>
-          <div class="mini"><b>🎧 Podcast</b><span>Short thoughts, sharp perspective.</span></div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="chip"><span class="dot"></span> Latest Update</div>
-
-        <p class="sub" style="margin-top:10px">
-          Everything I create goes live here — books, shortfilms, and writing experiments.
-          <br>
-          Designed for reading. Built to stay fast. Made to feel real.
-        </p>
-
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="books.html">📚 Open Library</a>
-          <a class="btn" href="books.html#stranger-room">🔥 Latest Story</a>
-        </div>
+      <div class="tools">
+        <input class="input" id="searchBox" placeholder="Search books..." />
       </div>
     </section>
 
-    <!-- ✅ BOOKS SLIDER -->
-    <section class="section" id="books">
-      <div class="section-head">
-        <h2>Featured</h2>
-        <a class="link" href="books.html">View all →</a>
-      </div>
+    <!-- ✅ Embedded Reader (ONLY FOR PDF BOOKS) -->
+    <section class="reader-viewer" id="readerViewer">
+      <div class="viewer-head">
+        <div>
+          <h2 id="viewerTitle">Reading...</h2>
+          <p id="viewerSub">Embedded Reader</p>
+        </div>
 
-      <div class="slider-wrap">
-        <div class="slider" id="bookSlider" aria-label="Book Slider"></div>
-
-        <div class="slider-controls">
-          <button class="icon-btn" id="prevBtn" aria-label="Previous">‹</button>
-          <button class="icon-btn" id="nextBtn" aria-label="Next">›</button>
+        <div class="viewer-actions">
+          <button class="btn" type="button" onclick="closeReader()">Close</button>
+          <a class="btn btn-primary" id="openNewTabBtn" href="#" target="_blank" rel="noopener">Open Fullscreen</a>
         </div>
       </div>
-    </section>
 
-    <!-- ✅ VIDEOS -->
-    <section class="section" id="videos">
-      <div class="section-head">
-        <h2>Shortfilm / Podcast</h2>
-        <a class="link" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">More on YouTube →</a>
-      </div>
-
-      <div class="video-grid" id="videoGrid" aria-label="Video Cards"></div>
-    </section>
-
-    <!-- ✅ ADS (BOTTOM) SAFE MODE -->
-    <section class="section" aria-label="Sponsored Content">
-      <div class="sponsor-box">
-        <div class="sponsor-label">Sponsored</div>
-
-        <!-- ✅ Safe sandboxed banner loader -->
-        <iframe
-          class="ad-frame"
-          title="Sponsored Banner"
-          loading="lazy"
-          sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
-          referrerpolicy="no-referrer"
-          srcdoc='
-            <!doctype html>
-            <html>
-              <head><meta charset="utf-8"></head>
-              <body style="margin:0;background:transparent;">
-                <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
-                <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
-              </body>
-            </html>
-          '>
-        </iframe>
-
+      <div class="viewer-box">
+        <iframe id="bookFrame" src="" loading="lazy"></iframe>
       </div>
     </section>
 
-    <!-- ✅ FOOTER -->
+    <!-- ✅ Book Cards -->
+    <section class="grid" id="bookGrid" aria-label="Books"></section>
+
+    <!-- ✅ RAW BOOK DATABASE (EDIT ONLY THIS PART) -->
+    <div id="bookDatabase">
+
+      <!-- ✅ PDF BOOK -->
+      <div class="book-row"
+        data-id="lonely-generation"
+        data-type="PDF"
+        data-name="Lonely Generation"
+        data-cover="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png"
+        data-pdf="https://drive.google.com/file/d/1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3/preview"
+        data-download="https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3">
+My first book — written for people who feel alone in a crowded world.
+Slow-paced, real, and honest.
+      </div>
+
+      <!-- ✅ STORY PAGE (NO PDF) -->
+      <div class="book-row"
+        data-id="stranger-room"
+        data-type="STORY"
+        data-name="THE STRANGER IN MY ROOM"
+        data-cover="assests/image4.png"
+        data-page="books/STRANGER.html">
+On the night before an exam, she wakes up at 3:13 AM to find a boy sitting on the edge of her bed—silent, steady, like he’s been there before.
+Her phone wallpaper changes. The light refuses to reach him. And he speaks like he already knows her.
+
+But the real horror begins when she wakes up in a room that isn’t hers… and returns to a life that no longer feels the same.
+
+Because the stranger isn’t just visiting her room.
+He’s rewriting her world.
+      </div>
+
+    </div>
+
+    <!-- ✅ ADS (BOTTOM) -->
+    <section class="sponsor-box" aria-label="Sponsored Content">
+      <div class="sponsor-label">Sponsored</div>
+
+      <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
+      <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
+    </section>
+
     <footer>
       <div class="foot">
         <div>© <span id="year"></span> Noctivine • All Rights Reserved</div>
         <div>
-          <a href="books.html">Books</a>
+          <a href="index.html">Home</a>
           <a href="don.html">Donate</a>
           <a href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.instagram.com/himanshu_1j25?igsh=MW13cHN5anAyYWl3eg%3D%3D" target="_blank" rel="noopener">Instagram</a>
@@ -712,101 +563,133 @@
   </main>
 
   <script>
-    // ✅ dynamic year
+    // ✅ year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ✅ Books Data (mix PDF + STORY)
-    const BOOKS = [
-      {
-        type: "PDF",
-        name: "Lonely Generation",
-        cover: "assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2001_02_19%20PM.png",
-        tag: "FREE PDF",
-        desc: "My first book — written for people who feel alone in a crowded world. Slow-paced, real, and honest.",
-        open: "books.html#lonely-generation",
-        download: "https://drive.google.com/uc?export=download&id=1xGhz1bSkNDn7KyO1pJZ5CDB5mU-cCoK3"
-      },
-      {
-        type: "STORY",
-        name: "THE STRANGER IN MY ROOM",
-        cover: "assests/image4.png",
-        tag: "STORY",
-        desc: "A psychological one-shot where a stranger appears every night at 3:13… and reality begins to rewrite itself.",
-        open: "books/STRANGER.html"
+    const grid = document.getElementById("bookGrid");
+    const searchBox = document.getElementById("searchBox");
+
+    function shortText(text, max = 260){
+      if(!text) return "";
+      text = text.trim();
+      if(text.length <= max) return text;
+      return text.slice(0, max) + "...";
+    }
+
+    // ✅ Read books from HTML database
+    function getBooksFromHTML(){
+      const rows = document.querySelectorAll("#bookDatabase .book-row");
+      return Array.from(rows).map(row => ({
+        id: (row.dataset.id || "").trim(),
+        type: (row.dataset.type || "PDF").trim(),  // PDF or STORY
+        name: (row.dataset.name || "").trim(),
+        cover: (row.dataset.cover || "").trim(),
+        pdf: (row.dataset.pdf || "").trim(),
+        download: (row.dataset.download || "").trim(),
+        page: (row.dataset.page || "").trim(),
+        description: row.textContent.trim()
+      }));
+    }
+
+    const BOOKS = getBooksFromHTML();
+
+    function renderBooks(list){
+      grid.innerHTML = list.map(book => {
+        const isStory = book.type.toUpperCase() === "STORY";
+        const badgeText = isStory ? "STORY" : "FREE PDF";
+
+        const primaryBtn = isStory
+          ? `<a class="btn btn-primary" href="${book.page}" target="_blank" rel="noopener">Read Story</a>`
+          : `<button class="btn btn-primary" type="button" onclick="openReader('${book.id}')">Read Online</button>`;
+
+        const secondaryBtn = isStory
+          ? `<a class="btn" href="${book.page}" target="_blank" rel="noopener">Open</a>`
+          : `<a class="btn" href="${book.download}" target="_blank" rel="noopener">Download</a>`;
+
+        return `
+          <article class="card" id="${book.id}">
+            <div class="cover">
+              <img src="${book.cover}" alt="${book.name}" loading="lazy" decoding="async" onerror="this.style.display='none'">
+              <span class="badge ${isStory ? "badge-story" : ""}">${badgeText}</span>
+            </div>
+
+            <div class="body">
+              <h3>${book.name}</h3>
+
+              <p class="desc"
+                data-full="${encodeURIComponent(book.description)}"
+                data-open="false">
+                ${shortText(book.description)}
+              </p>
+
+              <button class="toggle" type="button">Show more</button>
+
+              <div class="actions">
+                ${primaryBtn}
+                ${secondaryBtn}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // ✅ show more / less
+      document.querySelectorAll(".toggle").forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const desc = document.querySelectorAll(".desc")[index];
+          const full = decodeURIComponent(desc.getAttribute("data-full"));
+          const isOpen = desc.getAttribute("data-open") === "true";
+
+          if(!isOpen){
+            desc.textContent = full;
+            desc.setAttribute("data-open", "true");
+            btn.textContent = "Show less";
+          } else {
+            desc.textContent = shortText(full);
+            desc.setAttribute("data-open", "false");
+            btn.textContent = "Show more";
+          }
+        });
+      });
+    }
+
+    // ✅ PDF Reader only
+    function openReader(bookId){
+      const book = BOOKS.find(b => b.id === bookId);
+
+      if(!book || !book.pdf){
+        alert("This book has no PDF reader. Try opening the story page instead.");
+        return;
       }
-    ];
 
-    // ✅ render books slider
-    const slider = document.getElementById("bookSlider");
-    slider.innerHTML = BOOKS.map(b => `
-      <article class="slide" aria-label="Book Card">
-        <div class="cover">
-          <img src="${b.cover}" alt="${b.name}" loading="lazy" decoding="async"
-            onerror="this.style.display='none'" />
-          <span class="price">${b.tag}</span>
-        </div>
-        <div class="slide-body">
-          <h3>${b.tag} — ${b.name}</h3>
-          <p>${b.desc}</p>
-          <div class="actions">
-            <a class="btn" href="${b.open}" ${b.type === "STORY" ? `target="_blank" rel="noopener"` : ""}>✅ Open</a>
-            ${b.type === "PDF"
-              ? `<a class="btn btn-primary" href="${b.download}" target="_blank" rel="noopener">✅ Download</a>`
-              : `<a class="btn btn-primary" href="${b.open}" target="_blank" rel="noopener">✅ Read</a>`
-            }
-          </div>
-        </div>
-      </article>
-    `).join("");
+      const viewer = document.getElementById("readerViewer");
+      viewer.style.display = "block";
 
-    // ✅ slider controls
-    const nextBtn = document.getElementById("nextBtn");
-    const prevBtn = document.getElementById("prevBtn");
+      document.getElementById("viewerTitle").textContent = book.name;
+      document.getElementById("viewerSub").textContent = "Reading inside Noctivine Library";
 
-    nextBtn.addEventListener("click", () => slider.scrollBy({ left: 380, behavior: "smooth" }));
-    prevBtn.addEventListener("click", () => slider.scrollBy({ left: -380, behavior: "smooth" }));
+      const frame = document.getElementById("bookFrame");
+      frame.src = book.pdf;
 
-    // ✅ auto-scroll slider
-    let auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5200);
-    slider.addEventListener("mouseenter", () => clearInterval(auto));
-    slider.addEventListener("mouseleave", () => {
-      auto = setInterval(() => slider.scrollBy({ left: 380, behavior: "smooth" }), 5200);
+      document.getElementById("openNewTabBtn").href = book.pdf;
+
+      viewer.scrollIntoView({behavior:"smooth"});
+    }
+
+    function closeReader(){
+      document.getElementById("bookFrame").src = "";
+      document.getElementById("readerViewer").style.display = "none";
+    }
+
+    // ✅ init
+    renderBooks(BOOKS);
+
+    // ✅ search
+    searchBox.addEventListener("input", () => {
+      const q = searchBox.value.trim().toLowerCase();
+      const filtered = BOOKS.filter(b => b.name.toLowerCase().includes(q));
+      renderBooks(filtered);
     });
-
-    // ✅ Video Cards
-    const VIDEOS = [
-      {
-        title: "The Firewood Lake",
-        chapter: "Chapter 1",
-        by: "Noctivine",
-        cover: "assests/WhatsApp%20Image%202026-01-22%20at%208.31.40%20PM.jpeg",
-        youtube: "https://youtu.be/KggsGhzaSQo?si=9E9x4p1PFKonMewM"
-      }
-    ];
-
-    const videoGrid = document.getElementById("videoGrid");
-    videoGrid.innerHTML = VIDEOS.map(v => `
-      <article class="video-card" aria-label="Video Card">
-        <div class="video-cover">
-          <img src="${v.cover}" alt="${v.title}" loading="lazy" decoding="async"
-            onerror="this.style.display='none'" />
-          <div class="badge">
-            <span class="badge-dot"></span>
-            ▶ Watch on YouTube
-          </div>
-        </div>
-
-        <div class="video-body">
-          <h3>${v.title}</h3>
-          <p>${v.chapter} • ${v.by}</p>
-        </div>
-
-        <div class="video-actions">
-          <a class="btn btn-primary" href="${v.youtube}" target="_blank" rel="noopener">Open on YouTube</a>
-          <a class="btn" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">Channel</a>
-        </div>
-      </article>
-    `).join("");
 
     // ✅ loader hide
     window.addEventListener("load", () => {
