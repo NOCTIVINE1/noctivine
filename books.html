@@ -308,7 +308,7 @@
     .cover{
       position:relative;
       width:100%;
-      aspect-ratio: 2 / 3; /* ✅ width:height 2:3 */
+      aspect-ratio: 2 / 3;
       background:rgba(255,255,255,0.03);
       border-bottom:1px solid rgba(255,255,255,0.06);
       overflow:hidden;
@@ -518,20 +518,23 @@ My first book — written for people who feel alone in a crowded world.
 Slow-paced, real, and honest.
       </div>
 
-      <!-- ✅ STORY PAGE (NO PDF) -->
+      <!-- ✅ STORY PAGE (NO PDF) ✅ FIXED COVER + FIXED LINK -->
       <div class="book-row"
         data-id="stranger-room"
         data-type="STORY"
         data-name="THE STRANGER IN MY ROOM"
-        data-cover="assests/image4.png"
-        data-page="books/STRANGER.html">
-On the night before an exam, she wakes up at 3:13 AM to find a boy sitting on the edge of her bed—silent, steady, like he’s been there before.
-Her phone wallpaper changes. The light refuses to reach him. And he speaks like he already knows her.
+        data-cover="assests/file_000000005bcc723091fda73dc7b10b9.jpeg"
+        data-page="books/stranger.html">
+A boy who’s been through too many endings.
+He’s looking for a corner.
+A place inside someone where he can breathe without explaining himself.
+A place that feels safe. Familiar. Quiet.
 
-But the real horror begins when she wakes up in a room that isn’t hers… and returns to a life that no longer feels the same.
+One night, at 2 AM, he wakes up.
+A girl is standing there…
+like she’s been waiting for him to finally wake up.
 
-Because the stranger isn’t just visiting her room.
-He’s rewriting her world.
+After that night, nothing feels normal again.
       </div>
 
     </div>
@@ -684,10 +687,12 @@ He’s rewriting her world.
     // ✅ init
     renderBooks(BOOKS);
 
-    // ✅ search
+    // ✅ search (NOW SEARCHES TITLE + DESCRIPTION ✅)
     searchBox.addEventListener("input", () => {
       const q = searchBox.value.trim().toLowerCase();
-      const filtered = BOOKS.filter(b => b.name.toLowerCase().includes(q));
+      const filtered = BOOKS.filter(b =>
+        (b.name + " " + b.description).toLowerCase().includes(q)
+      );
       renderBooks(filtered);
     });
 
