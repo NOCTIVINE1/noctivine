@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
+
   <!-- ✅ PRIMARY SEO -->
   <title>Noctivine — Books, Shortfilm & Podcast | kuma.2bd.net</title>
   <meta name="description" content="Noctivine — original books, shortfilms, podcasts, and psychology-driven truth about life. Real writing. No fake motivation." />
@@ -12,14 +13,14 @@
   <meta name="author" content="Noctivine" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kuma.2bd.net/" />
-  
+
   <!-- ✅ FAVICON + LOGO -->
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-  
+
   <!-- ✅ PERFORMANCE -->
   <link rel="preload" as="image" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-  
+
   <!-- ✅ OPEN GRAPH -->
   <meta property="og:site_name" content="Noctivine" />
   <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
@@ -27,13 +28,13 @@
   <meta property="og:url" content="https://kuma.2bd.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-  
+
   <!-- ✅ TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Noctivine — Books, Shortfilm & Podcast" />
   <meta name="twitter:description" content="Books • Stories • Psychology • Truth. Clean writing and real-life insights." />
   <meta name="twitter:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-  
+
   <!-- ✅ STRUCTURED DATA -->
   <script type="application/ld+json">
   {
@@ -48,7 +49,7 @@
     }
   }
   </script>
-  
+
   <style>
     :root{
       --bg:#070A0F;
@@ -584,20 +585,6 @@
       overflow:hidden;
     }
 
-    /* ✅ EZ MOB AD STYLING */
-    .ez-mob-ad {
-      margin: 20px 0;
-      text-align: center;
-    }
-    .ez-mob-label {
-      font-size: 12px;
-      opacity: 0.6;
-      margin-bottom: 8px;
-      letter-spacing: 0.3px;
-      font-weight: 900;
-      color: rgba(234,240,255,0.70);
-    }
-
     /* ✅ FOOTER */
     footer{
       padding: 26px 0 40px;
@@ -680,7 +667,7 @@
           <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
           <span>Noctivine</span>
         </a>
-        
+
         <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
           <a class="active" href="index.html">Home</a>
           <a href="books.html">Books</a>
@@ -762,12 +749,6 @@
       </div>
     </section>
 
-    <!-- ✅ EZ MOB AD SECTION -->
-    <section class="section ez-mob-ad">
-      <div class="ez-mob-label">Advertisement</div>
-      <div id="ez-mob-container"></div>
-    </section>
-
     <!-- ✅ VIDEOS -->
     <section class="section" id="videos">
       <div class="section-head">
@@ -778,7 +759,7 @@
       <div class="video-grid" id="videoGrid" aria-label="Video Cards"></div>
     </section>
 
-    <!-- ✅ ADSTERRA AD SECTION -->
+    <!-- ✅ ADS (AUTO LOAD FIXED) -->
     <section class="section" aria-label="Sponsored Content">
       <div class="sponsor-box">
         <div class="sponsor-label">Sponsored</div>
@@ -808,31 +789,6 @@
     </footer>
   </main>
 
-  <!-- ✅ EZ MOB AD SCRIPT -->
-  <script>
-    (function(i,n,p,a,g,e){
-      i.inpagepush = i.inpagepush || function() {
-        (i.inpagepush.q=(i.inpagepush.q||[])).push(arguments)
-      };
-      var s=n.getElementsByTagName('head')[0];
-      var q=n.createElement('script'); q.async=1;
-      q.src='//static.qualiclicks.com/inpage/inpage.js';
-      s.appendChild(q);
-      i.inpagepush('init', {
-        host: 'xml.qualiclicks.com',
-        feed: 1063626,
-        auth : 'yRpb',
-        subid: '',
-        refresh: 10,
-        position: 'bottom',
-        slots: 2,
-        query : '',
-        nodesrc : true
-      });
-      i.inpagepush('show');
-    })(window, document);
-  </script>
-
   <script>
     // ✅ dynamic year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -842,7 +798,7 @@
     const navLinks = document.getElementById("navLinks");
     hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // ✅ Books Data
+    // ✅ Books Data (FIXED: Added quotes around multiline string)
     const BOOKS = [
       {
         name: "The Lonely Generation",
@@ -932,7 +888,7 @@
       restartAuto();
     });
 
-    // ✅ Auto slide
+    // ✅ Auto slide (FIXED LOOP)
     let autoTimer = null;
 
     function startAuto(){
@@ -997,18 +953,19 @@
       </article>
     `).join("");
 
-    // ✅ ADSTERRA SCRIPT LOADING
-    window.addEventListener("load", function() {
-      // Load Adsterra ad
+    // ✅ Adsterra load AFTER page load (more reliable)
+    window.addEventListener("load", () => {
       const adContainer = document.getElementById("container-5ec575feaa0dfb4f68b5d9d769ac18d6");
-      if(adContainer && !document.getElementById("adsterra-script")) {
-        const s = document.createElement("script");
-        s.id = "adsterra-script";
-        s.async = true;
-        s.setAttribute("data-cfasync", "false");
-        s.src = "https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js";
-        document.body.appendChild(s);
-      }
+      if(!adContainer) return;
+
+      if(document.getElementById("adsterra-script")) return;
+
+      const s = document.createElement("script");
+      s.id = "adsterra-script";
+      s.async = true;
+      s.setAttribute("data-cfasync", "false");
+      s.src = "https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js";
+      document.body.appendChild(s);
     });
 
     // ✅ FIXED: Loader hide with multiple fallbacks
@@ -1027,7 +984,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Start auto slider
       startAuto();
-      
+
       // Hide loader after a short delay to ensure content is rendered
       setTimeout(hideLoader, 800);
     });
