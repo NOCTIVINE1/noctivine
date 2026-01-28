@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+  
   <!-- ✅ PRIMARY SEO -->
   <title>Noctivine — Books, Shortfilm & Podcast | kuma.2bd.net</title>
   <meta name="description" content="Noctivine — original books, shortfilms, podcasts, and psychology-driven truth about life. Real writing. No fake motivation." />
@@ -12,14 +12,14 @@
   <meta name="author" content="Noctivine" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kuma.2bd.net/" />
-
+  
   <!-- ✅ FAVICON + LOGO -->
   <link rel="icon" type="image/png" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
   <link rel="apple-touch-icon" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
+  
   <!-- ✅ PERFORMANCE -->
   <link rel="preload" as="image" href="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
+  
   <!-- ✅ OPEN GRAPH -->
   <meta property="og:site_name" content="Noctivine" />
   <meta property="og:title" content="Noctivine — Books, Shortfilm & Podcast" />
@@ -27,13 +27,13 @@
   <meta property="og:url" content="https://kuma.2bd.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
+  
   <!-- ✅ TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Noctivine — Books, Shortfilm & Podcast" />
   <meta name="twitter:description" content="Books • Stories • Psychology • Truth. Clean writing and real-life insights." />
   <meta name="twitter:image" content="https://kuma.2bd.net/assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" />
-
+  
   <!-- ✅ STRUCTURED DATA -->
   <script type="application/ld+json">
   {
@@ -48,7 +48,7 @@
     }
   }
   </script>
-
+  
   <style>
     :root{
       --bg:#070A0F;
@@ -645,9 +645,7 @@
     }
   </style>
 </head>
-
 <body>
-
   <!-- ✅ LOADER -->
   <div class="loader-wrap" id="loader" aria-label="Loading">
     <div class="loader">
@@ -668,7 +666,7 @@
           <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
           <span>Noctivine</span>
         </a>
-
+        
         <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
           <a class="active" href="index.html">Home</a>
           <a href="books.html">Books</a>
@@ -690,7 +688,6 @@
   </div>
 
   <main class="container">
-
     <!-- ✅ HERO -->
     <section class="hero">
       <div class="panel">
@@ -789,7 +786,6 @@
         DNS by <a href="https://www.dnsexit.com" target="_blank" rel="noopener">DNSExit</a>
       </div>
     </footer>
-
   </main>
 
   <script>
@@ -801,7 +797,7 @@
     const navLinks = document.getElementById("navLinks");
     hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
-    // ✅ Books Data (ADDED 2ND BOOK)
+    // ✅ Books Data (FIXED: Added quotes around multiline string)
     const BOOKS = [
       {
         name: "The Lonely Generation",
@@ -815,15 +811,7 @@
         name: "THE STRANGER IN MY ROOM",
         cover: "assests/file_000000005bcc723091fda73dc7b10b9.jpeg",
         type: "STORY",
-        desc: A boy who’s been through too many endings.
-He’s looking for a corner.
-A place inside someone where he can breathe without explaining himself.
-A place that feels safe. Familiar. Quiet.
-One night, at 2 AM, he wakes up.
-A girl is standing.
-She only looks at him…
-like she’s been waiting for him to finally wake up.
-After that night, nothing feels normal again.`,
+        desc: "A boy who's been through too many endings. He's looking for a corner. A place inside someone where he can breathe without explaining himself. A place that feels safe. Familiar. Quiet. One night, at 2 AM, he wakes up. A girl is standing. She only looks at him… like she's been waiting for him to finally wake up. After that night, nothing feels normal again.",
         open: "books/STRANGER.html",
         download: "book/STRANGER.html"
       }
@@ -929,11 +917,6 @@ After that night, nothing feels normal again.`,
       if(!Number.isNaN(idx)) currentIndex = Math.max(0, Math.min(idx, BOOKS.length - 1));
     }, { passive:true });
 
-    // Start autoslide after page loaded
-    window.addEventListener("load", () => {
-      startAuto();
-    });
-
     // ✅ Video Cards
     const VIDEOS = [
       {
@@ -984,11 +967,34 @@ After that night, nothing feels normal again.`,
       document.body.appendChild(s);
     });
 
-    // ✅ loader hide
-    window.addEventListener("load", () => {
-      setTimeout(() => document.getElementById("loader").classList.add("hide"), 520);
-    });
-  </script>
+    // ✅ FIXED: Loader hide with multiple fallbacks
+    function hideLoader() {
+      const loader = document.getElementById("loader");
+      if (loader) {
+        loader.classList.add("hide");
+        // Remove from DOM after animation completes
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }
 
+    // Try to hide loader when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Start auto slider
+      startAuto();
+      
+      // Hide loader after a short delay to ensure content is rendered
+      setTimeout(hideLoader, 800);
+    });
+
+    // Also hide loader when window fully loads (images, etc.)
+    window.addEventListener('load', function() {
+      setTimeout(hideLoader, 300);
+    });
+
+    // Fallback: hide loader after max 3 seconds
+    setTimeout(hideLoader, 3000);
+  </script>
 </body>
 </html>
