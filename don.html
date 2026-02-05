@@ -1245,21 +1245,19 @@
       return isValid;
     }
 
-    // Generate UPI URL
-    function generateUPIURL(amount) {
-      const transactionNote = `Support for Noctivine - ${new Date().toLocaleDateString('en-IN')}`;
+    // function generateUPIURL(amount) {
+  const transactionNote = `Support for Noctivine - ${new Date().toLocaleDateString('en-IN')}`;
 
-      const params = new URLSearchParams({
-        pa: UPI_ID,
-        pn: encodeURIComponent(PAYEE_NAME),
-        am: amount.toString(),
-        cu: 'INR',
-        tn: encodeURIComponent(transactionNote),
-        url: 'https://kuma.2bd.net'
-      });
+  const params = new URLSearchParams({
+    pa: UPI_ID,              // Payee address
+    pn: PAYEE_NAME,          // Payee name (NO encoding)
+    am: amount.toString(),   // Amount
+    cu: 'INR',               // Currency
+    tn: transactionNote      // Transaction note (NO encoding)
+  });
 
-      return `upi://pay?${params.toString()}`;
-    }
+  return `upi://pay?${params.toString()}`;
+}
 
     // Update QR Code
     function updateQRCode() {
