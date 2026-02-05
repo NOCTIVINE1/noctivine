@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,26 +48,26 @@
       --warning:#FFB74D;
     }
 
-    *{box-sizing:border-box; margin:0; padding:0;}
+    *{box-sizing:border-box}
     html,body{height:100%}
 
     body{
+      margin:0;
       background:
         radial-gradient(1200px 600px at 10% 10%, rgba(0,255,213,0.10), transparent 55%),
         radial-gradient(900px 500px at 90% 30%, rgba(124,77,255,0.12), transparent 60%),
         radial-gradient(800px 600px at 40% 100%, rgba(0,255,213,0.05), transparent 55%),
         var(--bg);
       color:var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       overflow-x:hidden;
       min-height: 100vh;
-      line-height: 1.6;
     }
 
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    .container{width:min(1160px, 94vw);margin:0 auto;padding:0 20px;}
-    input, button {font-family: inherit; border: none;}
+    .container{width:min(1160px, 92vw);margin:0 auto;}
+    input, button {font-family: inherit;}
 
     /* ✅ LOADER */
     .loader-wrap{
@@ -154,7 +155,6 @@
       backdrop-filter: blur(16px);
       background:rgba(7,10,15,0.55);
       border-bottom:1px solid rgba(255,255,255,0.06);
-      padding: 0 20px;
     }
     .nav-inner{
       display:flex;
@@ -163,8 +163,6 @@
       padding:14px 0;
       gap:12px;
       position:relative;
-      max-width: 1160px;
-      margin: 0 auto;
     }
     .brand{
       display:flex;
@@ -205,23 +203,22 @@
       align-items:center;
       justify-content:center;
       gap:8px;
-      padding:12px 18px;
+      padding:11px 14px;
       border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.04);
       color:var(--text);
       cursor:pointer;
-      font-weight:600;
+      font-weight:950;
       font-size:14px;
-      transition: all 0.2s ease;
+      transition: transform 0.15s ease, border 0.2s ease, background 0.2s ease;
       user-select:none;
       white-space:nowrap;
       outline: none;
     }
     .btn:hover{
-      transform:translateY(-2px);
-      border-color:rgba(255,255,255,0.18);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,0.18)
     }
     .btn:focus-visible {
       outline: 2px solid var(--accent);
@@ -245,8 +242,8 @@
     .grid{
       display:grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap:28px;
-      align-items:stretch;
+      gap:18px;
+      align-items:start;
     }
 
     .panel{
@@ -254,7 +251,7 @@
       border:1px solid rgba(255,255,255,0.10);
       background: linear-gradient(180deg, var(--panel2), var(--panel));
       box-shadow: var(--shadow);
-      padding:28px;
+      padding:18px;
       overflow:hidden;
       position:relative;
       animation: fadeUp 0.6s ease both;
@@ -273,23 +270,21 @@
         radial-gradient(520px 260px at 20% 10%, rgba(0,255,213,0.12), transparent 60%),
         radial-gradient(450px 240px at 80% 10%, rgba(124,77,255,0.15), transparent 62%);
       pointer-events:none;
-      z-index: 0;
     }
-    .panel > *{position:relative; z-index: 1;}
+    .panel > *{position:relative}
 
     .chip{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:8px 16px;
+      padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.03);
       color:var(--muted);
       font-size:13px;
-      font-weight:600;
+      font-weight:950;
       width:max-content;
-      margin-bottom: 8px;
     }
     .dot{
       width:8px;height:8px;border-radius:50%;
@@ -298,136 +293,192 @@
     }
 
     h1{
-      margin:12px 0 16px;
-      font-size:clamp(32px, 4vw, 44px);
+      margin:12px 0 8px;
+      font-size:clamp(28px, 3vw, 44px);
       line-height:1.15;
       letter-spacing:-0.6px;
-      font-weight:800;
     }
     .sub{
-      margin:0 0 24px 0;
+      margin:0;
       color:var(--muted);
-      font-size:16px;
-      line-height:1.7;
+      font-size:15px;
+      line-height:1.65;
     }
 
-    /* ✅ CURRENT GOAL SECTION - UPDATED TO 10K */
-    .goal-section {
-      background: rgba(0,0,0,0.2);
+    /* ✅ PROGRESS TRACKER */
+    .progress-section {
+      margin: 20px 0;
+      padding: 18px;
+      background: rgba(0,255,213,0.05);
+      border: 1px solid rgba(0,255,213,0.15);
       border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 28px;
-      border: 1px solid rgba(255,255,255,0.08);
+      animation: float-gentle 4s ease-in-out infinite;
     }
 
-    .goal-header {
+    @keyframes float-gentle {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
     }
 
-    .goal-title {
-      font-weight: 700;
-      font-size: 16px;
+    .progress-title {
+      font-weight: 900;
+      font-size: 15px;
       color: var(--text);
+      animation: pulse-text 3s ease-in-out infinite;
     }
 
-    .goal-amount {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 16px;
+    @keyframes pulse-text {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
     }
 
-    .progress-bar {
-      height: 10px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
+    .progress-stats {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 12px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 999px;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
     }
 
-    .progress-fill {
+    .progress-bar-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: scan-progress 3s linear infinite;
+    }
+
+    @keyframes scan-progress {
+      to { left: 150%; }
+    }
+
+    .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 10px;
-      width: 35%; /* ₹3,500 / ₹10,000 = 35% */
-      transition: width 0.5s ease;
+      border-radius: 999px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 20px rgba(0,255,213,0.4);
+      position: relative;
+      overflow: hidden;
     }
 
-    .goal-description {
-      font-size: 14px;
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      animation: shimmer-bar 2s infinite;
+    }
+
+    @keyframes shimmer-bar {
+      to { left: 150%; }
+    }
+
+    .progress-goal {
+      font-size: 13px;
       color: var(--muted);
       line-height: 1.5;
     }
 
-    /* ✅ PERSONAL NOTE */
-    .personal-note {
-      background: linear-gradient(90deg, rgba(124,77,255,0.08), rgba(0,255,213,0.05));
-      border-left: 4px solid var(--accent);
-      border-radius: 12px;
-      padding: 18px;
-      margin-bottom: 24px;
-      font-style: italic;
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
     /* ✅ SOCIAL PROOF */
     .social-proof {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.03);
+      margin: 20px 0;
+      padding: 14px;
+      background: rgba(124,77,255,0.08);
+      border: 1px solid rgba(124,77,255,0.2);
       border-radius: 16px;
-      padding: 14px 18px;
-      margin-bottom: 24px;
-      font-size: 14px;
-      color: var(--muted);
-      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      animation: glow-pulse 3s ease-in-out infinite;
     }
 
-    .social-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
+    @keyframes glow-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 10px rgba(124,77,255,0.1);
+      }
+      50% { 
+        box-shadow: 0 0 20px rgba(124,77,255,0.3);
+      }
+    }
+
+    .social-proof-text {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .social-proof-count {
+      font-weight: 900;
+      color: var(--accent2);
+      animation: color-shift 4s ease-in-out infinite;
+    }
+
+    @keyframes color-shift {
+      0%, 100% { color: var(--accent2); }
+      50% { color: var(--accent); }
+    }
+
+    /* ✅ PERSONAL NOTE */
+    .personal-note {
+      margin: 20px 0;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     /* ✅ CUSTOM PAYMENT FORM */
     .payment-form {
-      margin-top: 8px;
+      margin-top: 24px;
     }
 
     .amount-input-wrapper {
       position: relative;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .amount-label {
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       font-weight: 600;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .amount-input {
       width: 100%;
-      padding: 22px 28px 22px 60px;
-      font-size: 32px;
+      padding: 18px 24px 18px 50px;
+      font-size: 28px;
       font-weight: 700;
       background: rgba(255,255,255,0.05);
       border: 2px solid rgba(255,255,255,0.1);
       border-radius: 20px;
       color: var(--text);
-      text-align: right;
+      text-align: center;
       transition: all 0.3s;
       outline: none;
     }
@@ -451,39 +502,35 @@
 
     .currency {
       position: absolute;
-      left: 28px;
+      left: 24px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--accent);
       pointer-events: none;
     }
 
-    /* ✅ FIXED QUICK AMOUNT BUTTONS - NO OVERLAPPING */
     .quick-amounts {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      display: flex;
       gap: 10px;
+      flex-wrap: wrap;
       margin: 20px 0;
-      width: 100%;
+      justify-content: center;
     }
 
     .quick-amount-btn {
-      padding: 16px 12px;
+      padding: 12px 20px;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.04);
       color: var(--muted);
       font-weight: 700;
-      font-size: 15px;
+      font-size: 16px;
       cursor: pointer;
       transition: all 0.2s;
+      min-width: 80px;
       text-align: center;
-      min-width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .quick-amount-btn:hover {
@@ -496,101 +543,95 @@
       border-color: rgba(124,77,255,0.4);
       color: var(--text);
       box-shadow: 0 8px 30px rgba(124,77,255,0.15);
+      animation: button-glow 2s ease-in-out infinite;
     }
 
-    /* ✅ SECURITY & UPI ID SECTION */
-    .upi-section {
-      background: rgba(0,0,0,0.3);
-      border-radius: 18px;
-      padding: 20px;
-      margin: 24px 0;
-      border: 1px solid rgba(255,255,255,0.1);
+    @keyframes button-glow {
+      0%, 100% { 
+        box-shadow: 0 8px 30px rgba(124,77,255,0.15);
+        transform: translateY(-2px);
+      }
+      50% { 
+        box-shadow: 0 12px 40px rgba(124,77,255,0.3);
+        transform: translateY(-4px);
+      }
     }
 
-    .upi-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .upi-header i {
-      color: var(--accent);
-      font-size: 18px;
-    }
-
-    .upi-header span {
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text);
-    }
-
-    .upi-id-container {
+    .upi-id-display {
+      background: rgba(0,255,213,0.1);
+      border: 1px solid rgba(0,255,255,0.2);
+      border-radius: 16px;
+      padding: 16px;
+      margin: 20px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(0,255,213,0.08);
-      border: 1px solid rgba(0,255,213,0.2);
-      border-radius: 14px;
-      padding: 16px 20px;
-      margin-bottom: 12px;
+      gap: 12px;
     }
 
-    .upi-id {
-      font-family: 'Monaco', 'Menlo', monospace;
+    .upi-id-text {
+      font-family: monospace;
       font-size: 18px;
       font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       word-break: break-all;
+      flex: 1;
     }
 
     .copy-btn {
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 12px;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-      color: var(--bg);
+      border: 1px solid rgba(0,255,213,0.3);
+      background: rgba(0,255,213,0.1);
+      color: var(--accent);
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       transition: all 0.2s;
-      flex-shrink: 0;
-      margin-left: 12px;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .copy-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(124,77,255,0.3);
+      background: rgba(0,255,213,0.2);
+      transform: translateY(-1px);
     }
 
     .copy-btn.copied {
-      background: var(--success);
+      background: rgba(0,212,170,0.2);
+      border-color: rgba(0,212,170,0.4);
+      color: var(--success);
     }
 
+    /* ✅ SECURITY INDICATOR */
     .security-note {
-      font-size: 13px;
-      color: var(--muted2);
-      line-height: 1.5;
       display: flex;
       align-items: center;
       gap: 8px;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    .security-note i {
+    .lock-icon {
       color: var(--success);
-      font-size: 14px;
+      font-size: 16px;
     }
 
-    /* ✅ PAY BUTTON */
     .pay-button {
       width: 100%;
-      padding: 22px;
+      padding: 20px;
       border-radius: 18px;
       border: none;
       background: linear-gradient(90deg, #7C4DFF, #00FFD5);
       color: var(--bg);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 18px;
       cursor: pointer;
       transition: all 0.3s;
@@ -600,11 +641,35 @@
       gap: 12px;
       margin-top: 10px;
       box-shadow: 0 20px 60px rgba(124,77,255,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pay-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: rotate(45deg);
+      animation: button-shine 3s linear infinite;
+    }
+
+    @keyframes button-shine {
+      from { transform: translateX(-100%) rotate(45deg); }
+      to { transform: translateX(100%) rotate(45deg); }
     }
 
     .pay-button:hover:not(:disabled) {
       transform: translateY(-3px);
       box-shadow: 0 25px 70px rgba(124,77,255,0.4);
+    }
+
+    .pay-button > * {
+      position: relative;
+      z-index: 1;
     }
 
     .pay-button:active:not(:disabled) {
@@ -615,8 +680,6 @@
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
-      background: rgba(255,255,255,0.1);
-      color: var(--muted);
     }
 
     .pay-button.processing {
@@ -639,70 +702,88 @@
       to { transform: rotate(360deg); }
     }
 
-    /* ✅ PAYMENT METHODS - FIXED OVERLAPPING */
     .payment-methods {
       display: flex;
-      gap: 12px;
-      margin-top: 24px;
+      gap: 8px;
+      margin-top: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
-    .method-icon {
-      width: 44px;
-      height: 44px;
+    .method-badge {
+      padding: 6px 12px;
       background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted2);
+    }
+
+    .success-message {
+      background: rgba(0,212,170,0.1);
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .manual-instruction {
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
+    }
+
+    .manual-instruction.show {
+      display: block;
+    }
+
+    .instruction-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 12px 0;
+      padding: 12px;
+      background: rgba(0,0,0,0.2);
       border-radius: 12px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-      transition: all 0.2s;
-    }
-
-    .method-icon:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-      color: var(--text);
+      font-weight: 900;
+      font-size: 14px;
+      flex-shrink: 0;
     }
 
     /* ✅ QR CODE SECTION */
     .qr-section {
       text-align: center;
-      margin-top: 28px;
-      padding: 24px;
+      margin-top: 20px;
+      padding: 20px;
       background: rgba(255,255,255,0.03);
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .qr-section:hover {
-      border-color: rgba(0,255,213,0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-    }
-
-    .qr-section.active {
-      border-color: var(--success);
-      box-shadow: 0 0 0 3px rgba(0,212,170,0.2);
-    }
-
-    .qr-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .qr-header i {
-      color: var(--accent);
-      font-size: 18px;
     }
 
     .qr-container {
@@ -710,172 +791,67 @@
       padding: 20px;
       background: white;
       border-radius: 20px;
-      margin: 16px 0;
+      margin: 20px 0;
       box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
 
-    .qr-container:hover {
-      transform: scale(1.05);
+    .qr-container.ready {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); box-shadow: 0 25px 80px rgba(0,255,213,0.3); }
     }
 
     .qr-container img {
       width: 200px;
       height: 200px;
-      border-radius: 12px;
-      transition: all 0.3s;
+      border-radius: 10px;
     }
 
-    .qr-status {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .qr-status.active {
-      color: var(--success);
-    }
-
-    .qr-status i {
-      font-size: 16px;
-    }
-
-    /* ✅ RIGHT SIDE CONTENT */
+    /* ✅ RIGHT SIDE */
     .support-box{
       border-radius:18px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(255,255,255,0.03);
-      padding:24px;
-      margin-bottom: 24px;
+      padding:14px;
+      margin-bottom: 18px;
     }
     .support-title{
-      font-weight:700;
-      font-size:18px;
-      margin-bottom:12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .support-title i {
-      color: var(--accent);
+      font-weight:950;
+      font-size:15px;
+      margin-bottom:6px;
     }
     .support-text{
       color:var(--muted);
-      font-size:15px;
-      line-height:1.7;
-      margin:0 0 20px 0;
+      font-size:13px;
+      line-height:1.6;
+      margin:0;
     }
     .list{
-      margin:0;
+      margin:12px 0 0;
       padding:0;
       list-style:none;
       display:grid;
-      gap:12px;
+      gap:10px;
     }
     .list li{
       border-radius:16px;
       border:1px solid rgba(255,255,255,0.10);
       background:rgba(0,0,0,0.22);
-      padding:16px;
-      font-size:14px;
+      padding:12px;
+      font-size:13px;
       color:var(--muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      transition: all 0.2s;
     }
-    .list li:hover {
-      border-color: rgba(255,255,255,0.2);
-      transform: translateX(5px);
-    }
-    .list li i {
-      color: var(--accent);
-      font-size: 18px;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    .list li b{color:var(--text); font-weight: 600;}
-
-    /* ✅ RECENT SUPPORTERS */
-    .recent-supporters {
-      background: rgba(255,255,255,0.03);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .supporters-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .supporters-header i {
-      color: var(--accent2);
-    }
-
-    .supporters-ticker {
-      height: 120px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .supporter-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.2);
-      margin-bottom: 8px;
-      animation: ticker 20s linear infinite;
-    }
-
-    .supporter-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .supporter-info {
-      flex-grow: 1;
-    }
-
-    .supporter-name {
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .supporter-amount {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    @keyframes ticker {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
-    }
+    .list li b{color:var(--text)}
 
     /* ✅ FOOTER */
     footer{
       padding: 26px 0 40px;
       color: var(--muted2);
-      font-size:14px;
-      margin-top: 40px;
+      font-size:13px;
     }
     .foot{
       display:flex;
@@ -884,94 +860,34 @@
       gap:14px;
       flex-wrap:wrap;
       border-top:1px solid rgba(255,255,255,0.06);
-      padding-top:24px;
-      margin-top:28px;
+      padding-top:16px;
+      margin-top:18px;
     }
     .foot a{
       color: var(--muted2);
-      font-weight:600;
+      font-weight:900;
       margin-left:12px;
-      transition: color 0.2s;
     }
     .foot a:hover{color:var(--text)}
 
     /* ✅ RESPONSIVE */
-    @media (max-width: 1080px){
+    @media (max-width:980px){
       .grid{grid-template-columns:1fr;}
-      .quick-amounts {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 768px){
       .nav-actions{gap:8px;}
-      .container {
-        padding: 0 16px;
-      }
-      .panel {
-        padding: 20px;
-      }
-      .quick-amounts {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .quick-amount-btn {
-        padding: 14px 10px;
-        font-size: 14px;
-      }
-      .amount-input {
-        font-size: 28px;
-        padding: 20px 24px 20px 50px;
-      }
-      .currency {
-        left: 24px;
-        font-size: 28px;
-      }
-      .upi-id-container {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .copy-btn {
-        width: 100%;
-        margin-left: 0;
-      }
     }
-
-    @media (max-width: 520px){
+    @media (max-width:520px){
       .brand span{display:none;}
-      .btn{padding:10px 14px;font-size:13px;border-radius:14px;}
-      .quick-amounts {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .qr-container img{
-        width:180px;
-        height:180px;
-      }
-      .method-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 12px;
-      }
-      h1 {
-        font-size: 28px;
-      }
-      .sub {
-        font-size: 15px;
-      }
-    }
-
-    @media (max-width: 380px){
-      .quick-amounts {
-        grid-template-columns: 1fr;
-      }
-      .nav-actions .btn {
-        padding: 8px 12px;
-        font-size: 12px;
-      }
+      .btn{padding:10px 12px;font-size:13px;border-radius:14px;}
+      .amount-input{font-size:24px;padding:16px 20px 16px 46px;}
+      .currency{font-size:24px; left:20px;}
+      .quick-amount-btn{padding:10px 16px;font-size:14px;min-width:70px;}
+      .pay-button{padding:18px;font-size:16px;}
+      .qr-container img{width:180px;height:180px;}
+      .upi-id-display{flex-direction:column; text-align:center;}
+      .upi-id-text{font-size:16px;}
+      .copy-btn{width:100%;}
     }
   </style>
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -990,17 +906,19 @@
 
   <!-- ✅ NAV -->
   <div class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
-        <span>Noctivine</span>
-      </a>
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="assests/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2006_27_49%20PM.png" alt="Noctivine Logo">
+          <span>Noctivine</span>
+        </a>
 
-      <div class="nav-actions">
-        <a class="btn btn-ghost" href="index.html">Home</a>
-        <a class="btn btn-ghost" href="books.html">Books</a>
-        <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn btn-donate" href="don.html">Donate</a>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="index.html">Home</a>
+          <a class="btn btn-ghost" href="books.html">Books</a>
+          <a class="btn btn-primary" href="https://www.youtube.com/@Noctivine0" target="_blank" rel="noopener">YouTube</a>
+          <a class="btn btn-donate" href="don.html">Donate</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1012,39 +930,32 @@
       <div class="panel">
         <div class="chip"><span class="dot"></span> Support Noctivine</div>
 
-        <h1>Support the Work</h1>
+        <h1>Support the Work.</h1>
 
         <p class="sub">
           Enter any amount (₹1 to ₹10,000) to support directly via UPI. Your contribution helps publish more books, shortfilms, and honest writing.
         </p>
 
-        <!-- ✅ CURRENT GOAL - UPDATED TO ₹10K -->
-        <div class="goal-section">
-          <div class="goal-header">
-            <div class="goal-title">Current Goal</div>
-            <div class="goal-amount">₹3,500 / ₹10,000</div>
+        <!-- ✅ PROGRESS TRACKER -->
+        <div class="progress-section">
+          <div class="progress-header">
+            <div class="progress-title">📖 Current Goal: Film Equipment Fund</div>
+            <div class="progress-stats">₹<span id="progressRaised">0</span> / ₹10,000</div>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBar" style="width: 0%;"></div>
           </div>
-          <div class="goal-description">
-            Funding "Echoes of Silence" short film production. Your support brings stories to life and covers equipment, locations, and editing.
-          </div>
-        </div>
-
-        <!-- ✅ PERSONAL NOTE -->
-        <div class="personal-note">
-          "I write these books for you; your support keeps the ink flowing. Every contribution directly fuels more stories."
+          <p class="progress-goal">Be the first to support our mission. Help us reach professional production quality.</p>
         </div>
 
         <!-- ✅ SOCIAL PROOF -->
         <div class="social-proof">
-          <div class="social-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div>
-            Join <strong>45+ supporters</strong> this month who believe in independent storytelling.
-          </div>
+          <p class="social-proof-text">Be among the <span class="social-proof-count">first supporters</span> of this creative journey 🚀</p>
+        </div>
+
+        <!-- ✅ PERSONAL NOTE -->
+        <div class="personal-note">
+          "I write these books and create these films for you; your support keeps the ink flowing and cameras rolling." — Noctivine
         </div>
 
         <div class="payment-form">
@@ -1065,7 +976,7 @@
             >
           </div>
 
-          <!-- ✅ FIXED QUICK AMOUNT BUTTONS - NO OVERLAPPING -->
+          <!-- Quick Amount Buttons -->
           <div class="quick-amounts">
             <button type="button" class="quick-amount-btn" data-amount="49">₹49</button>
             <button type="button" class="quick-amount-btn" data-amount="99">₹99</button>
@@ -1074,39 +985,79 @@
             <button type="button" class="quick-amount-btn" data-amount="999">₹999</button>
           </div>
 
-          <!-- ✅ SECURE UPI ID WITH COPY BUTTON -->
-          <div class="upi-section">
-            <div class="upi-header">
-              <i class="fas fa-lock"></i>
-              <span>Secure UPI Payment</span>
-            </div>
-            
-            <div class="upi-id-container">
-              <div class="upi-id" id="upiIdText">noctivine@axl</div>
-              <button class="copy-btn" id="copyUpiBtn">
-                <i class="fas fa-copy"></i> Copy UPI ID
-              </button>
-            </div>
-            
-            <div class="security-note">
-              <i class="fas fa-shield-alt"></i>
-              Payments are processed securely via your preferred UPI app. No bank details are stored on this site.
-            </div>
+          <!-- UPI ID Display with Copy Button -->
+          <div class="upi-id-display">
+            <div class="upi-id-text">noctivine@axl</div>
+            <button class="copy-btn" id="copyBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyText">Copy</span>
+            </button>
+          </div>
+
+          <!-- Security Note -->
+          <div class="security-note">
+            <span class="lock-icon">🔒</span>
+            <span>Payments are processed securely via your preferred UPI app. No bank details are stored on this site.</span>
           </div>
 
           <!-- Pay Button -->
           <button id="payButton" class="pay-button" disabled>
-            <i class="fas fa-bolt"></i>
-            <span id="payButtonText">Enter Amount First</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <path d="M6 10H8"/>
+              <path d="M16 10H18"/>
+            </svg>
+            Enter Amount First
           </button>
 
-          <!-- ✅ FIXED PAYMENT METHODS - NO OVERLAPPING -->
+          <!-- Payment Methods Badges -->
           <div class="payment-methods">
-            <div class="method-icon">GPay</div>
-            <div class="method-icon">PhonePe</div>
-            <div class="method-icon">Paytm</div>
-            <div class="method-icon">UPI</div>
-            <div class="method-icon">BHIM</div>
+            <span class="method-badge">GPay</span>
+            <span class="method-badge">PhonePe</span>
+            <span class="method-badge">Paytm</span>
+            <span class="method-badge">UPI</span>
+            <span class="method-badge">BHIM</span>
+          </div>
+
+          <!-- Success Message (Hidden initially) -->
+          <div id="successMessage" class="success-message">
+            <div style="font-size: 48px; margin-bottom: 10px;">🎉</div>
+            <h3 style="margin-top: 0; color: var(--success);">Thank You!</h3>
+            <p>Your support means everything. Payment should complete in your UPI app.</p>
+            <p><small>Keep the transaction details for your records.</small></p>
+          </div>
+
+          <!-- Manual Instructions (Hidden initially) -->
+          <div id="manualInstruction" class="manual-instruction">
+            <h4 style="margin-top: 0;">Manual Payment Instructions</h4>
+            <div class="instruction-step">
+              <div class="step-number">1</div>
+              <div>Open your UPI app (GPay, PhonePe, Paytm, etc.)</div>
+            </div>
+            <div class="instruction-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Send to:</strong><br>
+                <code style="background: rgba(0,255,213,0.1); padding: 4px 8px; border-radius: 6px; margin-top: 4px; display: inline-block;">noctivine@axl</code>
+              </div>
+            </div>
+            <div class="instruction-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Amount:</strong> ₹<span id="manualAmount">0</span><br>
+                <strong>Note:</strong> Support Noctivine
+              </div>
+            </div>
+            <div class="instruction-step">
+              <div class="step-number">4</div>
+              <div>Complete the payment in your app</div>
+            </div>
+            <button id="closeManualBtn" class="btn" style="width: 100%; margin-top: 16px;">
+              I've Completed Payment
+            </button>
           </div>
         </div>
       </div>
@@ -1115,57 +1066,25 @@
       <div class="panel">
         <!-- Support Info -->
         <div class="support-box">
-          <div class="support-title">
-            <i class="fas fa-bullseye"></i>
-            What your support helps with
-          </div>
+          <div class="support-title">What your support helps with</div>
           <p class="support-text">
-            Direct fuel for creating meaningful content. Every rupee goes directly into:
+            Direct fuel for creating meaningful content.
           </p>
 
           <ul class="list">
-            <li>
-              <i class="fas fa-book"></i>
-              <div><b>Books:</b> Editing, covers, formatting, publishing costs</div>
-            </li>
-            <li>
-              <i class="fas fa-film"></i>
-              <div><b>Shortfilms:</b> Equipment, locations, post-production</div>
-            </li>
-            <li>
-              <i class="fas fa-podcast"></i>
-              <div><b>Podcasts:</b> Audio equipment, hosting, production</div>
-            </li>
-            <li>
-              <i class="fas fa-brain"></i>
-              <div><b>Psychology:</b> Research materials, writing time</div>
-            </li>
-            <li>
-              <i class="fas fa-server"></i>
-              <div><b>Platform:</b> Website hosting, tools, subscriptions</div>
-            </li>
+            <li><b>📚 Books:</b> covers, editing, formatting, publishing</li>
+            <li><b>🎬 Shortfilms:</b> scripts, shots, storytelling quality</li>
+            <li><b>🎧 Podcasts:</b> better audio + more consistent uploads</li>
+            <li><b>🧠 Psychology:</b> research + writing time</li>
+            <li><b>🔧 Platform:</b> website costs, tools, subscriptions</li>
           </ul>
         </div>
 
-        <!-- ✅ RECENT SUPPORTERS -->
-        <div class="recent-supporters">
-          <div class="supporters-header">
-            <i class="fas fa-heart"></i>
-            <span>Recent Supporters</span>
-          </div>
-          <div class="supporters-ticker" id="supportersTicker">
-            <!-- Supporter items will be generated by JavaScript -->
-          </div>
-        </div>
+        <!-- QR Code Section -->
+        <div class="qr-section">
+          <div class="chip"><span class="dot"></span> QR Code Payment</div>
+          <p style="color: var(--muted); margin: 10px 0; font-size: 13px;">Scan with any UPI app to pay</p>
 
-        <!-- ✅ QR CODE SECTION -->
-        <div class="qr-section" id="qrSection">
-          <div class="qr-header">
-            <i class="fas fa-qrcode"></i>
-            <span>QR Code Payment</span>
-          </div>
-          <p style="color: var(--muted); margin: 10px 0;">Scan with any UPI app to pay</p>
-          
           <div class="qr-container" id="qrContainer">
             <img 
               src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=noctivine@axl&pn=Noctivine&am=&cu=INR&tn=Support%20Noctivine&url=https://kuma.2bd.net" 
@@ -1173,19 +1092,12 @@
               id="qrCodeImage"
             >
           </div>
-          
-          <div class="qr-status" id="qrStatus">
-            <i class="fas fa-info-circle"></i>
-            <span>Enter amount to generate custom QR</span>
-          </div>
-          
-          <p style="font-size: 13px; color: var(--muted2); margin-top: 15px;">
-            <i class="fas fa-mobile-alt"></i> Tap QR to enlarge • Works with all UPI apps
+
+          <p style="font-size: 13px; color: var(--muted2); margin-top: 15px; line-height: 1.6;">
+            <strong>UPI ID:</strong> noctivine@axl<br>
+            <small>Works with all UPI apps • Instant transfer</small>
           </p>
         </div>
-
-        <!-- ✅ ADS REMOVED -->
-
       </div>
 
     </section>
@@ -1215,183 +1127,40 @@
     const PAYEE_NAME = 'Noctivine';
     const MAX_AMOUNT = 10000;
     const MIN_AMOUNT = 1;
-    const GOAL_AMOUNT = 10000; // Updated to 10K
-    const RAISED_AMOUNT = 3500; // Updated to match 35% progress
 
     // DOM Elements
     const amountInput = document.getElementById('amountInput');
     const payButton = document.getElementById('payButton');
-    const payButtonText = document.getElementById('payButtonText');
     const quickAmountBtns = document.querySelectorAll('.quick-amount-btn');
-    const upiIdText = document.getElementById('upiIdText');
-    const copyUpiBtn = document.getElementById('copyUpiBtn');
-    const qrSection = document.getElementById('qrSection');
-    const qrContainer = document.getElementById('qrContainer');
+    const successMessage = document.getElementById('successMessage');
+    const manualInstruction = document.getElementById('manualInstruction');
+    const manualAmountSpan = document.getElementById('manualAmount');
     const qrCodeImage = document.getElementById('qrCodeImage');
-    const qrStatus = document.getElementById('qrStatus');
-    const supportersTicker = document.getElementById('supportersTicker');
-    const progressFill = document.getElementById('progressFill');
-
-    // Sample supporter data
-    const supporters = [
-      { name: "Alex R.", amount: "₹499", initial: "A" },
-      { name: "Priya M.", amount: "₹199", initial: "P" },
-      { name: "Rohan K.", amount: "₹999", initial: "R" },
-      { name: "Sneha S.", amount: "₹299", initial: "S" },
-      { name: "Vikram J.", amount: "₹49", initial: "V" },
-      { name: "Neha P.", amount: "₹799", initial: "N" },
-      { name: "Arun T.", amount: "₹199", initial: "A" },
-      { name: "Meera D.", amount: "₹499", initial: "M" }
-    ];
+    const qrContainer = document.getElementById('qrContainer');
+    const copyBtn = document.getElementById('copyBtn');
+    const copyText = document.getElementById('copyText');
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       // Set current year
       document.getElementById('year').textContent = new Date().getFullYear();
-      
-      // Update progress bar (35% of 10K = ₹3,500)
-      const progressPercent = (RAISED_AMOUNT / GOAL_AMOUNT) * 100;
-      progressFill.style.width = `${progressPercent}%`;
-      
-      // Generate supporter ticker
-      generateSupportersTicker();
-      
+
       // Hide loader
       setTimeout(() => {
         document.getElementById('loader').classList.add('hide');
       }, 520);
     });
 
-    // Generate supporter ticker
-    function generateSupportersTicker() {
-      let tickerHTML = '';
-      // Duplicate supporters for seamless animation
-      [...supporters, ...supporters].forEach((supporter, index) => {
-        tickerHTML += `
-          <div class="supporter-item" style="animation-delay: ${index * -2.5}s">
-            <div class="supporter-avatar">${supporter.initial}</div>
-            <div class="supporter-info">
-              <div class="supporter-name">${supporter.name}</div>
-              <div class="supporter-amount">Supported ${supporter.amount}</div>
-            </div>
-          </div>
-        `;
-      });
-      supportersTicker.innerHTML = tickerHTML;
-    }
-
-    // Input Validation
-    amountInput.addEventListener('input', () => {
-      validateAmount();
-      updateQRCode();
-      updatePayButton();
-    });
-
-    amountInput.addEventListener('blur', () => {
-      validateAmount(true);
-    });
-
-    // Quick Amount Buttons
-    quickAmountBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const amount = btn.getAttribute('data-amount');
-        
-        // Remove active class from all buttons
-        quickAmountBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        // Set input value
-        amountInput.value = amount;
-        validateAmount();
-        updateQRCode();
-        updatePayButton();
-        
-        // Focus the pay button for better UX
-        setTimeout(() => payButton.focus(), 100);
-      });
-    });
-
-    // Validate Amount
-    function validateAmount(showError = false) {
-      const value = parseInt(amountInput.value);
-      const isValid = value && value >= MIN_AMOUNT && value <= MAX_AMOUNT;
-      
-      // Update input appearance
-      amountInput.classList.toggle('invalid', showError && !isValid && amountInput.value);
-      
-      return isValid;
-    }
-
-    // Update Pay Button
-    function updatePayButton() {
-      const value = parseInt(amountInput.value);
-      const isValid = validateAmount();
-      
-      if (isValid) {
-        payButton.disabled = false;
-        payButtonText.textContent = `Pay ₹${formatNumber(value)}`;
-      } else {
-        payButton.disabled = true;
-        payButtonText.textContent = 'Enter Amount First';
-      }
-    }
-
-    // Generate UPI URL
-    function generateUPIURL(amount) {
-      const transactionNote = `Support for Noctivine - ${new Date().toLocaleDateString('en-IN')}`;
-      
-      const params = new URLSearchParams({
-        pa: UPI_ID,
-        pn: encodeURIComponent(PAYEE_NAME),
-        am: amount.toString(),
-        cu: 'INR',
-        tn: encodeURIComponent(transactionNote),
-        url: 'https://kuma.2bd.net/don.html'
-      });
-      
-      return `upi://pay?${params.toString()}`;
-    }
-
-    // Update QR Code with success indicator
-    function updateQRCode() {
-      const amount = parseInt(amountInput.value);
-      
-      if (amount && amount >= MIN_AMOUNT) {
-        const upiURL = generateUPIURL(amount);
-        qrCodeImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiURL)}&bgcolor=ffffff&color=000000&margin=10&qzone=2`;
-        
-        // Add success styling
-        qrSection.classList.add('active');
-        qrContainer.style.transform = 'scale(1.05)';
-        qrStatus.innerHTML = `<i class="fas fa-check-circle"></i> <span>QR ready! Scan to pay ₹${formatNumber(amount)}</span>`;
-        qrStatus.classList.add('active');
-        
-        // Reset after 5 seconds if amount changes
-        setTimeout(() => {
-          qrContainer.style.transform = '';
-        }, 500);
-      } else {
-        // Reset to default
-        qrSection.classList.remove('active');
-        qrStatus.innerHTML = `<i class="fas fa-info-circle"></i> <span>Enter amount to generate custom QR</span>`;
-        qrStatus.classList.remove('active');
-      }
-    }
-
-    // Copy UPI ID functionality
-    copyUpiBtn.addEventListener('click', async () => {
+    // Copy UPI ID to Clipboard
+    copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(UPI_ID);
+        copyText.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
         
-        // Visual feedback
-        copyUpiBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        copyUpiBtn.classList.add('copied');
-        
-        // Reset after 2 seconds
         setTimeout(() => {
-          copyUpiBtn.innerHTML = '<i class="fas fa-copy"></i> Copy UPI ID';
-          copyUpiBtn.classList.remove('copied');
+          copyText.textContent = 'Copy';
+          copyBtn.classList.remove('copied');
         }, 2000);
       } catch (err) {
         // Fallback for older browsers
@@ -1402,16 +1171,107 @@
         document.execCommand('copy');
         document.body.removeChild(textArea);
         
-        // Visual feedback for fallback
-        copyUpiBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        copyUpiBtn.classList.add('copied');
+        copyText.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
         
         setTimeout(() => {
-          copyUpiBtn.innerHTML = '<i class="fas fa-copy"></i> Copy UPI ID';
-          copyUpiBtn.classList.remove('copied');
+          copyText.textContent = 'Copy';
+          copyBtn.classList.remove('copied');
         }, 2000);
       }
     });
+
+    // Input Validation
+    amountInput.addEventListener('input', () => {
+      validateAmount();
+      updateQRCode();
+    });
+
+    amountInput.addEventListener('blur', () => {
+      validateAmount(true);
+    });
+
+    // Quick Amount Buttons
+    quickAmountBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const amount = btn.getAttribute('data-amount');
+
+        // Remove active class from all buttons
+        quickAmountBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        // Set input value
+        amountInput.value = amount;
+        validateAmount();
+        updateQRCode();
+
+        // Focus the pay button for better UX
+        setTimeout(() => payButton.focus(), 100);
+      });
+    });
+
+    // Validate Amount
+    function validateAmount(showError = false) {
+      const value = parseInt(amountInput.value);
+      const isValid = value && value >= MIN_AMOUNT && value <= MAX_AMOUNT;
+
+      // Update input appearance
+      amountInput.classList.toggle('invalid', showError && !isValid && amountInput.value);
+
+      // Update pay button
+      if (isValid) {
+        payButton.disabled = false;
+        payButton.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 10H8"/>
+            <path d="M16 10H18"/>
+          </svg>
+          Pay ₹${formatNumber(value)}
+        `;
+      } else {
+        payButton.disabled = true;
+        payButton.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 10H8"/>
+            <path d="M16 10H18"/>
+          </svg>
+          Enter Amount First
+        `;
+      }
+
+      return isValid;
+    }
+
+    // Generate UPI URL
+    function generateUPIURL(amount) {
+      const transactionNote = `Support for Noctivine - ${new Date().toLocaleDateString('en-IN')}`;
+
+      const params = new URLSearchParams({
+        pa: UPI_ID,
+        pn: encodeURIComponent(PAYEE_NAME),
+        am: amount.toString(),
+        cu: 'INR',
+        tn: encodeURIComponent(transactionNote),
+        url: 'https://kuma.2bd.net'
+      });
+
+      return `upi://pay?${params.toString()}`;
+    }
+
+    // Update QR Code
+    function updateQRCode() {
+      const amount = parseInt(amountInput.value);
+      if (amount && amount >= MIN_AMOUNT) {
+        const upiURL = generateUPIURL(amount);
+        qrCodeImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiURL)}&bgcolor=ffffff&color=000000&margin=10&qzone=2`;
+        qrContainer.classList.add('ready');
+      } else {
+        qrContainer.classList.remove('ready');
+      }
+    }
 
     // Handle Payment
     payButton.addEventListener('click', async () => {
@@ -1419,16 +1279,16 @@
         amountInput.focus();
         return;
       }
-      
+
       const amount = parseInt(amountInput.value);
       const upiURL = generateUPIURL(amount);
-      
+
       // Show processing state
       payButton.classList.add('processing');
-      
+
       // Generate transaction ID
       const txnId = 'NOCT' + Date.now() + Math.random().toString(36).substr(2, 4).toUpperCase();
-      
+
       // Store transaction attempt
       const transactionData = {
         amount: amount,
@@ -1437,45 +1297,99 @@
         upiId: UPI_ID,
         status: 'attempted'
       };
-      
+
       localStorage.setItem('lastDonation', JSON.stringify(transactionData));
-      
-      // Simulate payment processing
+
+      // Try to open UPI app (with delay for visual feedback)
       setTimeout(() => {
-        // Open UPI app
         window.location.href = upiURL;
         payButton.classList.remove('processing');
-        
-        // Set flag for return detection
-        localStorage.setItem('paymentAttempted', 'true');
-        localStorage.setItem('paymentTime', Date.now().toString());
+
+        // Update progress and show success message after delay
+        setTimeout(() => {
+          if (!document.hidden) {
+            updateProgressBar(amount);
+            showSuccessMessage();
+          }
+        }, 1500);
       }, 800);
     });
 
-    // QR Code click to enlarge
-    qrContainer.addEventListener('click', () => {
-      qrContainer.style.transform = qrContainer.style.transform === 'scale(1.8)' ? 'scale(1)' : 'scale(1.8)';
-      qrContainer.style.zIndex = qrContainer.style.zIndex === '100' ? '1' : '100';
-    });
+    // Show Manual Instructions
+    function showManualInstructions(amount) {
+      manualAmountSpan.textContent = formatNumber(amount);
+      manualInstruction.classList.add('show');
+      successMessage.classList.remove('show');
 
-    // Save donation history
-    function saveDonationToHistory(amount) {
-      const donations = JSON.parse(localStorage.getItem('noctivineDonations') || '[]');
-      donations.unshift({
-        amount: amount,
-        date: new Date().toISOString(),
-        status: 'completed'
+      // Scroll to manual instructions
+      manualInstruction.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Close Manual Instructions
+    const closeManualBtn = document.getElementById('closeManualBtn');
+    if (closeManualBtn) {
+      closeManualBtn.addEventListener('click', () => {
+        manualInstruction.classList.remove('show');
+        showSuccessMessage();
       });
+    }
+
+    // Show Success Message
+    function showSuccessMessage() {
+      successMessage.classList.add('show');
+
+      // Reset form after delay
+      setTimeout(() => {
+        amountInput.value = '';
+        quickAmountBtns.forEach(btn => btn.classList.remove('active'));
+        validateAmount();
+        updateQRCode();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+      }, 1500);
+    }
+
+    // Update Progress Bar
+    function updateProgressBar(newAmount) {
+      const currentRaised = parseInt(document.getElementById('progressRaised').textContent.replace(',', ''));
+      const newRaised = currentRaised + newAmount;
+      const goalAmount = 10000;
+      const percentage = Math.min((newRaised / goalAmount) * 100, 100);
       
-      // Keep only last 20 donations
-      if (donations.length > 20) donations.pop();
-      
-      localStorage.setItem('noctivineDonations', JSON.stringify(donations));
+      document.getElementById('progressRaised').textContent = formatNumber(newRaised);
+      document.getElementById('progressBar').style.width = percentage + '%';
     }
 
     // Utility Functions
     function formatNumber(num) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    // Check for success parameter in URL (for future integration)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success') && urlParams.has('amount')) {
+      const amount = urlParams.get('amount');
+      showSuccessModal(amount);
+      history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Save donation history
+    function saveDonationToHistory(amount, txnId) {
+      const donations = JSON.parse(localStorage.getItem('noctivineDonations') || '[]');
+      donations.unshift({
+        amount: amount,
+        date: new Date().toISOString(),
+        txnId: txnId,
+        status: 'completed'
+      });
+
+      // Keep only last 50 donations
+      if (donations.length > 50) donations.pop();
+
+      localStorage.setItem('noctivineDonations', JSON.stringify(donations));
     }
 
     // Keyboard shortcuts
