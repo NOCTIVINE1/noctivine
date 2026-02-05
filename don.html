@@ -311,7 +311,7 @@
       line-height:1.7;
     }
 
-    /* ✅ CURRENT GOAL SECTION (UX Improvement #1) */
+    /* ✅ CURRENT GOAL SECTION - UPDATED TO 10K */
     .goal-section {
       background: rgba(0,0,0,0.2);
       border-radius: 18px;
@@ -351,7 +351,7 @@
       height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       border-radius: 10px;
-      width: 24%; /* ₹1,200 / ₹5,000 = 24% */
+      width: 35%; /* ₹3,500 / ₹10,000 = 35% */
       transition: width 0.5s ease;
     }
 
@@ -361,7 +361,7 @@
       line-height: 1.5;
     }
 
-    /* ✅ PERSONAL NOTE (UX Improvement #2) */
+    /* ✅ PERSONAL NOTE */
     .personal-note {
       background: linear-gradient(90deg, rgba(124,77,255,0.08), rgba(0,255,213,0.05));
       border-left: 4px solid var(--accent);
@@ -374,7 +374,7 @@
       color: var(--text);
     }
 
-    /* ✅ SOCIAL PROOF (UX Improvement #2) */
+    /* ✅ SOCIAL PROOF */
     .social-proof {
       display: flex;
       align-items: center;
@@ -480,7 +480,7 @@
       cursor: pointer;
       transition: all 0.2s;
       text-align: center;
-      min-width: 0; /* Prevent overflow */
+      min-width: 0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -498,7 +498,7 @@
       box-shadow: 0 8px 30px rgba(124,77,255,0.15);
     }
 
-    /* ✅ SECURITY & UPI ID SECTION (UX Improvement #4) */
+    /* ✅ SECURITY & UPI ID SECTION */
     .upi-section {
       background: rgba(0,0,0,0.3);
       border-radius: 18px;
@@ -669,7 +669,7 @@
       color: var(--text);
     }
 
-    /* ✅ QR CODE SECTION WITH ENHANCEMENTS (UX Improvement #3) */
+    /* ✅ QR CODE SECTION */
     .qr-section {
       text-align: center;
       margin-top: 28px;
@@ -800,7 +800,7 @@
     }
     .list li b{color:var(--text); font-weight: 600;}
 
-    /* ✅ RECENT SUPPORTERS (UX Improvement #2) */
+    /* ✅ RECENT SUPPORTERS */
     .recent-supporters {
       background: rgba(255,255,255,0.03);
       border-radius: 18px;
@@ -870,25 +870,6 @@
       100% { transform: translateY(-50%); }
     }
 
-    /* ✅ ADS */
-    .sponsor-box{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-      padding:20px;
-      text-align:center;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-      overflow:hidden;
-    }
-    .sponsor-label{
-      font-size:12px;
-      opacity:0.6;
-      margin-bottom:12px;
-      letter-spacing:0.3px;
-      font-weight:900;
-      color:rgba(234,240,255,0.70);
-    }
-
     /* ✅ FOOTER */
     footer{
       padding: 26px 0 40px;
@@ -913,100 +894,6 @@
       transition: color 0.2s;
     }
     .foot a:hover{color:var(--text)}
-
-    /* ✅ MODAL (UX Improvement #5) */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(7,10,15,0.95);
-      backdrop-filter: blur(20px);
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.show {
-      display: flex;
-      animation: fadeIn 0.3s;
-    }
-
-    .modal {
-      background: linear-gradient(180deg, var(--panel2), var(--panel));
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 28px;
-      padding: 40px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 50px 150px rgba(0,0,0,0.6);
-      text-align: center;
-      animation: slideUp 0.5s ease;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal h3 {
-      margin-top: 0;
-      font-size: 28px;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .modal-icon {
-      font-size: 64px;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    .modal-gift {
-      background: rgba(0,255,213,0.1);
-      border: 1px solid rgba(0,255,213,0.2);
-      border-radius: 18px;
-      padding: 24px;
-      margin: 24px 0;
-      text-align: left;
-    }
-
-    .modal-gift-title {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .modal-close:hover {
-      background: rgba(255,255,255,0.2);
-      transform: rotate(90deg);
-    }
 
     /* ✅ RESPONSIVE */
     @media (max-width: 1080px){
@@ -1046,9 +933,6 @@
       .copy-btn {
         width: 100%;
         margin-left: 0;
-      }
-      .modal {
-        padding: 30px 20px;
       }
     }
 
@@ -1134,26 +1018,26 @@
           Enter any amount (₹1 to ₹10,000) to support directly via UPI. Your contribution helps publish more books, shortfilms, and honest writing.
         </p>
 
-        <!-- ✅ CURRENT GOAL (UX Improvement #1) -->
+        <!-- ✅ CURRENT GOAL - UPDATED TO ₹10K -->
         <div class="goal-section">
           <div class="goal-header">
             <div class="goal-title">Current Goal</div>
-            <div class="goal-amount">₹1,200 / ₹5,000</div>
+            <div class="goal-amount">₹3,500 / ₹10,000</div>
           </div>
           <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
           </div>
           <div class="goal-description">
-            Funding sound equipment for "Echoes of Silence" short film. Your support brings stories to life.
+            Funding "Echoes of Silence" short film production. Your support brings stories to life and covers equipment, locations, and editing.
           </div>
         </div>
 
-        <!-- ✅ PERSONAL NOTE (UX Improvement #2) -->
+        <!-- ✅ PERSONAL NOTE -->
         <div class="personal-note">
           "I write these books for you; your support keeps the ink flowing. Every contribution directly fuels more stories."
         </div>
 
-        <!-- ✅ SOCIAL PROOF (UX Improvement #2) -->
+        <!-- ✅ SOCIAL PROOF -->
         <div class="social-proof">
           <div class="social-icon">
             <i class="fas fa-users"></i>
@@ -1190,7 +1074,7 @@
             <button type="button" class="quick-amount-btn" data-amount="999">₹999</button>
           </div>
 
-          <!-- ✅ SECURE UPI ID WITH COPY BUTTON (UX Improvement #4 & Additional) -->
+          <!-- ✅ SECURE UPI ID WITH COPY BUTTON -->
           <div class="upi-section">
             <div class="upi-header">
               <i class="fas fa-lock"></i>
@@ -1263,7 +1147,7 @@
           </ul>
         </div>
 
-        <!-- ✅ RECENT SUPPORTERS (UX Improvement #2) -->
+        <!-- ✅ RECENT SUPPORTERS -->
         <div class="recent-supporters">
           <div class="supporters-header">
             <i class="fas fa-heart"></i>
@@ -1274,7 +1158,7 @@
           </div>
         </div>
 
-        <!-- ✅ ENHANCED QR CODE SECTION (UX Improvement #3) -->
+        <!-- ✅ QR CODE SECTION -->
         <div class="qr-section" id="qrSection">
           <div class="qr-header">
             <i class="fas fa-qrcode"></i>
@@ -1300,13 +1184,8 @@
           </p>
         </div>
 
-        <!-- ✅ ADS -->
-        <div class="sponsor-box">
-          <div class="sponsor-label">Sponsored</div>
-          <!-- ✅ Adsterra Code -->
-          <script async="async" data-cfasync="false" src="https://pl28554642.effectivegatecpm.com/5ec575feaa0dfb4f68b5d9d769ac18d6/invoke.js"></script>
-          <div id="container-5ec575feaa0dfb4f68b5d9d769ac18d6"></div>
-        </div>
+        <!-- ✅ ADS REMOVED -->
+
       </div>
 
     </section>
@@ -1330,48 +1209,14 @@
     </footer>
   </main>
 
-  <!-- ✅ THANK YOU MODAL (UX Improvement #5) -->
-  <div id="thankYouModal" class="modal-overlay">
-    <div class="modal">
-      <button class="modal-close" id="modalCloseBtn">&times;</button>
-      
-      <div class="modal-icon">🎁</div>
-      
-      <h3>Thank You for Your Support!</h3>
-      
-      <p>Your contribution directly fuels more stories and honest writing. Here's a token of my gratitude:</p>
-      
-      <div class="modal-gift">
-        <div class="modal-gift-title">
-          <i class="fas fa-gift"></i>
-          Exclusive Gift for Supporters
-        </div>
-        <p style="margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6;">
-          Download the <strong>"Echoes of Silence" deleted scene</strong> + exclusive desktop wallpapers from my upcoming book.
-        </p>
-        <a href="#" class="pay-button" style="margin-top: 16px; text-decoration: none;">
-          <i class="fas fa-download"></i> Download Your Gift
-        </a>
-      </div>
-      
-      <p style="font-size: 14px; color: var(--muted); margin-top: 20px;">
-        Payment confirmation will appear in your UPI app shortly. Feel free to email <strong>noctivine.contact@gmail.com</strong> if you have any questions.
-      </p>
-      
-      <button id="closeModalBtn" class="btn" style="margin-top: 24px; width: 100%; background: rgba(255,255,255,0.1);">
-        Continue Browsing
-      </button>
-    </div>
-  </div>
-
   <script>
     // Configuration
     const UPI_ID = 'noctivine@axl';
     const PAYEE_NAME = 'Noctivine';
     const MAX_AMOUNT = 10000;
     const MIN_AMOUNT = 1;
-    const GOAL_AMOUNT = 5000;
-    const RAISED_AMOUNT = 1200;
+    const GOAL_AMOUNT = 10000; // Updated to 10K
+    const RAISED_AMOUNT = 3500; // Updated to match 35% progress
 
     // DOM Elements
     const amountInput = document.getElementById('amountInput');
@@ -1386,9 +1231,6 @@
     const qrStatus = document.getElementById('qrStatus');
     const supportersTicker = document.getElementById('supportersTicker');
     const progressFill = document.getElementById('progressFill');
-    const thankYouModal = document.getElementById('thankYouModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
 
     // Sample supporter data
     const supporters = [
@@ -1407,7 +1249,7 @@
       // Set current year
       document.getElementById('year').textContent = new Date().getFullYear();
       
-      // Update progress bar
+      // Update progress bar (35% of 10K = ₹3,500)
       const progressPercent = (RAISED_AMOUNT / GOAL_AMOUNT) * 100;
       progressFill.style.width = `${progressPercent}%`;
       
@@ -1418,9 +1260,6 @@
       setTimeout(() => {
         document.getElementById('loader').classList.add('hide');
       }, 520);
-
-      // Check if returning from payment
-      checkPaymentReturn();
     });
 
     // Generate supporter ticker
@@ -1514,7 +1353,7 @@
       return `upi://pay?${params.toString()}`;
     }
 
-    // Update QR Code with success indicator (UX Improvement #3)
+    // Update QR Code with success indicator
     function updateQRCode() {
       const amount = parseInt(amountInput.value);
       
@@ -1610,74 +1449,13 @@
         // Set flag for return detection
         localStorage.setItem('paymentAttempted', 'true');
         localStorage.setItem('paymentTime', Date.now().toString());
-        
-        // Show manual instructions if UPI app doesn't open
-        setTimeout(() => {
-          if (!document.hidden) {
-            showThankYouModal(amount);
-          }
-        }, 2000);
       }, 800);
     });
 
-    // QR Code click to enlarge (UX Improvement #3)
+    // QR Code click to enlarge
     qrContainer.addEventListener('click', () => {
       qrContainer.style.transform = qrContainer.style.transform === 'scale(1.8)' ? 'scale(1)' : 'scale(1.8)';
       qrContainer.style.zIndex = qrContainer.style.zIndex === '100' ? '1' : '100';
-    });
-
-    // Check if returning from payment
-    function checkPaymentReturn() {
-      const paymentAttempted = localStorage.getItem('paymentAttempted');
-      const paymentTime = localStorage.getItem('paymentTime');
-      
-      if (paymentAttempted && paymentTime) {
-        const timeSincePayment = Date.now() - parseInt(paymentTime);
-        
-        // Show thank you modal if returned within 5 minutes
-        if (timeSincePayment < 5 * 60 * 1000) {
-          const lastDonation = JSON.parse(localStorage.getItem('lastDonation') || '{}');
-          setTimeout(() => {
-            showThankYouModal(lastDonation.amount || 0);
-          }, 1000);
-        }
-        
-        // Clean up
-        localStorage.removeItem('paymentAttempted');
-        localStorage.removeItem('paymentTime');
-      }
-    }
-
-    // Show Thank You Modal (UX Improvement #5)
-    function showThankYouModal(amount) {
-      thankYouModal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-      
-      // Add donation to history
-      saveDonationToHistory(amount);
-    }
-
-    // Close Modal
-    modalCloseBtn.addEventListener('click', closeThankYouModal);
-    closeModalBtn.addEventListener('click', closeThankYouModal);
-
-    function closeThankYouModal() {
-      thankYouModal.classList.remove('show');
-      document.body.style.overflow = 'auto';
-      
-      // Reset form
-      amountInput.value = '';
-      quickAmountBtns.forEach(btn => btn.classList.remove('active'));
-      validateAmount();
-      updateQRCode();
-      updatePayButton();
-    }
-
-    // Close modal on outside click
-    thankYouModal.addEventListener('click', (e) => {
-      if (e.target === thankYouModal) {
-        closeThankYouModal();
-      }
     });
 
     // Save donation history
@@ -1704,10 +1482,6 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && document.activeElement !== amountInput && !payButton.disabled) {
         payButton.click();
-      }
-      
-      if (e.key === 'Escape' && thankYouModal.classList.contains('show')) {
-        closeThankYouModal();
       }
     });
   </script>
